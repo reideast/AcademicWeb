@@ -1,0 +1,442 @@
+/* Sass Variable Definitions */
+$fontHeader: Alegreya, serif;
+$fontHeaderPage: "Alegreya SC", Alegreya, serif;
+$fontBody: Raleway,s ans-serif;
+
+$colorYellowGreen: #B3CB44;
+$colorDarkGreen: #1E3318;
+$colorBlue1: #075368;
+$colorBlue2: #023E4F;
+$colorNavy: #01141A;
+$colorOrange1: #A85A00;
+$colorOrange2: #975408;
+$colorRedOrange: #AF4D08;
+$colorGray: #333; //already in template
+$colorGrayText: #555;
+$colorGrayBG: #eee;
+
+$colorSchemePageBG: white;
+$colorSchemeError: red;
+
+$colorSchemeHeaderBG: white;
+$colorSchemeHeaderNameBG: $colorYellowGreen;
+$colorSchemeHeaderNameText: $colorGrayBG;
+$colorSchemeHeaderNameSubText: $colorGray;
+$colorSchemeHeaderLinkText: $colorGrayText;
+
+$colorSchemeTextBoxBG: $colorGrayBG;
+$colorSchemeTextBoxText: $colorGrayText;
+$colorSchemeTextBoxGreen: $colorYellowGreen;
+$colorSchemeTextBoxGreenText: $colorGrayBG;
+
+$colorSchemeFooterText: white;
+
+
+
+@import 'normalize';
+@import 'reset';
+
+/* **************************************************************************** */
+/* *****************************  Begin Style.css ***************************** */
+/* **************************************************************************** */
+
+
+body
+{
+  //font-size: 10px;
+  font-family: $fontBody;
+  overflow-x: auto;
+  overflow-y: scroll;
+  background: $colorSchemePageBG;
+}
+#masterContainer {
+  padding: 0; //reset from Bootstrap's 15px padding
+}
+
+h1,
+h2
+{
+  font-family: $fontHeader;
+}
+
+
+/* #backgroundImage
+{
+  background: url("../pageElements/046_bistline_2015.jpg");
+  background-size: cover;
+  /* background-size: contain; * /
+  position: absolute;
+  background-repeat: no-repeat;
+  top: 100px;
+  left: 0px;
+  /* min-width: 100%; * /
+  /* min-height: 100%; * /
+  width: 100%;
+  height: 600px;
+  padding: 0;
+  z-index: -10;
+  margin: 0;
+} */
+
+#headerContainer
+{
+  position: relative;
+  width: 960px;
+  height: 100px;
+  margin: 0 auto;
+}
+#header
+{
+  /* background: #eeeeee; */
+  background: $colorSchemeHeaderBG;
+/*   position: absolute;
+  top: 0px;
+  left: 0px; */
+  width: 100%;
+  height: 100px;
+  /* z-index: 5; */
+}
+#headerName
+{
+  /* display: inline-block; */
+  float:left;
+  width: 283px;
+  height: 100px;
+  background:  $colorSchemeHeaderNameBG;
+  text-align: center;
+  
+  /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+#headerName h1
+{
+  color: $colorSchemeHeaderNameText;
+  font-variant: small-caps;
+  font-weight: normal;
+  margin: 0 0 6px 0;
+  font-size:2.2em;
+}
+#headerName h3
+{
+  color: $colorSchemeHeaderNameSubText;
+  font-size: 1.5em;
+  font-weight: normal;
+  margin: 0;
+}
+#headerNav
+{
+  /* float:right; */
+  position:absolute;
+  right: 0;
+  top: 0;
+  width: 677px;
+  height: 100px;
+}
+nav
+{
+  display: inline-block;
+  margin: 0;
+  padding: 0 10px;
+}
+nav a
+{
+  display: inline-block;
+  text-decoration: none;
+  color: $colorSchemeHeaderLinkText;
+  font-size: 16px;
+  margin: 0 10px;
+}
+#headerSocialMedia
+{
+  float:right;
+  margin: 0;
+  padding: 0 20px;
+}
+#headerSocialMedia a
+{
+  display: inline-block;
+  text-decoration: none;
+  color: $colorSchemeHeaderLinkText;
+  font-size: 16px;
+  margin: 0 7px;
+}
+
+#backgroundImage
+{
+  position: absolute;
+  height: 100vh; /* vh = viewport height, 100vh = 100% of viewport */
+  top: 100px;
+  left: 0px;
+  width: 100%;
+  padding: 0;
+  z-index: -10;
+  margin: 0;
+  
+  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
+  
+  background-image: url("../pageElements/photo-1444342679470-e4512355de5e_PattiBlack.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 0px;
+  /* -webkit-transform: translateZ(0); */
+
+  /* TODO: Make multiple iimages at different sizes for different browser viewports. 
+           Switch them out with a media query with especially narrow viewport to prevent this "midriff showing" issue */
+  background-color: $colorSchemeError;
+}
+
+
+#aboveTheFold
+{
+  position: relative;
+  /* position: absolute; */
+  /* top:100px; */
+  width: 960px;
+  height: 100vh;
+  margin: 0 auto;
+}
+#byline
+{
+  position: relative;
+  top: 0;
+  background: $colorSchemeTextBoxBG;
+  opacity: .6;
+  /* width: 364.5px; */
+  width: 257px;
+  /* width: 220px; */
+  height: 100%;
+  /* height: 600px; */
+  padding: 0 60px;
+  margin: 0;
+  color: $colorSchemeTextBoxText;
+  text-align: center;
+}
+#byline h1
+{
+  font-family: $fontHeaderPage;
+  font-size: 3em;
+  font-weight: normal;
+  margin:0 0 10px 0;
+}
+#byline h2
+{
+  font-size:   1.8em;
+  font-weight: normal;
+}
+
+
+
+#belowTheFold
+{
+  /* background: transparent; */
+  position: relative;
+  width: 960px;
+  /* min-height: 100%; */
+  margin: 0 auto;
+  /* top: 0; */
+  /* left: 0; */
+}
+/* fix to remove margin-top from all children of a position:relative conainer
+#siteContainer * 
+{
+  margin-top: 0;
+} */
+
+#section1
+{
+  position: relative;
+  /* top: 700px; */
+  top: 0;
+  width: 100%;
+  height: 444px;
+}
+#section1image
+{
+  position: absolute;
+  display: block;
+  /* width and height in html: 377px x 444px */
+}
+#section1text
+{
+  position: absolute;
+  left: 377px;
+  top: 0px;
+  background: $colorSchemeTextBoxBG;
+  height: 244px;
+  padding: 100px 60px;
+  
+  color: $colorSchemeTextBoxText;
+  text-align: center;
+}
+
+#section2
+{
+  position: relative;
+  left: 0px;
+  width: 100%;
+  height: 300px;
+}
+#section2button
+{
+  position: absolute;
+  top: 0;
+  background: $colorGrayText;
+  width: 140px;
+  height: 140px;
+  left: 237px;
+  text-align: center;
+  /* padding: 50px 50px; */
+}
+#section2button h2
+{
+  /* margin: 70px 70px; */
+  font-size: 5em;
+  color: $colorGrayBG;
+  font-weight: normal;
+}
+#section2button a
+{
+  text-decoration: none;
+  color: $colorGrayBG;
+}
+#section2text
+{
+  position: absolute;
+  left: 377px;
+  top: 0px;
+  background: $colorSchemeTextBoxGreen;
+  height: 300px;
+  width: 400px;
+  padding: 0 60px;
+  
+  color: $colorSchemeTextBoxGreenText;
+  text-align: center;
+}
+
+#footerContainer
+{
+  position: relative;
+  height: 300px;
+  
+  color: $colorSchemeFooterText;
+}
+#footerBackgroundImage
+{
+  position: absolute;
+  height: 300px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  z-index: -10;
+  
+  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
+  background-image: url("../pageElements/garageDoorH.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 0px;
+  /* -webkit-transform: translateZ(0); */
+
+  /* TODO: are multiple sizes needed for this bg-image? */
+  background-color: $colorSchemeError;
+}
+
+#footer
+{
+  height: 100px;
+  
+  padding: 80px 0 0 0;
+  position: relative;
+  width: 960px;
+  /* top: 744px; */
+  margin: 0 auto;
+}
+#footer > div:first-child
+{
+  border-right: 1px solid $colorSchemeFooterText;
+}
+#footer > div:last-child
+{
+  border-left: 1px solid $colorSchemeFooterText;
+}
+.footerSection
+{
+  float: left;
+  /* width: 33.2%; */ /* 33.3% = 318px */
+  /* position:relative; */
+  height: 100%;
+  text-align: center;
+}
+#footerAddress
+{
+  line-height:0.8em;
+  font-size:1.3em;
+  width: 280px;
+}
+#footerName
+{
+  width: 376px;
+}
+#footerName h1
+{
+  font-variant: small-caps;
+  font-weight: normal;
+  margin: 0 0 6px 0;
+  font-size:2.2em;
+}
+#footerName h3
+{
+  font-size: 1.5em;
+  font-weight: normal;
+  margin: 0;
+}
+#footerLinks
+{
+  width: 280px;
+}
+#footerLinksPhone
+{
+  font-size:1.5em;
+  margin-bottom:10px;
+}
+/*#footerLinksSocial
+{
+  padding-right: 20px;
+  position: absolute;
+  top: 39px;
+  right: 0px; 
+}*/
+#footerLinksSocial a
+{
+  display: inline-block;
+  text-decoration: none;
+  color: $colorSchemeFooterText;
+  font-size: 16px;
+  margin: 0 7px;
+}
+
+
+.verticalCenter
+{
+  /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  
+  margin: 0;
+  padding: 0;
+  /* background:teal; */
+}
+.verticalCenter *:first-child /* or .verticalCenter > *:first-child ?? */
+{
+  margin-top: 0;
+}
+.verticalCenter *:last-child
+{
+  margin-bottom: 0;
+} 

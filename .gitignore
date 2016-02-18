@@ -1,0 +1,10 @@
+#git ignore for Academic Web
+.notes/
+.sass-cache/
+.vscode/
+node_modules/
+ABE web content (in progress).docx
+gulpfile.js
+package.json
+.dropbox
+desktop.ini
