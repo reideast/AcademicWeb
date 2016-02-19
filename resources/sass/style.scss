@@ -1,7 +1,7 @@
 /* Sass Variable Definitions */
 $fontHeader: Alegreya, serif;
 $fontHeaderPage: "Alegreya SC", Alegreya, serif;
-$fontBody: Raleway,s ans-serif;
+$fontBody: Raleway, sans-serif;
 
 $colorYellowGreen: #B3CB44;
 $colorDarkGreen: #1E3318;
@@ -41,8 +41,7 @@ $colorSchemeFooterText: white;
 /* **************************************************************************** */
 
 
-body
-{
+body {
   //font-size: 10px;
   font-family: $fontBody;
   overflow-x: auto;
@@ -53,15 +52,23 @@ body
   padding: 0; //reset from Bootstrap's 15px padding
 }
 
-h1,
-h2
-{
+h1, h2 {
   font-family: $fontHeader;
 }
 
 
-/* #backgroundImage
-{
+/* ****************** Removing Bootstrap's Nav Styles ************************** */
+.navbar-default {
+  background: none;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+}
+#collapsing-navbar-area {
+  height: 100px !important; //important to override bootstrap's !important
+}
+
+/* #backgroundImage {
   background: url("../pageElements/046_bistline_2015.jpg");
   background-size: cover;
   /* background-size: contain; * /
@@ -78,89 +85,79 @@ h2
   margin: 0;
 } */
 
-#headerContainer
-{
-  position: relative;
-  width: 960px;
-  height: 100px;
-  margin: 0 auto;
+#headerContainer {
+  //position: relative;
+  //width: 960px;
+  //height: 100px;
+  //margin: 0 auto;
 }
-#header
-{
-  /* background: #eeeeee; */
-  background: $colorSchemeHeaderBG;
-/*   position: absolute;
-  top: 0px;
-  left: 0px; */
-  width: 100%;
-  height: 100px;
+#header {
+  //background: $colorSchemeHeaderBG;
+  //width: 100%;
+  //height: 100px;
   /* z-index: 5; */
 }
-#headerName
-{
+#headerName {
   /* display: inline-block; */
-  float:left;
-  width: 283px;
-  height: 100px;
-  background:  $colorSchemeHeaderNameBG;
-  text-align: center;
+  //float:left;
+//width: 283px;
+  //height: 100px;
+//background:  $colorSchemeHeaderNameBG;
+//text-align: center;
   
   /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  transform-style: preserve-3d;
+  //-webkit-transform-style: preserve-3d;
+  //-moz-transform-style: preserve-3d;
+  //transform-style: preserve-3d;
 }
-#headerName h1
-{
-  color: $colorSchemeHeaderNameText;
-  font-variant: small-caps;
-  font-weight: normal;
-  margin: 0 0 6px 0;
-  font-size:2.2em;
+#headerName h1 {
+//color: $colorSchemeHeaderNameText;
+//font-variant: small-caps;
+//font-weight: normal;
+//margin: 0 0 6px 0;
+//font-size:2.2em;
 }
-#headerName h3
-{
-  color: $colorSchemeHeaderNameSubText;
-  font-size: 1.5em;
-  font-weight: normal;
-  margin: 0;
+#headerName h3 {
+//color: $colorSchemeHeaderNameSubText;
+//font-size: 1.5em;
+//font-weight: normal;
+//margin: 0;
 }
-#headerNav
-{
+#headerNav {
   /* float:right; */
-  position:absolute;
-  right: 0;
-  top: 0;
-  width: 677px;
-  height: 100px;
+  //position:absolute;
+  //right: 0;
+  //top: 0;
+  //width: 677px;
+  //height: 100px;
 }
 nav
 {
-  display: inline-block;
-  margin: 0;
-  padding: 0 10px;
+  //display: inline-block;
+  //margin: 0;
+  //padding: 0 10px;
 }
 nav a
 {
-  display: inline-block;
-  text-decoration: none;
-  color: $colorSchemeHeaderLinkText;
-  font-size: 16px;
-  margin: 0 10px;
+  //display: inline-block;
+  //text-decoration: none;
+  //color: $colorSchemeHeaderLinkText;
+  //font-size: 16px;
+  //margin: 0 10px;
 }
 #headerSocialMedia
 {
-  float:right;
-  margin: 0;
-  padding: 0 20px;
+  //float:right;
+  //margin: 0;
+  //padding: 0 20px;
 }
 #headerSocialMedia a
 {
-  display: inline-block;
-  text-decoration: none;
-  color: $colorSchemeHeaderLinkText;
-  font-size: 16px;
-  margin: 0 7px;
+  //display: inline-block;
+  //text-decoration: none;
+  //color: $colorSchemeHeaderLinkText;
+  //font-size: 16px;
+  //margin: 0 7px;
 }
 
 #backgroundImage
