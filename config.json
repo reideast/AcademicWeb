@@ -1,3 +1,5 @@
+//configuration file for botstrap
+//"revisit" changes via: http://getbootstrap.com/customize/?id=98cecff29b1d4d54b8ec
 {
   "vars": {
     "@gray-base": "#000",

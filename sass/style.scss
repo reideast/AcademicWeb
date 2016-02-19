@@ -1,3 +1,7 @@
+/* Main Style Document for Academic CV Web Site */
+/* By Andrew Reid East */
+
+
 /* Sass Variable Definitions */
 $fontHeader: Alegreya, serif;
 $fontHeaderPage: "Alegreya SC", Alegreya, serif;
@@ -173,7 +177,7 @@ nav a
   
   /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
   
-  background-image: url("../pageElements/photo-1444342679470-e4512355de5e_PattiBlack.jpg");
+  background-image: url("../img/pageElements/photo-1444342679470-e4512355de5e_PattiBlack.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 0px;
@@ -331,7 +335,7 @@ nav a
   z-index: -10;
   
   /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
-  background-image: url("../pageElements/garageDoorH.jpg");
+  background-image: url("../img/pageElements/garageDoorH.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 0px;
