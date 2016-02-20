@@ -44,15 +44,19 @@ $colorSchemeFooterText: white;
 /* *****************************  Begin Style.css ***************************** */
 /* **************************************************************************** */
 
+// .col-xs-34 { background-color: red; }
+// .col-sm-34 { background-color: orange; }
+// .col-md-34 { background-color: yellow; }
+// .col-lg-34 { background-color: green; }
 
 body {
   //font-size: 10px;
-  font-family: $fontBody;
+  //font-family: $fontBody;
   overflow-x: auto;
   overflow-y: scroll;
-  background: $colorSchemePageBG;
+  //background: $colorSchemePageBG;
 }
-#masterContainer {
+#masterContainer, #headerContainer {
   padding: 0; //reset from Bootstrap's 15px padding
 }
 
@@ -63,38 +67,40 @@ h1, h2 {
 
 /* ****************** Removing Bootstrap's Nav Styles ************************** */
 .navbar-default {
-  background: none;
+  //background: none;
   box-shadow: none;
   border: none;
-  border-radius: 0;
+  //border-radius: 0;
 }
-#collapsing-navbar-area {
-  height: 100px !important; //important to override bootstrap's !important
-}
-
-/* #backgroundImage {
-  background: url("../pageElements/046_bistline_2015.jpg");
-  background-size: cover;
-  /* background-size: contain; * /
-  position: absolute;
-  background-repeat: no-repeat;
-  top: 100px;
-  left: 0px;
-  /* min-width: 100%; * /
-  /* min-height: 100%; * /
-  width: 100%;
-  height: 600px;
-  padding: 0;
-  z-index: -10;
-  margin: 0;
-} */
 
 #headerContainer {
   //position: relative;
   //width: 960px;
   //height: 100px;
-  //margin: 0 auto;
+  margin: 0;
 }
+#headerRow {
+  margin: 0;
+  padding: 0;
+}
+#navbar {
+  margin-bottom: 0;
+}
+
+#headerSocialMedia
+{
+  //height: 100px;
+  // li {
+    // display: inline-block;
+    // text-decoration: none;
+    // font-size: 16px;
+    // margin: 0 7px;
+  // }
+  a {
+    color: $colorSchemeHeaderLinkText;
+  }
+}
+
 #header {
   //background: $colorSchemeHeaderBG;
   //width: 100%;
@@ -148,20 +154,6 @@ nav a
   //color: $colorSchemeHeaderLinkText;
   //font-size: 16px;
   //margin: 0 10px;
-}
-#headerSocialMedia
-{
-  //float:right;
-  //margin: 0;
-  //padding: 0 20px;
-}
-#headerSocialMedia a
-{
-  //display: inline-block;
-  //text-decoration: none;
-  //color: $colorSchemeHeaderLinkText;
-  //font-size: 16px;
-  //margin: 0 7px;
 }
 
 #backgroundImage

@@ -401,12 +401,10 @@ abbr, acronym {
 /* *****************************  Begin Style.css ***************************** */
 /* **************************************************************************** */
 body {
-  font-family: Raleway, sans-serif;
   overflow-x: auto;
-  overflow-y: scroll;
-  background: white; }
+  overflow-y: scroll; }
 
-#masterContainer {
+#masterContainer, #headerContainer {
   padding: 0; }
 
 h1, h2 {
@@ -414,30 +412,22 @@ h1, h2 {
 
 /* ****************** Removing Bootstrap's Nav Styles ************************** */
 .navbar-default {
-  background: none;
   box-shadow: none;
-  border: none;
-  border-radius: 0; }
+  border: none; }
 
-#collapsing-navbar-area {
-  height: 100px !important; }
+#headerContainer {
+  margin: 0; }
 
-/* #backgroundImage {
-  background: url("../pageElements/046_bistline_2015.jpg");
-  background-size: cover;
-  /* background-size: contain; * /
-  position: absolute;
-  background-repeat: no-repeat;
-  top: 100px;
-  left: 0px;
-  /* min-width: 100%; * /
-  /* min-height: 100%; * /
-  width: 100%;
-  height: 600px;
-  padding: 0;
-  z-index: -10;
+#headerRow {
   margin: 0;
-} */
+  padding: 0; }
+
+#navbar {
+  margin-bottom: 0; }
+
+#headerSocialMedia a {
+  color: #555; }
+
 #header {
   /* z-index: 5; */ }
 
