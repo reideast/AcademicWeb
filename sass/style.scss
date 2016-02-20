@@ -1,7 +1,11 @@
+/* Main Style Document for Academic CV Web Site */
+/* By Andrew Reid East */
+
+
 /* Sass Variable Definitions */
 $fontHeader: Alegreya, serif;
-$fontHeaderPage: "Alegreya SC", Alegreya, serif;
-$fontBody: Raleway,s ans-serif;
+$fontPageHeader: "Alegreya SC", Alegreya, serif;
+$fontBody: Raleway, sans-serif;
 
 $colorYellowGreen: #B3CB44;
 $colorDarkGreen: #1E3318;
@@ -33,134 +37,190 @@ $colorSchemeFooterText: white;
 
 
 
-@import 'normalize';
-@import 'reset';
+// @import 'normalize';
+// @import 'reset';
 
 /* **************************************************************************** */
 /* *****************************  Begin Style.css ***************************** */
 /* **************************************************************************** */
 
-
-body
+//********************* main media query area *********************
+//TODO: make changes in the width of to container in Bootstrap customizer! @container-tablet, etc
+@media (min-width:768px) {
+  #masterContainer{
+    width:750px
+  }
+}
+@media (min-width:992px)
 {
+  #masterContainer{
+    width:970px
+  }
+}
+@media (min-width:1200px)
+{
+  #masterContainer{
+    width:970px;
+  }
+}
+
+// .col-xs-34 { background-color: red; }
+// .col-sm-34 { background-color: orange; }
+// .col-md-34 { background-color: yellow; }
+// .col-lg-34 { background-color: green; }
+@media (min-width:480px) //XS
+{
+  #foo {
+    color: teal !important;
+  }
+}
+@media (min-width:768px) //SM
+{
+  #bar {
+    color: teal !important;
+  }
+}
+@media (min-width:992px) //MD
+{
+  #baz {
+    color: teal !important;
+  }
+}
+@media (min-width:1200px) //LG
+{
+  #bam {
+    color: teal!important;
+  }
+}
+
+body {
   //font-size: 10px;
-  font-family: $fontBody;
+  //font-family: $fontBody;
   overflow-x: auto;
   overflow-y: scroll;
-  background: $colorSchemePageBG;
+  //background: $colorSchemePageBG;
 }
-#masterContainer {
+#masterContainer, #headerContainer {
   padding: 0; //reset from Bootstrap's 15px padding
 }
+  #masterContainer > * { //evaluated load performance a few times, didn't change load +/- 50ms 
+    margin-left: 0;
+    margin-right: 0;
+  }
 
-h1,
-h2
-{
+h1, h2 {
   font-family: $fontHeader;
 }
 
 
-/* #backgroundImage
-{
-  background: url("../pageElements/046_bistline_2015.jpg");
-  background-size: cover;
-  /* background-size: contain; * /
-  position: absolute;
-  background-repeat: no-repeat;
-  top: 100px;
-  left: 0px;
-  /* min-width: 100%; * /
-  /* min-height: 100%; * /
-  width: 100%;
-  height: 600px;
-  padding: 0;
-  z-index: -10;
-  margin: 0;
-} */
-
-#headerContainer
-{
-  position: relative;
-  width: 960px;
-  height: 100px;
-  margin: 0 auto;
+/* ****************** Removing Bootstrap's Nav Styles ************************** */
+.navbar-default {
+  //background: none;
+  box-shadow: none;
+  border: none;
+  //border-radius: 0;
 }
-#header
+
+#headerContainer {
+  //position: relative;
+  //width: 960px;
+  //height: 100px;
+  margin: 0;
+}
+#headerRow {
+  margin: 0;
+  padding: 0;
+}
+#navbar {
+  margin-bottom: 0;
+}
+
+#headerRow {
+  background-color: rgba(teal, 0.1);
+}
+#headerSocialMedia
 {
-  /* background: #eeeeee; */
-  background: $colorSchemeHeaderBG;
-/*   position: absolute;
-  top: 0px;
-  left: 0px; */
-  width: 100%;
-  height: 100px;
+  //height: 100px;
+  // li {
+    // display: inline-block;
+    // text-decoration: none;
+    // font-size: 16px;
+    // margin: 0 7px;
+  // }
+  a {
+    color: $colorSchemeHeaderLinkText;
+  }
+  span {
+    padding: 10px 0px 10px 15px;
+  }
+  // span:first-child {
+  //   padding-left: 15px;
+  // }
+  span:last-child {
+    padding-right: 15px;
+  }
+}
+
+#header {
+  //background: $colorSchemeHeaderBG;
+  //width: 100%;
+  //height: 100px;
   /* z-index: 5; */
 }
-#headerName
-{
-  /* display: inline-block; */
-  float:left;
-  width: 283px;
-  height: 100px;
+.headerName {
   background:  $colorSchemeHeaderNameBG;
   text-align: center;
   
   /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  transform-style: preserve-3d;
+  //-webkit-transform-style: preserve-3d;
+  //-moz-transform-style: preserve-3d;
+  //transform-style: preserve-3d;
 }
-#headerName h1
-{
-  color: $colorSchemeHeaderNameText;
-  font-variant: small-caps;
-  font-weight: normal;
-  margin: 0 0 6px 0;
-  font-size:2.2em;
+.navbar-brand {
+  background-color: inherit; //needed to overwrite Bootstrap transparent(?!) background
 }
-#headerName h3
-{
-  color: $colorSchemeHeaderNameSubText;
-  font-size: 1.5em;
-  font-weight: normal;
-  margin: 0;
+.navbar-default .navbar-brand {
+  color: inherit;
 }
-#headerNav
-{
+.navbar-default .navbar-brand:hover {
+  color: inherit;
+  background-color: inherit;
+}
+.headerName h1 {
+//color: $colorSchemeHeaderNameText;
+//font-variant: small-caps;
+//font-weight: normal;
+margin: 0 0 6px 0;
+font-size: 1em;
+}
+.headerName h3 {
+//color: $colorSchemeHeaderNameSubText;
+font-size: 0.8em;
+//font-weight: normal;
+//margin: 0;
+}
+
+#headerNav {
   /* float:right; */
-  position:absolute;
-  right: 0;
-  top: 0;
-  width: 677px;
-  height: 100px;
+  //position:absolute;
+  //right: 0;
+  //top: 0;
+  //width: 677px;
+  //height: 100px;
 }
 nav
 {
-  display: inline-block;
-  margin: 0;
-  padding: 0 10px;
+  //display: inline-block;
+  //margin: 0;
+  //padding: 0 10px;
 }
 nav a
 {
-  display: inline-block;
-  text-decoration: none;
-  color: $colorSchemeHeaderLinkText;
-  font-size: 16px;
-  margin: 0 10px;
-}
-#headerSocialMedia
-{
-  float:right;
-  margin: 0;
-  padding: 0 20px;
-}
-#headerSocialMedia a
-{
-  display: inline-block;
-  text-decoration: none;
-  color: $colorSchemeHeaderLinkText;
-  font-size: 16px;
-  margin: 0 7px;
+  //display: inline-block;
+  //text-decoration: none;
+  //color: $colorSchemeHeaderLinkText;
+  //font-size: 16px;
+  //margin: 0 10px;
 }
 
 #backgroundImage
@@ -173,10 +233,11 @@ nav a
   padding: 0;
   z-index: -10;
   margin: 0;
+
   
   /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
   
-  background-image: url("../pageElements/photo-1444342679470-e4512355de5e_PattiBlack.jpg");
+  background-image: url("../img/pageElements/photo-1444342679470-e4512355de5e_PattiBlack.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 0px;
@@ -190,35 +251,35 @@ nav a
 
 #aboveTheFold
 {
-  position: relative;
+//position: relative;
   /* position: absolute; */
   /* top:100px; */
-  width: 960px;
+//width: 960px;
   height: 100vh;
-  margin: 0 auto;
+//margin: 0 auto;
 }
 #byline
 {
-  position: relative;
-  top: 0;
+//position: relative;
+//top: 0;
   background: $colorSchemeTextBoxBG;
   opacity: .6;
   /* width: 364.5px; */
-  width: 257px;
+//width: 257px;
   /* width: 220px; */
   height: 100%;
   /* height: 600px; */
-  padding: 0 60px;
-  margin: 0;
+  //padding: 0 60px; //TODO: responsive size with a .col or a @media ??
+//margin: 0;
   color: $colorSchemeTextBoxText;
   text-align: center;
 }
 #byline h1
 {
-  font-family: $fontHeaderPage;
-  font-size: 3em;
+  font-family: $fontPageHeader;
+  // font-size: 3em;
   font-weight: normal;
-  margin:0 0 10px 0;
+  // margin:0 0 10px 0;
 }
 #byline h2
 {
@@ -231,10 +292,10 @@ nav a
 #belowTheFold
 {
   /* background: transparent; */
-  position: relative;
-  width: 960px;
+  // position: relative;
+  // width: 960px;
   /* min-height: 100%; */
-  margin: 0 auto;
+  // margin: 0 auto;
   /* top: 0; */
   /* left: 0; */
 }
@@ -246,26 +307,32 @@ nav a
 
 #section1
 {
-  position: relative;
+  // position: relative;
   /* top: 700px; */
-  top: 0;
-  width: 100%;
-  height: 444px;
+  // top: 0;
+  // width: 100%;
+  // height: 444px;
+  height: 100%;
 }
-#section1image
+#section1image {
+  padding: 0;
+}
+#section1image img
 {
-  position: absolute;
-  display: block;
+  width: 100%;
+  // position: absolute;
+  // display: block;
   /* width and height in html: 377px x 444px */
 }
 #section1text
 {
-  position: absolute;
-  left: 377px;
-  top: 0px;
+  height: 100%;
+  // position: absolute;
+  // left: 377px;
+  // top: 0px;
   background: $colorSchemeTextBoxBG;
-  height: 244px;
-  padding: 100px 60px;
+  // height: 244px;
+  padding: 100px 60px; //TODO: responsive
   
   color: $colorSchemeTextBoxText;
   text-align: center;
@@ -273,26 +340,26 @@ nav a
 
 #section2
 {
-  position: relative;
-  left: 0px;
-  width: 100%;
+  // position: relative;
+  // left: 0px;
+  // width: 100%;
   height: 300px;
 }
 #section2button
 {
-  position: absolute;
-  top: 0;
+  // position: absolute;
+  // top: 0;
   background: $colorGrayText;
-  width: 140px;
-  height: 140px;
-  left: 237px;
+  // width: 140px;
+  // height: 140px;
+  // left: 237px;
   text-align: center;
   /* padding: 50px 50px; */
 }
 #section2button h2
 {
   /* margin: 70px 70px; */
-  font-size: 5em;
+  // font-size: 5em;
   color: $colorGrayBG;
   font-weight: normal;
 }
@@ -303,13 +370,13 @@ nav a
 }
 #section2text
 {
-  position: absolute;
-  left: 377px;
-  top: 0px;
+  // position: absolute;
+  // left: 377px;
+  // top: 0px;
   background: $colorSchemeTextBoxGreen;
-  height: 300px;
-  width: 400px;
-  padding: 0 60px;
+  // height: 300px;
+  // width: 400px;
+  padding: 0 60px; //TODO: responsive
   
   color: $colorSchemeTextBoxGreenText;
   text-align: center;
@@ -334,7 +401,7 @@ nav a
   z-index: -10;
   
   /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
-  background-image: url("../pageElements/garageDoorH.jpg");
+  background-image: url("../img/pageElements/garageDoorH.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 0px;
@@ -346,13 +413,13 @@ nav a
 
 #footer
 {
-  height: 100px;
+  // height: 100px;
   
-  padding: 80px 0 0 0;
-  position: relative;
-  width: 960px;
+  // padding: 80px 0 0 0;
+  // position: relative;
+  // width: 960px;
   /* top: 744px; */
-  margin: 0 auto;
+  // margin: 0 auto;
 }
 #footer > div:first-child
 {
@@ -364,43 +431,43 @@ nav a
 }
 .footerSection
 {
-  float: left;
+  // float: left;
   /* width: 33.2%; */ /* 33.3% = 318px */
   /* position:relative; */
-  height: 100%;
+  // height: 100%;
   text-align: center;
 }
 #footerAddress
 {
-  line-height:0.8em;
-  font-size:1.3em;
-  width: 280px;
+  // line-height:0.8em;
+  // font-size:1.3em;
+  // width: 280px;
 }
 #footerName
 {
-  width: 376px;
+  // width: 376px;
 }
 #footerName h1
 {
   font-variant: small-caps;
   font-weight: normal;
-  margin: 0 0 6px 0;
-  font-size:2.2em;
+  // margin: 0 0 6px 0;
+  // font-size:2.2em;
 }
 #footerName h3
 {
-  font-size: 1.5em;
+  // font-size: 1.5em;
   font-weight: normal;
-  margin: 0;
+  // margin: 0;
 }
 #footerLinks
 {
-  width: 280px;
+  // width: 280px;
 }
 #footerLinksPhone
 {
-  font-size:1.5em;
-  margin-bottom:10px;
+  // font-size:1.5em;
+  // margin-bottom:10px;
 }
 /*#footerLinksSocial
 {
@@ -411,11 +478,11 @@ nav a
 }*/
 #footerLinksSocial a
 {
-  display: inline-block;
-  text-decoration: none;
+  // display: inline-block;
+  // text-decoration: none;
   color: $colorSchemeFooterText;
-  font-size: 16px;
-  margin: 0 7px;
+  // font-size: 16px;
+  // margin: 0 7px;
 }
 
 
@@ -439,4 +506,9 @@ nav a
 .verticalCenter *:last-child
 {
   margin-bottom: 0;
-} 
+}
+
+.flipHorizontal {
+  transform: scaleX(-1); //https://css-tricks.com/snippets/css/flip-an-image/
+  //filter: FlipH; //invalid?
+}

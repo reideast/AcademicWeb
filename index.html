@@ -2,18 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- for Bootstrap -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- for Bootstrap -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- for Bootstrap -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- for Bootstrap -->
 
-  <!-- Bootstrap 3.3.6 using Mozilla CDN -->
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-  crossorigin="anonymous">
+  <link rel="stylesheet" href="css/bootstrap.css"><!-- TODO: ".min.css" -->
   <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
-  crossorigin="anonymous">
+  <link rel="stylesheet" href="css/bootstrap-theme.css"><!-- TODO: ".min.css" -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="css/academicons.css" />
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -26,46 +20,72 @@
   <link href='https://fonts.googleapis.com/css?family=Alegreya:400,700,700italic,400italic|Alegreya+SC:400italic|Raleway:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
   <!-- complete google fonts link: <link href='https://fonts.googleapis.com/css?family=Lora|Libre+Baskerville|Alegreya:400,400italic,700italic,700|EB+Garamond|Lato|Raleway|Spinnaker|Cabin' rel='stylesheet' type='text/css'> -->
   
-  <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
-  <link rel="icon" type="image/png" href="resources/pageElements/favicon.png" />
-  <link rel="shortcut icon" type="image/x-icon" href="resources/pageElements/favicon.ico" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="icon" type="image/png" href="img/pageElements/favicon.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="img/pageElements/favicon.ico" />
   
   <meta name="description" content="">
   <meta name="author" content="Allison Bistline-East">
   <title>Allison Bistline-East</title>
 </head>
 <body>
-  <div id="masterContainer" class="container-fluid">
-    <div id="headerContainer">
-      <div id="header">
-        <div id="headerName">
-          <div class="nameplate verticalCenter">
-            <div><h1>Allison Bistline-East, MSc</h1></div>
-            <div><h3>Entomology, Ecology</h3></div>
-          </div>
-        </div>
-        <div id="headerNav">
-          <div class="verticalCenter">
-            <nav>
-              <a href="index">Home</a>
-              <a href="publications">Publications</a>
-              <a href="research">Research Projects</a>
-              <a href="CV">Curriculum Vitae</a>
-            </nav>
-            <div id="headerSocialMedia">
-              <a href="https://www.linkedin.com/in/allisonbistlineeast"><i class="fa fa-linkedin-square fa-2x"></i></a>
-              <a href="https://www.researchgate.net/profile/Allison_Bistline-East"><i class="ai ai-researchgate-square ai-2x"></i></a>
-              <a href="mailto:allison@bistlineeast.com"><i class="fa fa-envelope-square fa-2x"></i></a>
+  <div id="masterContainer" class="container">
+      
+    <div id="headerContainer" class="container-fluid">
+    
+          <nav id="navbar" class="navbar navbar-default">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsing-navbar-area" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div class="headerName visible-xs-block" id="headerNameWide">
+                  <a href="index" class="navbar-brand">
+                    <div class="verticalCenter">
+                      <div><h1>Allison Bistline-East, MSc</h1></div>
+                      <div><h3>Entomology, Ecology</h3></div>
+                    </div>
+                  </a>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
+            <!-- navbar-header -->
+      <div id="headerRow" class="row">
+        <div class="col-md-offset-2 col-md-32">
+            <div id="collapsing-navbar-area" class="collapse navbar-collapse">
+              <div class="headerName visible-sm-block visible-md-block visible-lg-block" id="headerNameWide">
+                  <a href="index" class="navbar-brand">
+                    <div class="verticalCenter">
+                      <div><h1>Allison Bistline-East, MSc</h1></div>
+                      <div><h3>Entomology, Ecology</h3></div>
+                    </div>
+                  </a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="index">Home</a></li>
+                <li><a href="publications">Publications</a></li>
+                <li><a href="research">Research Projects</a></li>
+                <li><a href="CV">Curriculum Vitae</a></li>
+                <li id="headerSocialMedia">
+                  <div class="blah_verticalCenter">
+                    <span><a id="foo" href="https://www.linkedin.com/in/allisonbistlineeast"><i class="fa fa-linkedin-square fa-2x"></i></a></span>
+                    <span><a id="bar" href="https://www.researchgate.net/profile/Allison_Bistline-East"><i class="ai ai-researchgate-square ai-2x"></i></a></span>
+                    <span><a id="baz" href="#"><i class="ai ai-google-scholar-square ai-2x"></i></a></span>
+                    <span><a id="bam" href="mailto:allison@bistlineeast.com"><i class="fa fa-envelope-square fa-2x"></i></a></span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+        </div><!-- col-md-32 -->
+      </div><!-- row -->
     </div>
-
-    <div id="backgroundImage" data-type="background" data-speed="5"></div>
-
-    <div id="aboveTheFold">
-      <div id="byline">
+          </nav>
+    
+    <div id="backgroundImage" class="flipHorizontal" data-type="background" data-speed="5"></div>
+    
+    <div id="aboveTheFold" class="row">
+      <div id="byline" class="col-sm-12 col-md-10">
         <div class="verticalCenter">
           <h1><em>Natura non facit saltus</em></h1>
           <h2><em>Nature does not make jumps</em></h2>
@@ -74,35 +94,38 @@
       </div>
     </div>
 
-    <div id="belowTheFold">
-      <div id="section1">
-        <img id="section1image" src="resources/pageElements/diaphorencyrtus_aligarhensis_release.jpg" width="377" height="444"/>
-        <div id="section1text">
-          <div class="verticalCenter">
+    <!--<div id="belowTheFold">-->
+      <div id="section1" class="row">
+        <div id="section1image" class=" col-sm-12 col-md-10">
+          <img src="img/pageElements/diaphorencyrtus_aligarhensis_release.jpg" />
+        </div>
+        <div id="section1text" class="col-sm-24 col-md-26">
+          <div class="blah_verticalCenter">
             <h2>This is the next section of the page</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<!--Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.--></p>
           </div>
         </div>
       </div>
       
-      <div id="section2">
-        <div id="section2button">
-          <div class="verticalCenter">
-            <h2><a href="CV">CV</a></h2>
+      <div id="section2" class="row">
+        <div id="section2button" class="col-sm-offset-8 col-sm-2">
+          <div class="blah_verticalCenter">
+            <h2><a href="CV">CV</a></h2><!--TODO: make this square via javascript?? -->
           </div>
         </div>
-        <div id="section2text">
-          <div class="verticalCenter">
+        <div id="section2text" class="col-sm-14">
+          <div class="blah_verticalCenter">
             <h2>Research Projects</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<!--Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.--></p>
           </div>
         </div>
       </div>
-    </div>
+    <!--</div>-->
 
 
-    <div id="footerContainer">
-      <div id="footerBackgroundImage" data-type="background" data-speed="4" data-isFooter="1"></div>
+    <div id="footerContainer" class="row">
+      <div id="footerBackgroundImage" data-type="background" data-speed="4" data-isFooter="1">
+      </div>
       <div id="footer">
         <div id="footerAddress" class="footerSection">
           <div class="verticalCenter">
@@ -132,12 +155,12 @@
         </div>
       </div>
     </div>
-  </div><!-- container-fluid -->
+  </div><!-- container masterContainer -->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Bootstrap js: Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function() {
   //parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641
