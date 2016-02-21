@@ -68,19 +68,28 @@ ul.nav a {
 
 #headerLinks {
   padding-right: 0; }
+  #headerLinks > ul {
+    margin-bottom: 0; }
+
+#headerIcons > ul {
+  margin-top: 0; }
 
 #headerSocialMedia {
-  padding-top: 37.5px;
-  padding-bottom: 37.5px; }
+  padding-top: 10px;
+  padding-bottom: 10px; }
+  @media (min-width: 768px) {
+    #headerSocialMedia {
+      padding-top: 37.5px;
+      padding-bottom: 37.5px; } }
   #headerSocialMedia a {
     color: #555;
     padding: 0; }
     #headerSocialMedia a i {
       line-height: 20px; }
   #headerSocialMedia span {
-    padding-left: 2px; }
+    padding-left: 7px; }
   #headerSocialMedia span:last-child {
-    padding-right: 2px; }
+    padding-right: 7px; }
 
 #header {
   /* z-index: 5; */ }
