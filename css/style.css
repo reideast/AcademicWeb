@@ -18,19 +18,19 @@
 
 @media (min-width: 480px) {
   #foo {
-    color: teal !important; } }
+    color: #DA7500 !important; } }
 
 @media (min-width: 768px) {
   #bar {
-    color: teal !important; } }
+    color: #DA7500 !important; } }
 
 @media (min-width: 992px) {
   #baz {
-    color: teal !important; } }
+    color: #DA7500 !important; } }
 
 @media (min-width: 1200px) {
   #bam {
-    color: teal !important; } }
+    color: #DA7500 !important; } }
 
 body {
   overflow-x: auto;
@@ -49,7 +49,15 @@ h1, h2 {
 /* ****************** Removing Bootstrap's Nav Styles ************************** */
 .navbar-default {
   box-shadow: none;
-  border: none; }
+  border: none;
+  margin-bottom: 0; }
+
+#collapsing-navbar-area > * {
+  margin: 0; }
+
+ul.nav a {
+  padding-left: 7.5px;
+  padding-right: 7.5px; }
 
 #headerContainer {
   margin: 0; }
@@ -58,20 +66,21 @@ h1, h2 {
   margin: 0;
   padding: 0; }
 
-#navbar {
-  margin-bottom: 0; }
+#headerLinks {
+  padding-right: 0; }
 
-#headerRow {
-  background-color: rgba(0, 128, 128, 0.1); }
-
-#headerSocialMedia a {
-  color: #555; }
-
-#headerSocialMedia span {
-  padding: 10px 0px 10px 15px; }
-
-#headerSocialMedia span:last-child {
-  padding-right: 15px; }
+#headerSocialMedia {
+  padding-top: 37.5px;
+  padding-bottom: 37.5px; }
+  #headerSocialMedia a {
+    color: #555;
+    padding: 0; }
+    #headerSocialMedia a i {
+      line-height: 20px; }
+  #headerSocialMedia span {
+    padding-left: 2px; }
+  #headerSocialMedia span:last-child {
+    padding-right: 2px; }
 
 #header {
   /* z-index: 5; */ }
@@ -127,14 +136,20 @@ h1, h2 {
   height: 100vh; }
 
 #byline {
-  background: #eee;
-  opacity: .6;
   /* width: 364.5px; */
   /* width: 220px; */
   height: 100%;
   /* height: 600px; */
-  color: #555;
   text-align: center; }
+  @media (max-width: 767px) {
+    #byline {
+      color: #01141A;
+      text-shadow: 1px -1px #999; } }
+  @media (min-width: 768px) {
+    #byline {
+      background: #eee;
+      opacity: .6;
+      color: #555; } }
 
 #byline h1 {
   font-family: "Alegreya SC", Alegreya, serif;

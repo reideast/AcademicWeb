@@ -30,57 +30,58 @@
 </head>
 <body>
   <div id="masterContainer" class="container">
-       hello
-    <div id="headerContainer" class="container-fluid">
     
-          <nav id="navbar" class="navbar navbar-default">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsing-navbar-area" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <div class="headerName visible-xs-block" id="headerNameWide">
-                  <a href="index" class="navbar-brand">
-                    <div class="verticalCenter">
-                      <div><h1>Allison Bistline-East, MSc</h1></div>
-                      <div><h3>Entomology, Ecology</h3></div>
-                    </div>
-                  </a>
-              </div>
-            </div>
-            <!-- navbar-header -->
-      <div id="headerRow" class="row">
-        <div class="col-md-offset-2 col-md-32">
-            <div id="collapsing-navbar-area" class="collapse navbar-collapse">
-              <div class="headerName visible-sm-block visible-md-block visible-lg-block" id="headerNameWide">
-                  <a href="index" class="navbar-brand">
-                    <div class="verticalCenter">
-                      <div><h1>Allison Bistline-East, MSc</h1></div>
-                      <div><h3>Entomology, Ecology</h3></div>
-                    </div>
-                  </a>
-              </div>
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="index">Home</a></li>
-                <li><a href="publications">Publications</a></li>
-                <li><a href="research">Research Projects</a></li>
-                <li><a href="CV">Curriculum Vitae</a></li>
-                <li id="headerSocialMedia">
-                  <div class="blah_verticalCenter">
-                    <span><a id="foo" href="https://www.linkedin.com/in/allisonbistlineeast"><i class="fa fa-linkedin-square fa-2x"></i></a></span>
-                    <span><a id="bar" href="https://www.researchgate.net/profile/Allison_Bistline-East"><i class="ai ai-researchgate-square ai-2x"></i></a></span>
-                    <span><a id="baz" href="#"><i class="ai ai-google-scholar-square ai-2x"></i></a></span>
-                    <span><a id="bam" href="mailto:allison@bistlineeast.com"><i class="fa fa-envelope-square fa-2x"></i></a></span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-        </div><!-- col-md-32 -->
-      </div><!-- row -->
+    
+<nav class="navbar navbar-default">
+  <div class="navbar-header visible-xs-block hidden-sm-block hidden-md-block hidden-lg-block">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsing-navbar-area" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="headerName visible-xs-block" id="headerNameTiny">
+      <a href="index" class="navbar-brand">
+        <div class="verticalCenter">
+          <div><h1>Allison Bistline-East, MSc</h1></div>
+          <div><h3>Entomology, Ecology</h3></div>
+        </div>
+      </a>
     </div>
-          </nav>
+  </div>
+  <!-- navbar-header -->
+
+  <div id="collapsing-navbar-area" class="row collapse navbar-collapse">
+    <div class="col-sm-12 col-md-10 headerName visible-sm-block visible-md-block visible-lg-block" id="headerNameWide">
+      <a href="index" class="navbar-brand">
+        <div class="verticalCenter">
+          <div>
+            <h1>Allison Bistline-East, MSc</h1></div>
+          <div><h3>Entomology, Ecology</h3></div>
+        </div>
+      </a>
+    </div>
+    <div id="headerLinks" class="col-sm-16 col-md-20">
+      <ul class="nav navbar-nav">
+        <li class="_active hidden-xs-block"><a href="index">Home</a></li>
+        <li><a href="publications">Publications</a></li>
+        <li><a href="research">Research Projects</a></li>
+        <li class="visible-xs-block visible-md-block visible-lg-block"><a href="CV">Curriculum Vitae</a></li>
+        <li class="visible-sm-block"><a href="CV">CV</a></li>
+      </ul>
+    </div>
+    <div id="headerIcons" class="col-sm-8 col-md-6">
+      <ul class="nav navbar-nav navbar-right">
+        <li id="headerSocialMedia">
+            <span><a id="foo" href="https://www.linkedin.com/in/allisonbistlineeast"><i class="fa fa-linkedin-square fa-2x"></i></a></span>
+            <span><a id="bar" href="https://www.researchgate.net/profile/Allison_Bistline-East"><i class="ai ai-researchgate-square ai-2x"></i></a></span>
+            <span><a id="baz" href="#"><i class="ai ai-google-scholar-square ai-2x"></i></a></span>
+            <span><a id="bam" href="mailto:allison@bistlineeast.com"><i class="fa fa-envelope-square fa-2x"></i></a></span>
+        </li>
+      </ul>
+    </div><!-- col -->
+  </div><!-- row -->
+</nav>
     
     <div id="backgroundImage" class="flipHorizontal" data-type="background" data-speed="5"></div>
     

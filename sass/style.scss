@@ -14,6 +14,7 @@ $colorBlue2: #023E4F;
 $colorNavy: #01141A;
 $colorOrange1: #A85A00;
 $colorOrange2: #975408;
+$colorOrange3: #DA7500;
 $colorRedOrange: #AF4D08;
 $colorGray: #333; //already in template
 $colorGrayText: #555;
@@ -71,25 +72,25 @@ $colorSchemeFooterText: white;
 @media (min-width:480px) //XS
 {
   #foo {
-    color: teal !important;
+    color: $colorOrange3 !important;
   }
 }
 @media (min-width:768px) //SM
 {
   #bar {
-    color: teal !important;
+    color: $colorOrange3 !important;
   }
 }
 @media (min-width:992px) //MD
 {
   #baz {
-    color: teal !important;
+    color: $colorOrange3 !important;
   }
 }
 @media (min-width:1200px) //LG
 {
   #bam {
-    color: teal!important;
+    color: $colorOrange3 !important;
   }
 }
 
@@ -119,7 +120,17 @@ h1, h2 {
   box-shadow: none;
   border: none;
   //border-radius: 0;
+  margin-bottom: 0;
 }
+#collapsing-navbar-area > * {
+  //padding: 0;
+  margin: 0;
+}
+ul.nav a {
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+}
+
 
 #headerContainer {
   //position: relative;
@@ -131,12 +142,9 @@ h1, h2 {
   margin: 0;
   padding: 0;
 }
-#navbar {
-  margin-bottom: 0;
-}
 
-#headerRow {
-  background-color: rgba(teal, 0.1);
+#headerLinks {
+  padding-right: 0;
 }
 #headerSocialMedia
 {
@@ -147,17 +155,25 @@ h1, h2 {
     // font-size: 16px;
     // margin: 0 7px;
   // }
+  
+  padding-top: 37.5px;
+  padding-bottom: 37.5px;
   a {
     color: $colorSchemeHeaderLinkText;
+    padding: 0;
+    i {
+      //font-size: 14px;
+      line-height: 20px;
+    }
   }
   span {
-    padding: 10px 0px 10px 15px;
+    padding-left: 2px;
   }
   // span:first-child {
   //   padding-left: 15px;
   // }
   span:last-child {
-    padding-right: 15px;
+    padding-right: 2px;
   }
 }
 
@@ -262,8 +278,15 @@ nav a
 {
 //position: relative;
 //top: 0;
-  background: $colorSchemeTextBoxBG;
-  opacity: .6;
+  @media (max-width: 767px) {
+    color: $colorNavy;
+    text-shadow: 1px -1px #999;
+  }
+  @media (min-width: 768px) {
+    background: $colorSchemeTextBoxBG;
+    opacity: .6;
+    color: $colorSchemeTextBoxText;
+  }
   /* width: 364.5px; */
 //width: 257px;
   /* width: 220px; */
@@ -271,7 +294,6 @@ nav a
   /* height: 600px; */
   //padding: 0 60px; //TODO: responsive size with a .col or a @media ??
 //margin: 0;
-  color: $colorSchemeTextBoxText;
   text-align: center;
 }
 #byline h1
