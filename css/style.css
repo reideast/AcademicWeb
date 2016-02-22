@@ -98,6 +98,8 @@ ul.nav a {
   background: #B3CB44;
   text-align: center;
   /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */ }
+  .headerName a {
+    width: 100%; }
 
 .navbar-brand {
   background-color: inherit; }
@@ -129,15 +131,22 @@ ul.nav a {
   padding: 0;
   z-index: -10;
   margin: 0;
+  background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg");
   /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
-  background-image: url("../img/pageElements/photo-1444342679470-e4512355de5e_PattiBlack.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50% 0px;
+  background-position-x: left;
+  background-position-y: 0px;
   /* -webkit-transform: translateZ(0); */
   /* TODO: Make multiple iimages at different sizes for different browser viewports. 
            Switch them out with a media query with especially narrow viewport to prevent this "midriff showing" issue */
   background-color: red; }
+  @media (min-width: 480px) {
+    #backgroundImage {
+      background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); } }
+  @media (min-width: 768px) {
+    #backgroundImage {
+      background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); } }
 
 #aboveTheFold {
   /* position: absolute; */

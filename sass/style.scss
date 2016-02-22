@@ -198,6 +198,9 @@ ul.nav a {
 .headerName {
   background:  $colorSchemeHeaderNameBG;
   text-align: center;
+  a {
+    width: 100%;
+  }
   
   /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
   //-webkit-transform-style: preserve-3d;
@@ -263,12 +266,29 @@ nav a
   margin: 0;
 
   
-  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
   
-  background-image: url("../img/pageElements/photo-1444342679470-e4512355de5e_PattiBlack.jpg");
+  //@media (min-width:480px) { //XS 
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg"); 
+  //}
+  @media (min-width:480px) { //XS 
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); 
+  }
+  @media (min-width:768px) { //SM
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); 
+  }
+  @media (min-width:992px) { //MD
+  }
+  @media (min-width:1200px) { //LG
+
+  }
+  
+  
+  
+  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50% 0px;
+  background-position-x: left;
+  background-position-y: 0px;
   /* -webkit-transform: translateZ(0); */
 
   /* TODO: Make multiple iimages at different sizes for different browser viewports. 
