@@ -215,6 +215,15 @@ ul.nav a {
   color: inherit;
   background-color: inherit;
 }
+#headerMobileRow {
+  width: 100%;
+  > *:first-child {
+    margin-left: 0;
+  }
+  > *:last-child {
+    margin-right: 0;
+  }
+}
 .headerName h1 {
 //color: $colorSchemeHeaderNameText;
 //font-variant: small-caps;
@@ -228,13 +237,15 @@ font-size: 0.8em;
 //font-weight: normal;
 //margin: 0;
 }
-#collapsing-navbar-area {
-  position: absolute;
-  //These changes are to maintain the same properties as if it were a position: relative;
-  width: 100vw;
-  box-sizing: content-box;
-  background-color: $colorSchemeHeaderBG;
-  z-index: 100;
+@media (max-width: 480px) {
+  #collapsing-navbar-area {
+    position: absolute;
+    //These changes are to maintain the same properties as if it were a position: relative;
+    width: 100vw;
+    box-sizing: content-box;
+    background-color: $colorSchemeHeaderBG;
+    z-index: 100;
+  }
 }
 #headerNav {
   /* float:right; */

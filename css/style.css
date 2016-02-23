@@ -111,6 +111,13 @@ ul.nav a {
   color: inherit;
   background-color: inherit; }
 
+#headerMobileRow {
+  width: 100%; }
+  #headerMobileRow > *:first-child {
+    margin-left: 0; }
+  #headerMobileRow > *:last-child {
+    margin-right: 0; }
+
 .headerName h1 {
   margin: 0 0 6px 0;
   font-size: 1em; }
@@ -118,12 +125,13 @@ ul.nav a {
 .headerName h3 {
   font-size: 0.8em; }
 
-#collapsing-navbar-area {
-  position: absolute;
-  width: 100vw;
-  box-sizing: content-box;
-  background-color: white;
-  z-index: 100; }
+@media (max-width: 480px) {
+  #collapsing-navbar-area {
+    position: absolute;
+    width: 100vw;
+    box-sizing: content-box;
+    background-color: white;
+    z-index: 100; } }
 
 #headerNav {
   /* float:right; */ }
