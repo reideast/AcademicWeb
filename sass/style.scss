@@ -17,22 +17,25 @@ $colorOrange2: #975408;
 $colorOrange3: #DA7500;
 $colorRedOrange: #AF4D08;
 $colorGray: #333; //already in template
+$colorGrayBG: #999;
 $colorGrayText: #555;
-$colorGrayBG: #eee;
+$colorLightGray: #eee;
 
 $colorSchemePageBG: white;
 $colorSchemeError: red;
 
 $colorSchemeHeaderBG: white;
 $colorSchemeHeaderNameBG: $colorYellowGreen;
-$colorSchemeHeaderNameText: $colorGrayBG;
+$colorSchemeHeaderNameText: $colorLightGray;
 $colorSchemeHeaderNameSubText: $colorGray;
 $colorSchemeHeaderLinkText: $colorGrayText;
 
+$colorSchemeBylineBG: $colorLightGray;
+$colorSchemeBylineText: $colorGrayText;
 $colorSchemeTextBoxBG: $colorGrayBG;
-$colorSchemeTextBoxText: $colorGrayText;
+$colorSchemeTextBoxText: $colorGray;
 $colorSchemeTextBoxGreen: $colorYellowGreen;
-$colorSchemeTextBoxGreenText: $colorGrayBG;
+$colorSchemeTextBoxGreenText: $colorLightGray;
 
 $colorSchemeFooterText: white;
 
@@ -58,12 +61,12 @@ $colorSchemeFooterText: white;
     width:970px
   }
 }
-@media (min-width:1200px)
-{
-  #masterContainer{
-    width:970px;
-  }
-}
+// @media (min-width:1200px)
+// {
+//   #masterContainer{
+//     width:970px;
+//   }
+// }
 
 // .col-xs-34 { background-color: red; }
 // .col-sm-34 { background-color: orange; }
@@ -282,7 +285,7 @@ nav a
   margin: 0;
   
   //@media (min-width:480px) { //XS 
-    background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg"); 
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg"); //TODO: OPTIMIZE IMAGES!!!
   //}
   @media (min-width:480px) { //XS 
     background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); 
@@ -329,9 +332,9 @@ nav a
     text-shadow: 1px -1px #999;
   }
   @media (min-width: 768px) {
-    background: $colorSchemeTextBoxBG;
+    background: $colorSchemeBylineBG;
     opacity: .6;
-    color: $colorSchemeTextBoxText;
+    color: $colorSchemeBylineText;
   }
   /* width: 364.5px; */
 //width: 257px;
@@ -382,7 +385,7 @@ nav a
   margin-left: 0;
   width: 100vw;
   //height: 100%;
-  height: 300px;
+  height: 300px; //TODO: sense how high #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
   z-index: -1;
 }
 #section1:before {
@@ -391,37 +394,44 @@ nav a
 #section1:after {
   left: 0;
 }
-#section1
-{
+
+@media (min-width:480px) { //XS
+}
+@media (min-width:768px) { //SM
+  #section1, #section1 > div {
+    height: 393px;
+  }
+}
+@media (min-width:992px) { //MD
+  #section1, #section1 > div {
+    height: 444px;
+  }
+}
+@media (min-width:1200px) { //LG
+}
+#section1 {
   position: relative;
-  /* top: 700px; */
-  // top: 0;
-  // width: 100%;
-  // height: 444px;
-  //height: 100%;
 }
 #section1image {
   padding: 0;
 }
-#section1image img
-{
+#section1image img {
   width: 100%;
-  // position: absolute;
-  // display: block;
-  /* width and height in html: 377px x 444px */
+  //TODO: should there be separate images (through @media) for each sm/md/lg size?
 }
 #section1text
 {
-  height: 100%;
-  // position: absolute;
-  // left: 377px;
-  // top: 0px;
-  background: gray; //$colorSchemeTextBoxBG;
-  // height: 244px;
-  padding: 100px 60px; //TODO: responsive
-  
-  color: $colorSchemeTextBoxText;
+  // height: 100%;
+  // padding: 100px 60px; //TODO: @media
+  padding-left: 60px;
+  padding-right: 60px;
   text-align: center;
+  p {
+    text-align: left;
+  }
+  background: $colorSchemeTextBoxBG;
+  color: $colorSchemeTextBoxText;
+
 }
 
 #section2
@@ -429,7 +439,7 @@ nav a
   // position: relative;
   // left: 0px;
   // width: 100%;
-  height: 300px;
+  //height: 300px;
 }
 #section2button
 {
@@ -463,13 +473,13 @@ nav a
 {
   /* margin: 70px 70px; */
   // font-size: 5em;
-  color: $colorGrayBG;
+  color: $colorSchemeHeaderNameText;
   font-weight: normal;
 }
 #section2button a
 {
   text-decoration: none;
-  color: $colorGrayBG;
+  color: $colorSchemeHeaderNameText;
 }
 #section2text
 {
@@ -479,10 +489,13 @@ nav a
   background: $colorSchemeTextBoxGreen;
   // height: 300px;
   // width: 400px;
-  padding: 0 60px; //TODO: responsive
+  padding: 50px 60px; //TODO: responsive
   
   color: $colorSchemeTextBoxGreenText;
   text-align: center;
+  p {
+    text-align: left;
+  }
 }
 
 #footerContainer
