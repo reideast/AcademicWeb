@@ -33,7 +33,7 @@
     color: #DA7500 !important; } }
 
 body {
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: scroll; }
 
 #masterContainer, #headerContainer {
@@ -118,6 +118,13 @@ ul.nav a {
 .headerName h3 {
   font-size: 0.8em; }
 
+#collapsing-navbar-area {
+  position: absolute;
+  width: 100vw;
+  box-sizing: content-box;
+  background-color: white;
+  z-index: 100; }
+
 #headerNav {
   /* float:right; */ }
 
@@ -151,7 +158,7 @@ ul.nav a {
 #aboveTheFold {
   /* position: absolute; */
   /* top:100px; */
-  height: 100vh; }
+  height: calc(100vh - 100px); }
 
 #byline {
   /* width: 364.5px; */
@@ -178,6 +185,8 @@ ul.nav a {
   font-weight: normal; }
 
 #belowTheFold {
+  position: relative;
+  height: 100%;
   /* background: transparent; */
   /* min-height: 100%; */
   /* top: 0; */
@@ -188,9 +197,24 @@ ul.nav a {
 {
   margin-top: 0;
 } */
+#section1:before, #section1:after {
+  background-color: white;
+  position: absolute;
+  top: 0;
+  margin-left: 0;
+  width: 100vw;
+  height: 300px;
+  z-index: -1; }
+
+#section1:before {
+  right: 0; }
+
+#section1:after {
+  left: 0; }
+
 #section1 {
-  /* top: 700px; */
-  height: 100%; }
+  position: relative;
+  /* top: 700px; */ }
 
 #section1image {
   padding: 0; }
@@ -201,7 +225,7 @@ ul.nav a {
 
 #section1text {
   height: 100%;
-  background: #eee;
+  background: gray;
   padding: 100px 60px;
   color: #555;
   text-align: center; }
@@ -210,9 +234,21 @@ ul.nav a {
   height: 300px; }
 
 #section2button {
-  background: #555;
-  text-align: center;
+  padding: 0;
   /* padding: 50px 50px; */ }
+
+.squareDummy {
+  margin-top: 100%; }
+
+#section2square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #555;
+  text-align: center;
+  height: 100%; }
 
 #section2button h2 {
   /* margin: 70px 70px; */

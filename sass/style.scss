@@ -69,26 +69,22 @@ $colorSchemeFooterText: white;
 // .col-sm-34 { background-color: orange; }
 // .col-md-34 { background-color: yellow; }
 // .col-lg-34 { background-color: green; }
-@media (min-width:480px) //XS
-{
+@media (min-width:480px) { //XS
   #foo {
     color: $colorOrange3 !important;
   }
 }
-@media (min-width:768px) //SM
-{
+@media (min-width:768px) { //SM
   #bar {
     color: $colorOrange3 !important;
   }
 }
-@media (min-width:992px) //MD
-{
+@media (min-width:992px) { //MD
   #baz {
     color: $colorOrange3 !important;
   }
 }
-@media (min-width:1200px) //LG
-{
+@media (min-width:1200px) { //LG
   #bam {
     color: $colorOrange3 !important;
   }
@@ -97,7 +93,7 @@ $colorSchemeFooterText: white;
 body {
   //font-size: 10px;
   //font-family: $fontBody;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: scroll;
   //background: $colorSchemePageBG;
 }
@@ -108,7 +104,9 @@ body {
     margin-left: 0;
     margin-right: 0;
   }
-
+#masterContainer {
+//  position: relative;
+}
 h1, h2 {
   font-family: $fontHeader;
 }
@@ -230,7 +228,14 @@ font-size: 0.8em;
 //font-weight: normal;
 //margin: 0;
 }
-
+#collapsing-navbar-area {
+  position: absolute;
+  //These changes are to maintain the same properties as if it were a position: relative;
+  width: 100vw;
+  box-sizing: content-box;
+  background-color: $colorSchemeHeaderBG;
+  z-index: 100;
+}
 #headerNav {
   /* float:right; */
   //position:absolute;
@@ -264,8 +269,6 @@ nav a
   padding: 0;
   z-index: -10;
   margin: 0;
-
-  
   
   //@media (min-width:480px) { //XS 
     background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg"); 
@@ -303,7 +306,7 @@ nav a
   /* position: absolute; */
   /* top:100px; */
 //width: 960px;
-  height: 100vh;
+  height: calc(100vh - 100px);
 //margin: 0 auto;
 }
 #byline
@@ -345,6 +348,9 @@ nav a
 
 #belowTheFold
 {
+  position: relative;
+  height: 100%;
+  //background-color: $colorSchemePageBG;
   /* background: transparent; */
   // position: relative;
   // width: 960px;
@@ -358,15 +364,30 @@ nav a
 {
   margin-top: 0;
 } */
-
+#section1:before, #section1:after { //belowTheFoldBackground {
+  background-color: $colorSchemePageBG;
+  position: absolute;
+  top: 0;
+  margin-left: 0;
+  width: 100vw;
+  //height: 100%;
+  height: 300px;
+  z-index: -1;
+}
+#section1:before {
+  right: 0;
+}
+#section1:after {
+  left: 0;
+}
 #section1
 {
-  // position: relative;
+  position: relative;
   /* top: 700px; */
   // top: 0;
   // width: 100%;
   // height: 444px;
-  height: 100%;
+  //height: 100%;
 }
 #section1image {
   padding: 0;
@@ -384,7 +405,7 @@ nav a
   // position: absolute;
   // left: 377px;
   // top: 0px;
-  background: $colorSchemeTextBoxBG;
+  background: gray; //$colorSchemeTextBoxBG;
   // height: 244px;
   padding: 100px 60px; //TODO: responsive
   
@@ -401,14 +422,31 @@ nav a
 }
 #section2button
 {
+  padding: 0;
+// width: 100%;
   // position: absolute;
   // top: 0;
-  background: $colorGrayText;
+// background: $colorGrayText;
   // width: 140px;
   // height: 140px;
   // left: 237px;
-  text-align: center;
+//text-align: center;
   /* padding: 50px 50px; */
+}
+.squareDummy {
+  margin-top: 100%;
+}
+#section2square {
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   
+   background-color: $colorGrayText;
+   text-align: center;
+   
+   height: 100%; //necessary for .verticalCenter to be able to use height:50%; on the child
 }
 #section2button h2
 {
