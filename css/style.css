@@ -5,11 +5,11 @@
 /* *****************************  Begin Style.css ***************************** */
 /* **************************************************************************** */
 @media (min-width: 768px) {
-  #masterContainer {
+  #masterContainer, #footerContainer {
     width: 750px; } }
 
 @media (min-width: 992px) {
-  #masterContainer {
+  #masterContainer, #footerContainer {
     width: 970px; } }
 
 @media (min-width: 480px) {
@@ -32,7 +32,7 @@ body {
   overflow-x: hidden;
   overflow-y: scroll; }
 
-#masterContainer, #headerContainer {
+#masterContainer, #headerContainer, #footerContainer {
   padding: 0; }
 
 #masterContainer > * {
@@ -136,12 +136,12 @@ ul.nav a {
   position: absolute;
   height: 100vh;
   /* vh = viewport height, 100vh = 100% of viewport */
+  width: 100%;
   top: 100px;
   left: 0px;
-  width: 100%;
   padding: 0;
-  z-index: -10;
   margin: 0;
+  z-index: -10;
   background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg");
   /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
   background-size: cover;
@@ -216,7 +216,23 @@ ul.nav a {
 #section1:after {
   left: 0; }
 
+@media (max-width: 767px) {
+  #section1text {
+    padding-top: 50px;
+    padding-bottom: 50px; } }
+
 @media (min-width: 768px) {
+  #section1textVerticalCenter {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%); }
+    #section1textVerticalCenter *:first-child {
+      /* or .verticalCenter > *:first-child ?? */
+      margin-top: 0; }
+    #section1textVerticalCenter *:last-child {
+      margin-bottom: 0; }
   #section1, #section1 > div {
     height: 393px; } }
 
@@ -277,15 +293,12 @@ ul.nav a {
     text-align: left; }
 
 #footerContainer {
-  position: relative;
-  height: 300px;
   color: white; }
 
 #footerBackgroundImage {
   position: absolute;
   height: 300px;
   width: 100%;
-  top: 0;
   left: 0;
   padding: 0;
   margin: 0;
@@ -294,7 +307,8 @@ ul.nav a {
   background-image: url("../img/pageElements/garageDoorH.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50% 0px;
+  background-position-x: center;
+  background-position-y: 0px;
   /* -webkit-transform: translateZ(0); */
   /* TODO: are multiple sizes needed for this bg-image? */
   background-color: red; }

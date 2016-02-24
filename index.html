@@ -86,7 +86,7 @@
   </div><!-- row -->
 </nav>
     
-    <div id="backgroundImage" class="flipHorizontal" data-type="background" data-speed="5"></div>
+    <div id="backgroundImage" class="flipHorizontal" data-type="background" data-speed="5" data-offset="0" data-isFooter="0"></div>
     
     <div id="aboveTheFold" class="row">
       <div id="byline" class="col-sm-16 col-md-14">
@@ -104,7 +104,7 @@
             
       <div id="section1" class="row">
         <div id="section1text" class="col-sm-push-16 col-sm-20 col-md-push-14 col-md-22">
-          <div class="verticalCenter">
+          <div id="section1textVerticalCenter">
             <h2>This is the next section of the page</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<!--Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.--></p>
           </div>
@@ -131,26 +131,25 @@
         </div>
       </div>
     <!--</div><!--below the fold-->
+</div><!-- .masterContainer -->
 
-
-    <div id="footerContainer" class="row">
-      <div id="footerBackgroundImage" data-type="background" data-speed="4" data-isFooter="1">
-      </div>
-      <div id="footer">
-        <div id="footerAddress" class="footerSection">
+    <div id="footerContainer" class="container">
+      <div id="footerBackgroundImage" data-type="background" data-speed="-1.3" data-offset="-900" data-isFooter="1"></div>
+      <div id="footer" class="row">
+        <div id="footerAddress" class="col-sm-12">
           <div class="verticalCenter">
             <p>Applied Ecology Unit</p>
             <p>School of Natural Sciences</p>
             <p>National University of Ireland, Galway</p>
           </div>
         </div>
-        <div id="footerName" class="footerSection">
+        <div id="footerName" class="col-sm-12">
           <div class="nameplate verticalCenter">
             <div><h1>Allison Bistline-East, MSc</h1></div>
             <div><h3>Entomology, Ecology</h3></div>
           </div>
         </div>
-        <div id="footerLinks" class="footerSection">
+        <div id="footerLinks" class="col-sm-12">
           <div class="verticalCenter">
             <div id="footerLinksPhone">
               <p>+353 083-481-4788</p>
@@ -161,11 +160,17 @@
               <a href="https://www.researchgate.net/profile/Allison_Bistline-East"><i class="ai ai-researchgate-square ai-2x"></i></a>
               <a href="mailto:allison@bistlineeast.com"><i class="fa fa-envelope-square fa-2x"></i></a>
             </div>
+            <li id="headerSocialMedia">
+              <span><a id="foo" href="https://www.linkedin.com/in/allisonbistlineeast"><i class="fa fa-linkedin-square fa-2x"></i></a></span>
+              <span><a id="bar" href="https://www.researchgate.net/profile/Allison_Bistline-East"><i class="ai ai-researchgate-square ai-2x"></i></a></span>
+              <span><a id="baz" href="#"><i class="ai ai-google-scholar-square ai-2x"></i></a></span>
+              <span><a id="bam" href="mailto:allison@bistlineeast.com"><i class="fa fa-envelope-square fa-2x"></i></a></span>
+            </li>
           </div>
         </div>
       </div>
     </div>
-  </div><!-- container masterContainer -->
+  <!--</div><!-- container masterContainer -->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -189,12 +194,15 @@ $(document).ready(function() {
   $(window).scroll( function() {
     $.each(parallaxElements, function(index, thisParallaxElement) {
       //scroll the background <div> at data-speed
-      var yPos = -($window.scrollTop() / thisParallaxElement.element.data('speed'));
-      /*if (thisParallaxElement.element.data('isfooter') == 1)
+      var yPos = thisParallaxElement.element.data('offset') - ($window.scrollTop() / thisParallaxElement.element.data('speed'));
+      //console.log("ypos" + yPos);
+      if (thisParallaxElement.element.data('isfooter') == 1)
       {
-        $('div#footerLinksSocial').text(Math.max($(document).height(), $(window).height()));
+        //console.log("height: " + Math.max($(document).height(), $(window).height()));
+        //1777 => -900
+        //2277 => -1200 ???
         //yPos +=
-      }*/
+      }
       var coords = (yPos) + 'px';
       
       //move the <div>

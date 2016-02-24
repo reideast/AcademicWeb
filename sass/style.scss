@@ -7,6 +7,8 @@ $fontHeader: Alegreya, serif;
 $fontPageHeader: "Alegreya SC", Alegreya, serif;
 $fontBody: Raleway, sans-serif;
 
+$mobileVerticalPadding: 50px;
+
 $colorYellowGreen: #B3CB44;
 $colorDarkGreen: #1E3318;
 $colorBlue1: #075368;
@@ -51,13 +53,13 @@ $colorSchemeFooterText: white;
 //********************* main media query area *********************
 //TODO: make changes in the width of to container in Bootstrap customizer! @container-tablet, etc
 @media (min-width:768px) {
-  #masterContainer{
+  #masterContainer, #footerContainer {
     width:750px
   }
 }
 @media (min-width:992px)
 {
-  #masterContainer{
+  #masterContainer, #footerContainer {
     width:970px
   }
 }
@@ -100,7 +102,7 @@ body {
   overflow-y: scroll;
   //background: $colorSchemePageBG;
 }
-#masterContainer, #headerContainer {
+#masterContainer, #headerContainer, #footerContainer {
   padding: 0; //reset from Bootstrap's 15px padding
 }
   #masterContainer > * { //evaluated load performance a few times, didn't change load +/- 50ms 
@@ -277,12 +279,12 @@ nav a
 {
   position: absolute;
   height: 100vh; /* vh = viewport height, 100vh = 100% of viewport */
+  width: 100%;
   top: 100px;
   left: 0px;
-  width: 100%;
   padding: 0;
-  z-index: -10;
   margin: 0;
+  z-index: -10;
   
   //@media (min-width:480px) { //XS 
     background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg"); //TODO: OPTIMIZE IMAGES!!!
@@ -296,10 +298,7 @@ nav a
   @media (min-width:992px) { //MD
   }
   @media (min-width:1200px) { //LG
-
   }
-  
-  
   
   /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
   background-size: cover;
@@ -395,9 +394,29 @@ nav a
   left: 0;
 }
 
-@media (min-width:480px) { //XS
+
+//these media queries are to set the height of section1, equal to the height of the image
+@media (max-width:767px) { //XS
+  #section1text {
+    padding-top: $mobileVerticalPadding;
+    padding-bottom: $mobileVerticalPadding;
+  }
 }
 @media (min-width:768px) { //SM
+  #section1textVerticalCenter {
+    //wanted to use @extend .verticalCenter, but Sass will only allow @extend w/in the same @media context
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    *:first-child { /* or .verticalCenter > *:first-child ?? */
+      margin-top: 0;
+    }
+    *:last-child {
+      margin-bottom: 0;
+    }
+  }
   #section1, #section1 > div {
     height: 393px;
   }
@@ -489,7 +508,7 @@ nav a
   background: $colorSchemeTextBoxGreen;
   // height: 300px;
   // width: 400px;
-  padding: 50px 60px; //TODO: responsive
+  padding: $mobileVerticalPadding 60px; //TODO: responsive
   
   color: $colorSchemeTextBoxGreenText;
   text-align: center;
@@ -500,8 +519,8 @@ nav a
 
 #footerContainer
 {
-  position: relative;
-  height: 300px;
+  //position: relative;
+  //height: 300px;
   
   color: $colorSchemeFooterText;
 }
@@ -510,7 +529,7 @@ nav a
   position: absolute;
   height: 300px;
   width: 100%;
-  top: 0;
+  //top: 0;
   left: 0;
   padding: 0;
   margin: 0;
@@ -520,7 +539,9 @@ nav a
   background-image: url("../img/pageElements/garageDoorH.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50% 0px;
+  // background-position: 50% 0px;
+  background-position-x: center;
+  background-position-y: 0px;
   /* -webkit-transform: translateZ(0); */
 
   /* TODO: are multiple sizes needed for this bg-image? */
