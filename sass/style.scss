@@ -41,7 +41,29 @@ $colorSchemeTextBoxGreenText: $colorLightGray;
 
 $colorSchemeFooterText: white;
 
-
+// *********************************** Mixins ***********************************
+@mixin vCenter {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  > *:first-child { /* or .verticalCenter > *:first-child ?? */ 
+    margin-top: 0;
+  }
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+@mixin vTop {
+  position: relative;
+  top: 0;
+  //transform: translateY(-50%);
+  > *:first-child { /* or .verticalCenter > *:first-child ?? */ 
+    margin-top: 0;
+  }
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
 
 // @import 'normalize';
 // @import 'reset';
@@ -57,8 +79,7 @@ $colorSchemeFooterText: white;
     width:750px
   }
 }
-@media (min-width:992px)
-{
+@media (min-width:992px) {
   #masterContainer, #footerContainer {
     width:970px
   }
@@ -129,36 +150,41 @@ h1, h2 {
   //padding: 0;
   margin: 0;
 }
-ul.nav a {
-  padding-left: 7.5px;
-  padding-right: 7.5px;
-}
-
-
 #headerContainer {
   //position: relative;
   //width: 960px;
   //height: 100px;
   margin: 0;
 }
-#headerRow {
+#headerRow, #headerMobileRow {
   margin: 0;
   padding: 0;
 }
-
 #headerLinks {
   padding-right: 0;
   > ul {
     margin-bottom: 0;
   }
+  a {
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+}
 }
 #headerIcons {
   > ul {
     margin-top: 0;
   }
+  a {
+    color: $colorSchemeHeaderLinkText;
+  }
 }
-#headerSocialMedia
-{
+#headerSocialMedia {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  @media (min-width: 768px) {
+    padding-top: 37.5px;
+    padding-bottom: 37.5px;
+  }
   //height: 100px;
   // li {
     // display: inline-block;
@@ -167,29 +193,7 @@ ul.nav a {
     // margin: 0 7px;
   // }
   
-  padding-top: 10px;
-  padding-bottom: 10px;
-  @media (min-width: 768px) {
-    padding-top: 37.5px;
-    padding-bottom: 37.5px;
-  }
-  a {
-    color: $colorSchemeHeaderLinkText;
-    padding: 0;
-    i {
-      //font-size: 14px;
-      line-height: 20px;
-    }
-  }
-  span {
-    padding-left: 7px;
-  }
-  // span:first-child {
-  //   padding-left: 15px;
-  // }
-  span:last-child {
-    padding-right: 7px;
-  }
+
 }
 
 #header {
@@ -199,16 +203,22 @@ ul.nav a {
   /* z-index: 5; */
 }
 .headerName {
-  background:  $colorSchemeHeaderNameBG;
+  background: $colorSchemeHeaderNameBG;
   text-align: center;
+  padding: 0;
   a {
     width: 100%;
+    padding: 0;
   }
-  
-  /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
-  //-webkit-transform-style: preserve-3d;
-  //-moz-transform-style: preserve-3d;
-  //transform-style: preserve-3d;
+  h1 {
+    //font-family: $fontPageHeader; //NOTE: do not like small-caps here
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  h3 {
+    font-size: 16px;
+    margin-top: 0;
+  }
 }
 .navbar-brand {
   background-color: inherit; //needed to overwrite Bootstrap transparent(?!) background
@@ -229,19 +239,6 @@ ul.nav a {
     margin-right: 0;
   }
 }
-.headerName h1 {
-//color: $colorSchemeHeaderNameText;
-//font-variant: small-caps;
-//font-weight: normal;
-margin: 0 0 6px 0;
-font-size: 1em;
-}
-.headerName h3 {
-//color: $colorSchemeHeaderNameSubText;
-font-size: 0.8em;
-//font-weight: normal;
-//margin: 0;
-}
 @media (max-width: 480px) {
   #collapsing-navbar-area {
     position: absolute;
@@ -250,6 +247,7 @@ font-size: 0.8em;
     box-sizing: content-box;
     background-color: $colorSchemeHeaderBG;
     z-index: 100;
+    padding-right: 0;
   }
 }
 #headerNav {
@@ -260,14 +258,13 @@ font-size: 0.8em;
   //width: 677px;
   //height: 100px;
 }
-nav
-{
+nav {
   //display: inline-block;
   //margin: 0;
   //padding: 0 10px;
 }
 nav a
-{
+ {
   //display: inline-block;
   //text-decoration: none;
   //color: $colorSchemeHeaderLinkText;
@@ -275,8 +272,7 @@ nav a
   //margin: 0 10px;
 }
 
-#backgroundImage
-{
+#backgroundImage {
   position: absolute;
   height: 100vh; /* vh = viewport height, 100vh = 100% of viewport */
   width: 100%;
@@ -313,54 +309,67 @@ nav a
 }
 
 
-#aboveTheFold
-{
+#aboveTheFold {
 //position: relative;
   /* position: absolute; */
   /* top:100px; */
 //width: 960px;
-  height: calc(100vh - 100px);
+  @media (max-width: 767px) {
+    height: 100vh;
+  }
+  @media (min-width: 768px) {
+    height: calc(100vh - 100px);
+  }
 //margin: 0 auto;
 }
-#byline
-{
-//position: relative;
-//top: 0;
+#byline {
+  color: $colorSchemeBylineText;
+  height: 100%;
+  text-align: center;
   @media (max-width: 767px) {
-    color: $colorNavy;
-    text-shadow: 1px -1px #999;
+    padding: 0;
+    #bylineVerticalPosition {
+      @include vTop;
+      background: $colorSchemeBylineBG;
+      opacity: .6;
+      margin: 0;
+    }
+    h1 {
+      padding-top: 20px;
+    }
+    h2 {
+      padding-bottom: 20px;
+    }
   }
   @media (min-width: 768px) {
     background: $colorSchemeBylineBG;
     opacity: .6;
-    color: $colorSchemeBylineText;
+    #bylineVerticalPosition {
+      @include vCenter;
+    }
   }
-  /* width: 364.5px; */
-//width: 257px;
-  /* width: 220px; */
-  height: 100%;
-  /* height: 600px; */
-  //padding: 0 60px; //TODO: responsive size with a .col or a @media ??
-//margin: 0;
-  text-align: center;
-}
-#byline h1
-{
-  font-family: $fontPageHeader;
-  // font-size: 3em;
-  font-weight: normal;
-  // margin:0 0 10px 0;
-}
-#byline h2
-{
-  font-size:   1.8em;
-  font-weight: normal;
+  h1 {
+    font-family: $fontPageHeader;
+    // font-size: 36px;
+    // font-weight: normal;
+  }
+  h2 {
+    font-size: 24px;
+    font-weight: normal;
+    margin-top: 10px;
+  }
+  @media (max-width: 400px) {
+    h1 {
+      font-size: 30px;
+    }
+    h2 {
+    }
+  }
 }
 
 
 
-#belowTheFold
-{
+#belowTheFold {
   position: relative;
   height: 100%;
   //background-color: $colorSchemePageBG;
@@ -373,8 +382,7 @@ nav a
   /* left: 0; */
 }
 /* fix to remove margin-top from all children of a position:relative conainer
-#siteContainer * 
-{
+#siteContainer * {
   margin-top: 0;
 } */
 #section1:before, #section1:after { //belowTheFoldBackground {
@@ -438,8 +446,7 @@ nav a
   width: 100%;
   //TODO: should there be separate images (through @media) for each sm/md/lg size?
 }
-#section1text
-{
+#section1text {
   // height: 100%;
   // padding: 100px 60px; //TODO: @media
   padding-left: 60px;
@@ -453,15 +460,13 @@ nav a
 
 }
 
-#section2
-{
+#section2 {
   // position: relative;
   // left: 0px;
   // width: 100%;
   //height: 300px;
 }
-#section2button
-{
+#section2button {
   padding: 0;
 // width: 100%;
   // position: absolute;
@@ -488,20 +493,17 @@ nav a
    
    height: 100%; //necessary for .verticalCenter to be able to use height:50%; on the child
 }
-#section2button h2
-{
+#section2button h2 {
   /* margin: 70px 70px; */
   // font-size: 5em;
   color: $colorSchemeHeaderNameText;
   font-weight: normal;
 }
-#section2button a
-{
+#section2button a {
   text-decoration: none;
   color: $colorSchemeHeaderNameText;
 }
-#section2text
-{
+#section2text {
   // position: absolute;
   // left: 377px;
   // top: 0px;
@@ -517,20 +519,12 @@ nav a
   }
 }
 
-#footerContainer
-{
-  //position: relative;
-  //height: 300px;
-  
-  color: $colorSchemeFooterText;
-}
-#footerBackgroundImage
-{
+#footerBackgroundImage {
   position: absolute;
   height: 300px;
   width: 100%;
-  //top: 0;
-  left: 0;
+  //top: 0; //note: by NOT specifying top:0, an absolute child of a __static__ element, the absolute element will stay aligned to the top of the static! weird?
+  left: 0; 
   padding: 0;
   margin: 0;
   z-index: -10;
@@ -539,110 +533,122 @@ nav a
   background-image: url("../img/pageElements/garageDoorH.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  // background-position: 50% 0px;
   background-position-x: center;
   background-position-y: 0px;
   /* -webkit-transform: translateZ(0); */
 
-  /* TODO: are multiple sizes needed for this bg-image? */
-  background-color: $colorSchemeError;
+  /* TODO: are multiple sizes needed for this footerBackgroundImage? */
+  background-color: gray; //$colorSchemeError;
 }
-
-#footer
-{
-  // height: 100px;
-  
-  // padding: 80px 0 0 0;
-  // position: relative;
-  // width: 960px;
-  /* top: 744px; */
-  // margin: 0 auto;
+#footerContainer {
+  height: 300px;  
+  color: $colorSchemeFooterText;
 }
-#footer > div:first-child
-{
-  border-right: 1px solid $colorSchemeFooterText;
-}
-#footer > div:last-child
-{
-  border-left: 1px solid $colorSchemeFooterText;
-}
-.footerSection
-{
-  // float: left;
-  /* width: 33.2%; */ /* 33.3% = 318px */
-  /* position:relative; */
-  // height: 100%;
+#footer {
   text-align: center;
+  @media (max-width: 767px) {
+    width: 100vw;
+    // padding-top: 10px;
+    // padding-bottom: 10px;
+    > div {
+      height: 160px;
+    }
+    > div:first-child {
+      height: 140px
+    }
+  }
+  @media (min-width: 768px) {
+    padding-top: $mobileVerticalPadding;
+    padding-bottom: $mobileVerticalPadding;
+    > div {
+      height: (300px - $mobileVerticalPadding * 2);
+      // padding-right: 0;
+    }
+  }
 }
-#footerAddress
-{
-  // line-height:0.8em;
-  // font-size:1.3em;
-  // width: 280px;
+@mixin trailingBorder {
+  border-right: 1px solid $colorSchemeFooterText;
+  height: 60%;
+  content: "";
+  position: absolute;
+  top: 20%;
+  right: 0;
 }
-#footerName
-{
-  // width: 376px;
+//#footer > div:first-child {
+@media (min-width: 768px) {
+  #footerName:after {
+    @include trailingBorder;
+  }
 }
-#footerName h1
-{
-  font-variant: small-caps;
-  font-weight: normal;
-  // margin: 0 0 6px 0;
-  // font-size:2.2em;
+#footerAddress:after {
+  @include trailingBorder;
 }
-#footerName h3
-{
-  // font-size: 1.5em;
-  font-weight: normal;
-  // margin: 0;
+// #footer > div:last-child {
+//   border-left: 1px solid $colorSchemeFooterText;
+// }
+#footerAddress {
+  line-height: 0.8em;
 }
-#footerLinks
-{
-  // width: 280px;
+#footerName {
 }
-#footerLinksPhone
-{
+#footerName h1 {
+  // font-variant: small-caps;
+  // font-weight: normal;
+}
+#footerName h3 {
+}
+#footerLinks {
+  line-height: 0.8em;
+}
+#footerLinksPhone {
   // font-size:1.5em;
   // margin-bottom:10px;
 }
-/*#footerLinksSocial
-{
-  padding-right: 20px;
-  position: absolute;
-  top: 39px;
-  right: 0px; 
-}*/
-#footerLinksSocial a
-{
-  // display: inline-block;
-  // text-decoration: none;
+#footerLinksSocial {
+}
+#footerLinksSocial a {
   color: $colorSchemeFooterText;
-  // font-size: 16px;
-  // margin: 0 7px;
+}
+#footerSocialMedia {
+  //padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 16px;
 }
 
+/* ******************************** General Transformation Classes ******************************** */
+.socialMediaButtons {
+  a {
+    i {
+      //font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  span {
+    padding-left: 7px;
+  }
+  span:last-child {
+    padding-right: 7px;
+  }
+}
 
-.verticalCenter
-{
+.verticalCenter {
+  @include vCenter;
   /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  
-  margin: 0;
-  padding: 0;
-  /* background:teal; */
-}
-.verticalCenter *:first-child /* or .verticalCenter > *:first-child ?? */
-{
-  margin-top: 0;
-}
-.verticalCenter *:last-child
-{
-  margin-bottom: 0;
+  // position: relative;
+  // top: 50%;
+  // transform: translateY(-50%);
+  // // -webkit-transform: translateY(-50%);
+  // // -ms-transform: translateY(-50%);
+  // 
+  // // margin: 0;
+  // // padding: 0;
+  // // background: $colorSchemeError; 
+  // *:first-child { /* or .verticalCenter > *:first-child ?? */ 
+  //   margin-top: 0;
+  // }
+  // *:last-child {
+  //   margin-bottom: 0;
+  // }
 }
 
 .flipHorizontal {

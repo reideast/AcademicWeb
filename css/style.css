@@ -51,14 +51,10 @@ h1, h2 {
 #collapsing-navbar-area > * {
   margin: 0; }
 
-ul.nav a {
-  padding-left: 7.5px;
-  padding-right: 7.5px; }
-
 #headerContainer {
   margin: 0; }
 
-#headerRow {
+#headerRow, #headerMobileRow {
   margin: 0;
   padding: 0; }
 
@@ -66,9 +62,15 @@ ul.nav a {
   padding-right: 0; }
   #headerLinks > ul {
     margin-bottom: 0; }
+  #headerLinks a {
+    padding-left: 7.5px;
+    padding-right: 7.5px; }
 
 #headerIcons > ul {
   margin-top: 0; }
+
+#headerIcons a {
+  color: #555; }
 
 #headerSocialMedia {
   padding-top: 10px;
@@ -77,15 +79,6 @@ ul.nav a {
     #headerSocialMedia {
       padding-top: 37.5px;
       padding-bottom: 37.5px; } }
-  #headerSocialMedia a {
-    color: #555;
-    padding: 0; }
-    #headerSocialMedia a i {
-      line-height: 20px; }
-  #headerSocialMedia span {
-    padding-left: 7px; }
-  #headerSocialMedia span:last-child {
-    padding-right: 7px; }
 
 #header {
   /* z-index: 5; */ }
@@ -93,9 +86,16 @@ ul.nav a {
 .headerName {
   background: #B3CB44;
   text-align: center;
-  /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */ }
+  padding: 0; }
   .headerName a {
-    width: 100%; }
+    width: 100%;
+    padding: 0; }
+  .headerName h1 {
+    font-size: 18px;
+    margin-bottom: 5px; }
+  .headerName h3 {
+    font-size: 16px;
+    margin-top: 0; }
 
 .navbar-brand {
   background-color: inherit; }
@@ -114,20 +114,14 @@ ul.nav a {
   #headerMobileRow > *:last-child {
     margin-right: 0; }
 
-.headerName h1 {
-  margin: 0 0 6px 0;
-  font-size: 1em; }
-
-.headerName h3 {
-  font-size: 0.8em; }
-
 @media (max-width: 480px) {
   #collapsing-navbar-area {
     position: absolute;
     width: 100vw;
     box-sizing: content-box;
     background-color: white;
-    z-index: 100; } }
+    z-index: 100;
+    padding-right: 0; } }
 
 #headerNav {
   /* float:right; */ }
@@ -161,32 +155,59 @@ ul.nav a {
 
 #aboveTheFold {
   /* position: absolute; */
-  /* top:100px; */
-  height: calc(100vh - 100px); }
+  /* top:100px; */ }
+  @media (max-width: 767px) {
+    #aboveTheFold {
+      height: 100vh; } }
+  @media (min-width: 768px) {
+    #aboveTheFold {
+      height: calc(100vh - 100px); } }
 
 #byline {
-  /* width: 364.5px; */
-  /* width: 220px; */
+  color: #555;
   height: 100%;
-  /* height: 600px; */
   text-align: center; }
   @media (max-width: 767px) {
     #byline {
-      color: #01141A;
-      text-shadow: 1px -1px #999; } }
+      padding: 0; }
+      #byline #bylineVerticalPosition {
+        position: relative;
+        top: 0;
+        background: #eee;
+        opacity: .6;
+        margin: 0; }
+        #byline #bylineVerticalPosition > *:first-child {
+          /* or .verticalCenter > *:first-child ?? */
+          margin-top: 0; }
+        #byline #bylineVerticalPosition > *:last-child {
+          margin-bottom: 0; }
+      #byline h1 {
+        padding-top: 20px; }
+      #byline h2 {
+        padding-bottom: 20px; } }
   @media (min-width: 768px) {
     #byline {
       background: #eee;
-      opacity: .6;
-      color: #555; } }
-
-#byline h1 {
-  font-family: "Alegreya SC", Alegreya, serif;
-  font-weight: normal; }
-
-#byline h2 {
-  font-size: 1.8em;
-  font-weight: normal; }
+      opacity: .6; }
+      #byline #bylineVerticalPosition {
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+                transform: translateY(-50%); }
+        #byline #bylineVerticalPosition > *:first-child {
+          /* or .verticalCenter > *:first-child ?? */
+          margin-top: 0; }
+        #byline #bylineVerticalPosition > *:last-child {
+          margin-bottom: 0; } }
+  #byline h1 {
+    font-family: "Alegreya SC", Alegreya, serif; }
+  #byline h2 {
+    font-size: 24px;
+    font-weight: normal;
+    margin-top: 10px; }
+  @media (max-width: 400px) {
+    #byline h1 {
+      font-size: 30px; } }
 
 #belowTheFold {
   position: relative;
@@ -197,8 +218,7 @@ ul.nav a {
   /* left: 0; */ }
 
 /* fix to remove margin-top from all children of a position:relative conainer
-#siteContainer * 
-{
+#siteContainer * {
   margin-top: 0;
 } */
 #section1:before, #section1:after {
@@ -292,9 +312,6 @@ ul.nav a {
   #section2text p {
     text-align: left; }
 
-#footerContainer {
-  color: white; }
-
 #footerBackgroundImage {
   position: absolute;
   height: 300px;
@@ -310,57 +327,80 @@ ul.nav a {
   background-position-x: center;
   background-position-y: 0px;
   /* -webkit-transform: translateZ(0); */
-  /* TODO: are multiple sizes needed for this bg-image? */
-  background-color: red; }
+  /* TODO: are multiple sizes needed for this footerBackgroundImage? */
+  background-color: gray; }
+
+#footerContainer {
+  height: 300px;
+  color: white; }
 
 #footer {
-  /* top: 744px; */ }
-
-#footer > div:first-child {
-  border-right: 1px solid white; }
-
-#footer > div:last-child {
-  border-left: 1px solid white; }
-
-.footerSection {
-  /* width: 33.2%; */
-  /* 33.3% = 318px */
-  /* position:relative; */
   text-align: center; }
+  @media (max-width: 767px) {
+    #footer {
+      width: 100vw; }
+      #footer > div {
+        height: 160px; }
+      #footer > div:first-child {
+        height: 140px; } }
+  @media (min-width: 768px) {
+    #footer {
+      padding-top: 50px;
+      padding-bottom: 50px; }
+      #footer > div {
+        height: 200px; } }
 
-#footerName h1 {
-  font-variant: small-caps;
-  font-weight: normal; }
+@media (min-width: 768px) {
+  #footerName:after {
+    border-right: 1px solid white;
+    height: 60%;
+    content: "";
+    position: absolute;
+    top: 20%;
+    right: 0; } }
 
-#footerName h3 {
-  font-weight: normal; }
-
-/*#footerLinksSocial
-{
-  padding-right: 20px;
+#footerAddress:after {
+  border-right: 1px solid white;
+  height: 60%;
+  content: "";
   position: absolute;
-  top: 39px;
-  right: 0px; 
-}*/
+  top: 20%;
+  right: 0; }
+
+#footerAddress {
+  line-height: 0.8em; }
+
+#footerLinks {
+  line-height: 0.8em; }
+
 #footerLinksSocial a {
   color: white; }
 
+#footerSocialMedia {
+  padding-bottom: 15px;
+  font-size: 16px; }
+
+/* ******************************** General Transformation Classes ******************************** */
+.socialMediaButtons a i {
+  line-height: 20px; }
+
+.socialMediaButtons span {
+  padding-left: 7px; }
+
+.socialMediaButtons span:last-child {
+  padding-right: 7px; }
+
 .verticalCenter {
-  /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
   position: relative;
   top: 50%;
-  transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  margin: 0;
-  padding: 0;
-  /* background:teal; */ }
-
-.verticalCenter *:first-child {
-  margin-top: 0; }
-
-.verticalCenter *:last-child {
-  margin-bottom: 0; }
+          transform: translateY(-50%);
+  /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */ }
+  .verticalCenter > *:first-child {
+    /* or .verticalCenter > *:first-child ?? */
+    margin-top: 0; }
+  .verticalCenter > *:last-child {
+    margin-bottom: 0; }
 
 .flipHorizontal {
   -webkit-transform: scaleX(-1);
