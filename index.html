@@ -17,7 +17,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   
-  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,700,700italic,400italic|Alegreya+SC:400,400italic|Raleway:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,700,700italic,400italic|Alegreya+SC:400italic|Raleway:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
   <!-- complete google fonts link: <link href='https://fonts.googleapis.com/css?family=Lora|Libre+Baskerville|Alegreya:400,400italic,700italic,700|EB+Garamond|Lato|Raleway|Spinnaker|Cabin' rel='stylesheet' type='text/css'> -->
   
   <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -35,15 +35,17 @@
 <nav class="navbar navbar-default">
   <div class="navbar-header visible-xs-block hidden-sm-block hidden-md-block hidden-lg-block">
     <div id="headerMobileRow" class="row">
-      <div class="headerName visible-xs-block col-xs-26" id="headerNameTiny">
-        <a href="index" class="navbar-brand">
-          <div class="verticalCenter">
-            <h1>Allison Bistline-East, MSc</h1>
-            <h3>Entomology, Ecology</h3>
-          </div>
-        </a>
+      <div class="headerName visible-xs-block _col-xs-26" id="headerNameTiny">
+        <div id="headerNameTinyWidthLimiter">
+          <a href="index" class="navbar-brand">
+            <div class="nameplate verticalCenter">
+              <h1>Allison Bistline-East, MSc</h1>
+              <h3>Entomology, Ecology</h3>
+            </div>
+          </a>
+        </div>
       </div>
-      <div class="col-xs-offset-6 col-xs-4">
+      <div class="_col-xs-offset-6 _col-xs-4 _col-xs-10">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsing-navbar-area" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
@@ -57,7 +59,7 @@
   <div id="collapsing-navbar-area" class="row collapse navbar-collapse">
     <div class="col-sm-12 col-md-10 headerName visible-sm-block visible-md-block visible-lg-block" id="headerNameWide">
       <a href="index" class="navbar-brand">
-        <div class="verticalCenter">
+        <div class="nameplate verticalCenter">
           <h1>Allison Bistline-East, MSc</h1>
           <h3>Entomology, Ecology</h3>
         </div>
@@ -137,15 +139,15 @@
       <div id="footer" class="row">
         <div id="footerName" class="col-xs-36 col-sm-push-10 col-sm-16">
           <div class="nameplate verticalCenter">
-            <div><h1>Allison Bistline-East, MSc</h1></div>
-            <div><h3>Entomology, Ecology</h3></div>
+            <h1>Allison Bistline-East, MSc</h1>
+            <h3>Entomology, Ecology</h3>
           </div>
         </div>
         <div id="footerAddress" class="col-xs-18 col-sm-10 col-sm-pull-16">
           <div class="verticalCenter">
             <p>Applied Ecology Unit</p>
             <p>School of Natural Sciences</p>
-            <p>National University of Ireland, Galway</p>
+            <p>National University<br>of Ireland, Galway</p>
           </div>
         </div>
         <div id="footerLinks" class="col-xs-18 blach_col-sm-push-26 col-sm-10">

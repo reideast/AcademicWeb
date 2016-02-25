@@ -8,6 +8,8 @@ $fontPageHeader: "Alegreya SC", Alegreya, serif;
 $fontBody: Raleway, sans-serif;
 
 $mobileVerticalPadding: 50px;
+$navbarHeight: 100px; //this is set in Bootstrap's config.json; I haven't used it in this file (yet?)
+$navbarMobileHeight: 70px;
 
 $colorYellowGreen: #B3CB44;
 $colorDarkGreen: #1E3318;
@@ -63,6 +65,15 @@ $colorSchemeFooterText: white;
   > *:last-child {
     margin-bottom: 0;
   }
+}
+
+@mixin trailingBorder {
+  border-right: 1px solid $colorSchemeFooterText;
+  height: 60%;
+  content: "";
+  position: absolute;
+  top: 20%;
+  right: 0;
 }
 
 // @import 'normalize';
@@ -204,20 +215,11 @@ h1, h2 {
 }
 .headerName {
   background: $colorSchemeHeaderNameBG;
-  text-align: center;
   padding: 0;
+  text-align: center;
   a {
     width: 100%;
     padding: 0;
-  }
-  h1 {
-    //font-family: $fontPageHeader; //NOTE: do not like small-caps here
-    font-size: 18px;
-    margin-bottom: 5px;
-  }
-  h3 {
-    font-size: 16px;
-    margin-top: 0;
   }
 }
 .navbar-brand {
@@ -238,45 +240,57 @@ h1, h2 {
   > *:last-child {
     margin-right: 0;
   }
+  // Change height of mobile nav to $navbarMobileHeight:
+  a.navbar-brand { height: $navbarMobileHeight; }
+  .navbar-toggle { margin: (($navbarMobileHeight - 34px) / 2) 0; }
 }
-@media (max-width: 480px) {
+#headerNameTiny {
+  background: $colorSchemeHeaderBG;
+}
+#headerNameTinyWidthLimiter {
+  max-width: 250px;
+  background: $colorSchemeHeaderNameBG;
+}
+#headerMobileRow .navbar-toggle {
+  margin-right: 25px;
+}
+@media (max-width: 344px) { //382px) {//480px) {
+  #headerMobileRow > div:last-child {
+    text-align: center;
+  }
+  #headerMobileRow .navbar-toggle {
+    position: static;
+    float: none;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar { min-height: auto; }
+  #backgroundImage { top: $navbarMobileHeight; }
+  .nav {
+    font-size: 18px;
+  }
+  #headerSocialMedia {
+    padding-top: 20px;
+  }
   #collapsing-navbar-area {
     position: absolute;
     //These changes are to maintain the same properties as if it were a position: relative;
-    width: 100vw;
     box-sizing: content-box;
     background-color: $colorSchemeHeaderBG;
     z-index: 100;
     padding-right: 0;
+    // width: 100vw;
+    ul { width: 100%; }
+    li { width: 100vw; }
   }
-}
-#headerNav {
-  /* float:right; */
-  //position:absolute;
-  //right: 0;
-  //top: 0;
-  //width: 677px;
-  //height: 100px;
-}
-nav {
-  //display: inline-block;
-  //margin: 0;
-  //padding: 0 10px;
-}
-nav a
- {
-  //display: inline-block;
-  //text-decoration: none;
-  //color: $colorSchemeHeaderLinkText;
-  //font-size: 16px;
-  //margin: 0 10px;
 }
 
 #backgroundImage {
   position: absolute;
   height: 100vh; /* vh = viewport height, 100vh = 100% of viewport */
   width: 100%;
-  top: 100px;
   left: 0px;
   padding: 0;
   margin: 0;
@@ -289,6 +303,7 @@ nav a
     background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); 
   }
   @media (min-width:768px) { //SM
+    top: 100px; 
     background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); 
   }
   @media (min-width:992px) { //MD
@@ -392,7 +407,7 @@ nav a
   margin-left: 0;
   width: 100vw;
   //height: 100%;
-  height: 300px; //TODO: sense how high #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
+  height: 300px; //TODO: sense how height of #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
   z-index: -1;
 }
 #section1:before {
@@ -546,15 +561,16 @@ nav a
 }
 #footer {
   text-align: center;
+  margin: 0;
   @media (max-width: 767px) {
     width: 100vw;
     // padding-top: 10px;
     // padding-bottom: 10px;
     > div {
-      height: 160px;
+      height: 150px;
     }
     > div:first-child {
-      height: 140px
+      height: 150px
     }
   }
   @media (min-width: 768px) {
@@ -566,19 +582,18 @@ nav a
     }
   }
 }
-@mixin trailingBorder {
-  border-right: 1px solid $colorSchemeFooterText;
-  height: 60%;
-  content: "";
-  position: absolute;
-  top: 20%;
-  right: 0;
-}
-//#footer > div:first-child {
+#footerName h1 { font-size: 26px; }
+#footerName h3 { font-size: 18px; }
 @media (min-width: 768px) {
   #footerName:after {
     @include trailingBorder;
   }
+  #footerName h1 { font-size: 28px; }
+  #footerName h3 { font-size: 20px; }
+}
+@media (min-width: 992px) {
+  #footerName h1 { font-size: 32px; }
+  #footerName h3 { font-size: 24px; }
 }
 #footerAddress:after {
   @include trailingBorder;
@@ -586,33 +601,23 @@ nav a
 // #footer > div:last-child {
 //   border-left: 1px solid $colorSchemeFooterText;
 // }
-#footerAddress {
-  line-height: 0.8em;
-}
-#footerName {
-}
-#footerName h1 {
-  // font-variant: small-caps;
-  // font-weight: normal;
-}
-#footerName h3 {
-}
-#footerLinks {
-  line-height: 0.8em;
-}
-#footerLinksPhone {
-  // font-size:1.5em;
-  // margin-bottom:10px;
+#footerAddress, #footerLinks {
+  // line-height: 0.8em;
+  font-size: 10px;
+  p { margin: 0 0 3px; }
+  @media (min-width: 480px) {
+    font-size: 14px;
+  }
 }
 #footerLinksSocial {
+  margin-bottom: 3px;
 }
 #footerLinksSocial a {
   color: $colorSchemeFooterText;
 }
 #footerSocialMedia {
-  //padding-top: 15px;
-  padding-bottom: 15px;
-  font-size: 16px;
+  // padding-bottom: 15px;
+  // font-size: 16px;
 }
 
 /* ******************************** General Transformation Classes ******************************** */
@@ -628,6 +633,18 @@ nav a
   }
   span:last-child {
     padding-right: 7px;
+  }
+}
+
+.nameplate {
+  h1 {
+    //font-family: $fontPageHeader; //NOTE: do not like small-caps here
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  h3 {
+    font-size: 16px;
+    margin-top: 0;
   }
 }
 
