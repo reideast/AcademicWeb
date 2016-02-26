@@ -87,7 +87,7 @@
   </div><!-- row -->
 </nav>
     
-    <div id="backgroundImage" class="flipHorizontal" data-type="background" data-speed="5" data-offset="0" data-isFooter="0"></div>
+    <div id="backgroundImage" class="flipHorizontal"></div>
     
     <div id="aboveTheFold" class="row">
       <div id="byline" class="col-sm-16 col-md-14">
@@ -135,7 +135,7 @@
 </div><!-- .masterContainer -->
 
     <div id="footerContainer" class="container">
-      <div id="footerBackgroundImage" data-type="background" data-speed="-1.1" data-offset="-900" data-isFooter="1"></div>
+      <div id="footerBackgroundImage"></div>
       <div id="footer" class="row">
         <div id="footerName" class="col-xs-36 col-sm-push-10 col-sm-16">
           <div class="nameplate verticalCenter">
@@ -175,99 +175,11 @@
 <!-- Bootstrap js: Latest compiled and minified JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script>
-  //modifying parallax scrolling to use window.requestAnimationFrame. see: https://gist.github.com/Warry/4254579 
-  var scroll = window.requestAnimationFrame ||
-               window.webkitRequestAnimationFrame ||
-               window.mozRequestAnimationFrame ||
-               window.msRequestAnimationFrame ||
-               window.oRequestAnimationFrame ||
-               function(callback){ window.setTimeout(callback, 1000/60); }; // IE Fallback, you can even fallback to onscroll
-  var lastPosition = -1;
-  var bg = [document.getElementById("backgroundImage"), document.getElementById("footerBackgroundImage")];
-  var yPos = [0,0];
-  var viewportTop;
-  var viewportBottom;
-  
-  function scrollLoop() {
-    viewportTop = window.pageYOffset;
-    viewportBottom = viewportTop + window.innerHeight;
-    if (lastPosition === viewportTop) {
-      scroll( scrollLoop );
-      return false;
-    }
-    else {
-      lastPosition = viewportTop; 
-    }
-    
-    //do stuff
-    // console.log("***** window.pageYOffset: " + window.pageYOffset);
-    for (var i = 0; i < bg.length; ++i) {
-      // console.log(window.innerHeight); //innerHeight == 100vh
-      // console.log(bg[i].offsetTop);
-      // console.log(bg[i].offsetHeight);
-      // console.log(bg[i].offsetTop - bg[i].offsetHeight);
-      // at viewportTop=0, viewport is 0 to innerHeight
-      // at viewportTop=50, viewport is 50 to innerHeight+50
-      // top of element is at offsetTop
-      // bottom of element is at offsetTop + offsetHeight
-      // console.log("viewportTop to bottom: " + viewportTop + " - " + (viewportTop + window.innerHeight));
-      // console.log("element top and bottom: " + bg[i].offsetTop + " - " + (bg[i].offsetTop + bg[i].offsetHeight));
-      if ((bg[i].offsetTop + bg[i].offsetHeight) >= viewportTop && bg[i].offsetTop <= (viewportTop + window.innerHeight)) {
-        // console.log("bg["+i+"] is visible");
-        // var someSortOfTopOfPageOffset = ((window.innerHeight - viewportTop) > 0 ? (viewportTop) : 0);
-        // console.log(bg[i].offsetTop);
-        // console.log(viewportBottom);
-        // yPos[i] = (bg[i].offsetTop - (viewportTop + window.innerHeight)) / -bg[i].dataset.speed; // + ((viewportTop)/ bg[i].dataset.speed);
-        yPos[i] = (bg[i].offsetTop - viewportBottom + bg[i].offsetHeight) / bg[i].dataset.speed;
-        console.log("yPos["+i+"]: " + yPos[i] + "(at speed: " + bg[i].dataset.speed + ")");
-        bg[i].style.backgroundPosition = "0px " + yPos[i] + "px";
-      }
-    }
-    
-    scroll( scrollLoop ); //loop (recursive) by calling the delaying function, requestAnimantionFrame, with this function as a callback
-  }
-  scrollLoop(); //start the looping
-  
-  
 $(document).ready(function() {
   //This "locks" in 100vh for Android, when the disappearing Address Bar changes the viewport
   //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
   $("#backgroundImage").css("height", window.innerHeight);
   $("#aboveTheFold").css("height", window.innerHeight);
-  
-  
-  
-  //parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641
-  // $window = $(window);
-  
-  //speeding up parallax by taking $(window).scroll out of $.each loop: http://kristerkari.github.io/adventures-in-webkit-land/blog/2013/08/30/fixing-a-parallax-scrolling-website-to-run-in-60-fps/
-  // var parallaxElements = [];
-  // $('div[data-type="background"]').each(function(index) {
-  //   var thisParallaxElement = {}; // new, empty object
-  //   thisParallaxElement.element = $(this);
-  //   //thisParallaxElement.height = thisParallaxElement.element.height();
-  //   
-  //   parallaxElements.push(thisParallaxElement);
-  // });
-    
-  // $(window).scroll( function() {
-  //   $.each(parallaxElements, function(index, thisParallaxElement) {
-  //     //scroll the background <div> at data-speed
-  //     var yPos = thisParallaxElement.element.data('offset') - ($window.scrollTop() / thisParallaxElement.element.data('speed'));
-  //     //console.log("ypos" + yPos);
-  //     if (thisParallaxElement.element.data('isfooter') == 1)
-  //     {
-  //       //console.log("height: " + Math.max($(document).height(), $(window).height()));
-  //       //1777 => -900
-  //       //2277 => -1200 ???
-  //       //yPos +=
-  //     }
-  //     var coords = (yPos) + 'px';
-  //     
-  //     //move the <div>
-  //     window.requestAnimationFrame(thisParallaxElement.element.css({ "background-position-y" : coords }));
-  //   });
-  // });
 }); //document.ready
 </script>
 </body>
