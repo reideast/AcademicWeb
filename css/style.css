@@ -163,8 +163,7 @@ h1, h2 {
   /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
   background-size: cover;
   background-repeat: no-repeat;
-  background-position-x: left;
-  background-position-y: 0px;
+  background-position: left 0px;
   /* -webkit-transform: translateZ(0); */
   /* TODO: Make multiple iimages at different sizes for different browser viewports. 
            Switch them out with a media query with especially narrow viewport to prevent this "midriff showing" issue */
@@ -234,7 +233,6 @@ h1, h2 {
       font-size: 30px; } }
 
 #belowTheFold {
-  position: relative;
   height: 100%;
   /* background: transparent; */
   /* min-height: 100%; */
@@ -245,21 +243,6 @@ h1, h2 {
 #siteContainer * {
   margin-top: 0;
 } */
-#section1:before, #section1:after {
-  background-color: white;
-  position: absolute;
-  top: 0;
-  margin-left: 0;
-  width: 100vw;
-  height: 300px;
-  z-index: -1; }
-
-#section1:before {
-  right: 0; }
-
-#section1:after {
-  left: 0; }
-
 @media (max-width: 767px) {
   #section1text {
     padding-top: 50px;
@@ -345,14 +328,16 @@ h1, h2 {
   margin: 0;
   z-index: -10;
   /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
-  background-image: url("../img/pageElements/garageDoorH.jpg");
+  background-image: url("../img/pageElements/garageDoorH_XS.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: 0px;
+  background-position: 0 0;
   /* -webkit-transform: translateZ(0); */
   /* TODO: are multiple sizes needed for this footerBackgroundImage? */
   background-color: gray; }
+  @media (min-width: 480px) {
+    #footerBackgroundImage {
+      background-image: url("../img/pageElements/garageDoorH_SM.jpg"); } }
 
 #footerContainer {
   height: 300px;
