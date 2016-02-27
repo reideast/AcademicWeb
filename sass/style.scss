@@ -76,143 +76,185 @@ $colorSchemeFooterText: white;
   right: 0;
 }
 
-// @import 'normalize';
-// @import 'reset';
+/* ******************************** General Transformation Classes ******************************** */
+.socialMediaButtons {
+  a {
+    i {
+      //font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  span {
+    padding-left: 7px;
+  }
+  span:first-child {
+    padding-left: 0;
+  }
+}
+
+.nameplate {
+  h1 {
+    //font-family: $fontPageHeader; //NOTE: do not like small-caps here
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  h3 {
+    font-size: 16px;
+    margin-top: 0;
+  }
+}
+
+.verticalCenter {
+  @include vCenter;
+  /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
+  // position: relative;
+  // top: 50%;
+  // transform: translateY(-50%);
+  // // -webkit-transform: translateY(-50%);
+  // // -ms-transform: translateY(-50%);
+  // 
+  // // margin: 0;
+  // // padding: 0;
+  // // background: $colorSchemeError; 
+  // *:first-child { /* or .verticalCenter > *:first-child ?? */ 
+  //   margin-top: 0;
+  // }
+  // *:last-child {
+  //   margin-bottom: 0;
+  // }
+}
+
+.flipHorizontal {
+  transform: scaleX(-1); //https://css-tricks.com/snippets/css/flip-an-image/
+  //filter: FlipH; //invalid?
+}
 
 /* **************************************************************************** */
 /* *****************************  Begin Style.css ***************************** */
 /* **************************************************************************** */
 
-//********************* main media query area *********************
+//********************* site-wide width defininitions *********************
+
 //TODO: make changes in the width of to container in Bootstrap customizer! @container-tablet, etc
-@media (min-width:768px) {
-  #masterContainer, #footerContainer {
+#masterContainer, #headerContainer, #footerContainer {
+  padding: 0; //reset from Bootstrap's 15px div padding
+  @media (min-width:768px) {
     width:750px
   }
-}
-@media (min-width:992px) {
-  #masterContainer, #footerContainer {
+  @media (min-width:992px) {
     width:970px
   }
 }
-// @media (min-width:1200px)
-// {
-//   #masterContainer{
-//     width:970px;
-//   }
+#masterContainer > * { //evaluated load performance a few times, didn't change load +/- 50ms 
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media (min-width: 768px) {
+  #headerContainer:before { //, #headerContainer:after { //belowTheFoldBackground {
+    // height: inherit; //TODO: sense how height of #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
+    height: $navbarHeight;
+    background-color: $colorSchemePageBG;
+    position: absolute;
+    top: 0;
+    margin-left: 0;
+    width: 100vw;
+    z-index: -1;
+    content: " ";
+    display: block;
+  }
+  #headerContainer:before {
+    right: 0;
+  }
+  // #headerContainer:after {
+  //   left: 0;
+  // }
+}
+#masterContainer:before { //, #masterContainer:after { //belowTheFoldBackground {
+  background-color: $colorSchemePageBG;
+  position: absolute;
+  top: 0;
+  margin-left: 0;
+  width: 100vw;
+  //height: 100%;
+  height: 300px; //TODO: sense how height of #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
+  z-index: -1;
+  content: " ";
+  display: block;
+}
+#masterContainer:before {
+  right: 0;
+}
+// #masterContainer:after {
+//   left: 0;
 // }
 
-// .col-xs-34 { background-color: red; }
-// .col-sm-34 { background-color: orange; }
-// .col-md-34 { background-color: yellow; }
-// .col-lg-34 { background-color: green; }
-@media (min-width:480px) { //XS
-  #foo {
-    color: $colorOrange3 !important;
-  }
-}
-@media (min-width:768px) { //SM
-  #bar {
-    color: $colorOrange3 !important;
-  }
-}
-@media (min-width:992px) { //MD
-  #baz {
-    color: $colorOrange3 !important;
-  }
-}
-@media (min-width:1200px) { //LG
-  #bam {
-    color: $colorOrange3 !important;
-  }
-}
 
 body {
-  //font-size: 10px;
-  //font-family: $fontBody;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  //background: $colorSchemePageBG;
+  //Removed in favor of .parallax's styles
+  // overflow-x: hidden; overflow-y: scroll;
 }
-#masterContainer, #headerContainer, #footerContainer {
-  padding: 0; //reset from Bootstrap's 15px padding
-}
-  #masterContainer > * { //evaluated load performance a few times, didn't change load +/- 50ms 
-    margin-left: 0;
-    margin-right: 0;
-  }
-#masterContainer {
-//  position: relative;
-}
+
 h1, h2 {
-  font-family: $fontHeader;
+  font-family: $fontHeader; //TODO: move to bootstrap's config
 }
 
+/* ****************** Header Styles ************************** */
 
-/* ****************** Removing Bootstrap's Nav Styles ************************** */
+
+
+
 .navbar-default {
-  //background: none;
   box-shadow: none;
   border: none;
-  //border-radius: 0;
   margin-bottom: 0;
 }
-#collapsing-navbar-area > * {
-  //padding: 0;
+// #collapsing-navbar-area > * {
+//   //padding: 0;
+//   margin: 0;
+// }
+.navbar-header > div {
   margin: 0;
-}
-#headerContainer {
-  //position: relative;
-  //width: 960px;
-  //height: 100px;
-  margin: 0;
-}
-#headerRow, #headerMobileRow {
-  margin: 0;
-  padding: 0;
+  // padding: 0;
 }
 #headerLinks {
   padding-right: 0;
-  > ul {
-    margin-bottom: 0;
+  @media (max-width: 767px) {
+    //comment
+    > ul {
+      margin-bottom: 0;
+    }
   }
   a {
-  padding-left: 7.5px;
-  padding-right: 7.5px;
-}
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+  }
 }
 #headerIcons {
-  > ul {
-    margin-top: 0;
-  }
+  // > ul {
+  //   margin-top: 0;
+  //   margin-left: 0;
+  // }
   a {
     color: $colorSchemeHeaderLinkText;
   }
+  // .navbar-right {
+  //   margin-right: 0;
+  // }
+  height: $navbarMobileHeight;
+  @media (min-width: 768px) {
+    height: $navbarHeight;
+  }
 }
 #headerSocialMedia {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  @media (min-width: 768px) {
-    padding-top: 37.5px;
-    padding-bottom: 37.5px;
-  }
-  //height: 100px;
-  // li {
-    // display: inline-block;
-    // text-decoration: none;
-    // font-size: 16px;
-    // margin: 0 7px;
-  // }
-  
-
+  // padding-top: 10px;
+  // padding-bottom: 10px;
+//   @media (min-width: 768px) {
+//     padding-top: 37.5px;
+//     padding-bottom: 37.5px;
+//   }
 }
 
-#header {
-  //background: $colorSchemeHeaderBG;
-  //width: 100%;
-  //height: 100px;
-  /* z-index: 5; */
-}
 .headerName {
   background: $colorSchemeHeaderNameBG;
   padding: 0;
@@ -267,20 +309,19 @@ h1, h2 {
 
 @media (max-width: 767px) {
   .navbar { min-height: auto; }
-  #backgroundImage { top: $navbarMobileHeight; }
   .nav {
     font-size: 18px;
   }
-  #headerSocialMedia {
-    padding-top: 20px;
-  }
+  // #headerSocialMedia {
+  //   padding-top: 20px;
+  // }
   #collapsing-navbar-area {
     position: absolute;
     //These changes are to maintain the same properties as if it were a position: relative;
     box-sizing: content-box;
     background-color: $colorSchemeHeaderBG;
     z-index: 100;
-    padding-right: 0;
+    //padding-right: 0;
     // width: 100vw;
     ul { width: 100%; }
     li { width: 100vw; }
@@ -288,22 +329,22 @@ h1, h2 {
 }
 
 #backgroundImage {
-  position: absolute;
-  height: 100vh; /* vh = viewport height, 100vh = 100% of viewport */
-  width: 100%;
-  left: 0px;
+  // position: absolute;
+  // height: 100vh; /* vh = viewport height, 100vh = 100% of viewport */
+  // width: 100%;
+  // left: 0px;
   padding: 0;
   margin: 0;
-  z-index: -10;
+  // z-index: -10;
   
   //@media (min-width:480px) { //XS 
-    background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg"); //TODO: OPTIMIZE IMAGES!!!
-  //}
+  // top: $navbarMobileHeight;
+  background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg"); //TODO: OPTIMIZE IMAGES!!!
   @media (min-width:480px) { //XS 
     background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); 
   }
   @media (min-width:768px) { //SM
-    top: 100px; 
+    //removed for .parallax top: $navbarHeight; 
     background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); 
   }
   @media (min-width:992px) { //MD
@@ -325,28 +366,60 @@ h1, h2 {
   background-color: $colorSchemeError;
 }
 
+html {
+  // width: 100vw;
+  // height: 100vh;
+  overflow-x: hidden;
+}
+.parallax {
+  //height must be defined somewhere!
+  height: 100vh;
+  perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  // transform-style: preserve-3d;
+}
+.parallaxLayer {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+.parallaxBack {
+  transform: translateZ(-1px) scale(2);
+}
+.parallaxBase {
+  transform: translateZ(0);
+}
+#backgroundContainer {
+  // top: 100px;
+  top: -20vh;
+  //bottom: 200px;
+  // height: 120vh;
+  #backgroundImage {
+    height: 120vh;
+  }
+  z-index: -100;
+}
 
 #aboveTheFold {
-//position: relative;
-  /* position: absolute; */
-  /* top:100px; */
-//width: 960px;
   @media (max-width: 767px) {
     height: 100vh;
   }
   @media (min-width: 768px) {
-    height: calc(100vh - 100px);
+    height: 100vh; //calc(100vh - 100px);
   }
-//margin: 0 auto;
+}
+#bylineContainer {
+  height: 100%;
+  margin: 0;
 }
 #byline {
   color: $colorSchemeBylineText;
-  height: 100%;
+  // height: 100%;
   text-align: center;
   @media (max-width: 767px) {
     padding: 0;
     #bylineVerticalPosition {
-      @include vTop;
+      //@include vTop;
       background: $colorSchemeBylineBG;
       opacity: .6;
       margin: 0;
@@ -362,7 +435,16 @@ h1, h2 {
     background: $colorSchemeBylineBG;
     opacity: .6;
     #bylineVerticalPosition {
-      @include vCenter;
+      //@include vCenter;
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+          > *:first-child { /* or .verticalCenter > *:first-child ?? */ 
+            margin-top: 0;
+          }
+          > *:last-child {
+            margin-bottom: 0;
+          }
     }
   }
   h1 {
@@ -386,38 +468,22 @@ h1, h2 {
 
 
 
-#belowTheFold {
-  //position: relative;
-  height: 100%;
-  //background-color: $colorSchemePageBG;
-  /* background: transparent; */
-  // position: relative;
-  // width: 960px;
-  /* min-height: 100%; */
-  // margin: 0 auto;
-  /* top: 0; */
-  /* left: 0; */
-}
+// #belowTheFold {
+//   //position: relative;
+//   height: 100%;
+//   //background-color: $colorSchemePageBG;
+//   /* background: transparent; */
+//   // position: relative;
+//   // width: 960px;
+//   /* min-height: 100%; */
+//   // margin: 0 auto;
+//   /* top: 0; */
+//   /* left: 0; */
+// }
 /* fix to remove margin-top from all children of a position:relative conainer
 #siteContainer * {
   margin-top: 0;
 } */
-// #section1:before, #section1:after { //belowTheFoldBackground {
-//   background-color: $colorSchemePageBG;
-//   position: absolute;
-//   top: 0;
-//   margin-left: 0;
-//   width: 100vw;
-//   //height: 100%;
-//   height: 300px; //TODO: sense how height of #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
-//   z-index: -1;
-// }
-// #section1:before {
-//   right: 0;
-// }
-// #section1:after {
-//   left: 0;
-// }
 
 
 //these media queries are to set the height of section1, equal to the height of the image
@@ -465,7 +531,6 @@ h1, h2 {
 }
 #section1text {
   // height: 100%;
-  // padding: 100px 60px; //TODO: @media
   padding-left: 60px;
   padding-right: 60px;
   text-align: center;
@@ -626,55 +691,26 @@ h1, h2 {
   // font-size: 16px;
 }
 
-/* ******************************** General Transformation Classes ******************************** */
-.socialMediaButtons {
-  a {
-    i {
-      //font-size: 14px;
-      line-height: 20px;
-    }
-  }
-  span {
-    padding-left: 7px;
-  }
-  span:last-child {
-    padding-right: 7px;
+
+
+//TODO: Remove these "Bootstrap width meter colors"
+@media (min-width:480px) { //XS
+  #foo {
+    color: $colorOrange3 !important;
   }
 }
-
-.nameplate {
-  h1 {
-    //font-family: $fontPageHeader; //NOTE: do not like small-caps here
-    font-size: 18px;
-    margin-bottom: 5px;
-  }
-  h3 {
-    font-size: 16px;
-    margin-top: 0;
+@media (min-width:768px) { //SM
+  #bar {
+    color: $colorOrange3 !important;
   }
 }
-
-.verticalCenter {
-  @include vCenter;
-  /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
-  // position: relative;
-  // top: 50%;
-  // transform: translateY(-50%);
-  // // -webkit-transform: translateY(-50%);
-  // // -ms-transform: translateY(-50%);
-  // 
-  // // margin: 0;
-  // // padding: 0;
-  // // background: $colorSchemeError; 
-  // *:first-child { /* or .verticalCenter > *:first-child ?? */ 
-  //   margin-top: 0;
-  // }
-  // *:last-child {
-  //   margin-bottom: 0;
-  // }
+@media (min-width:992px) { //MD
+  #baz {
+    color: $colorOrange3 !important;
+  }
 }
-
-.flipHorizontal {
-  transform: scaleX(-1); //https://css-tricks.com/snippets/css/flip-an-image/
-  //filter: FlipH; //invalid?
+@media (min-width:1200px) { //LG
+  #bam {
+    color: $colorOrange3 !important;
+  }
 }

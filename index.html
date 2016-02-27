@@ -28,10 +28,10 @@
   <meta name="author" content="Allison Bistline-East">
   <title>Allison Bistline-East</title>
 </head>
-<body>
-  <div id="masterContainer" class="container">
+<body class="parallax">
+  <!--<div class="parallax">-->
     
-    
+<div id="headerContainer" class="container">
 <nav class="navbar navbar-default">
   <div class="navbar-header visible-xs-block hidden-sm-block hidden-md-block hidden-lg-block">
     <div id="headerMobileRow" class="row">
@@ -75,30 +75,50 @@
       </ul>
     </div>
     <div id="headerIcons" class="col-sm-8 col-md-6">
-      <ul class="nav navbar-nav navbar-right">
-        <li id="headerSocialMedia" class="socialMediaButtons">
-            <span><a id="foo" href="https://www.linkedin.com/in/allisonbistlineeast"><i class="fa fa-linkedin-square fa-2x"></i></a></span>
-            <span><a id="bar" href="https://www.researchgate.net/profile/Allison_Bistline-East"><i class="ai ai-researchgate-square ai-2x"></i></a></span>
-            <span><a id="baz" href="#"><i class="ai ai-google-scholar-square ai-2x"></i></a></span>
-            <span><a id="bam" href="mailto:allison@bistlineeast.com"><i class="fa fa-envelope-square fa-2x"></i></a></span>
-        </li>
-      </ul>
+      <div class="verticalCenter">
+        <div id="headerSocialMedia" class="socialMediaButtons">
+          <span><a id="foo" href="https://www.linkedin.com/in/allisonbistlineeast"><i class="fa fa-linkedin-square fa-2x"></i></a></span>
+          <span><a id="bar" href="https://www.researchgate.net/profile/Allison_Bistline-East"><i class="ai ai-researchgate-square ai-2x"></i></a></span>
+          <span><a id="baz" href="#"><i class="ai ai-google-scholar-square ai-2x"></i></a></span>
+          <span><a id="bam" href="mailto:allison@bistlineeast.com"><i class="fa fa-envelope-square fa-2x"></i></a></span>
+        </div>
+      </div>
     </div><!-- col -->
   </div><!-- row -->
 </nav>
+</div><!-- headerContainer -->
+
+<div id="backgroundContainer" class="parallaxLayer parallaxBack">
+  <div id="backgroundImage" class="flipHorizontal"></div>
+</div>
     
-    <div id="backgroundImage" class="flipHorizontal"></div>
-    
-    <div id="aboveTheFold" class="row">
-      <div id="byline" class="col-sm-16 col-md-14">
-        <div id="bylineVerticalPosition">
-          <h1><em>Natura non facit saltus</em></h1>
-          <h2><em>Nature does not make jumps</em></h2>
-          <!--https://en.wikipedia.org/wiki/Natura_non_facit_saltus-->
-        </div>
+    <div id="aboveTheFold">
+      <div id="bylineContainer" class="row">
+        <div id="byline" class="col-sm-16 col-md-14">
+          <div id="bylineVerticalPosition">
+            <h1><em>Natura non facit saltus</em></h1>
+            <h2><em>Nature does not make jumps</em></h2><!--https://en.wikipedia.org/wiki/Natura_non_facit_saltus-->
+          </div>
+          </div>
       </div>
     </div>
+    
+    
+    <!--<div id="aboveTheFold" class="parallax">
+      <div id="backgroundContainer" class="parallaxLayer parallaxBack">
+        <div id="backgroundImage" class="flipHorizontal"></div>
+      </div>
+      <div id="bylineContainer" class="row parallaxLayer parallaxBase">
+        <div id="byline" class="col-sm-16 col-md-14">
+          <div id="bylineVerticalPosition">
+            <h1><em>Natura non facit saltus</em></h1>
+            <h2><em>Nature does not make jumps</em></h2><!--https://en.wikipedia.org/wiki/Natura_non_facit_saltus
+          </div>
+          </div>
+      </div>
+    </div>-->
 
+  <div id="masterContainer" class="container">
     <!--<div id="belowTheFold">-->
       
       <!--<div id="belowTheFoldBackground"></div>-->
@@ -132,7 +152,7 @@
         </div>
       </div>
     <!--</div><!--below the fold-->
-</div><!-- .masterContainer -->
+</div><!-- .masterContainer--> 
 
     <div id="footerContainer" class="container">
       <div id="footerBackgroundImage"></div>
@@ -168,7 +188,7 @@
         </div>
       </div>
     </div>
-  <!--</div><!-- container masterContainer -->
+<!--</div><!-- parallax -->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -178,8 +198,8 @@
 $(document).ready(function() {
   //This "locks" in 100vh for Android, when the disappearing Address Bar changes the viewport
   //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
-  $("#backgroundImage").css("height", window.innerHeight);
-  $("#aboveTheFold").css("height", window.innerHeight);
+  // $("#backgroundImage").css("height", window.innerHeight);
+  // $("#aboveTheFold").css("height", window.innerHeight);
 }); //document.ready
 </script>
 </body>

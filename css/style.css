@@ -1,87 +1,112 @@
 /* Main Style Document for Academic CV Web Site */
 /* By Andrew Reid East */
 /* Sass Variable Definitions */
+/* ******************************** General Transformation Classes ******************************** */
+.socialMediaButtons a i {
+  line-height: 20px; }
+
+.socialMediaButtons span {
+  padding-left: 7px; }
+
+.socialMediaButtons span:first-child {
+  padding-left: 0; }
+
+.nameplate h1 {
+  font-size: 18px;
+  margin-bottom: 5px; }
+
+.nameplate h3 {
+  font-size: 16px;
+  margin-top: 0; }
+
+.verticalCenter {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */ }
+  .verticalCenter > *:first-child {
+    /* or .verticalCenter > *:first-child ?? */
+    margin-top: 0; }
+  .verticalCenter > *:last-child {
+    margin-bottom: 0; }
+
+.flipHorizontal {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1); }
+
 /* **************************************************************************** */
 /* *****************************  Begin Style.css ***************************** */
 /* **************************************************************************** */
-@media (min-width: 768px) {
-  #masterContainer, #footerContainer {
-    width: 750px; } }
-
-@media (min-width: 992px) {
-  #masterContainer, #footerContainer {
-    width: 970px; } }
-
-@media (min-width: 480px) {
-  #foo {
-    color: #DA7500 !important; } }
-
-@media (min-width: 768px) {
-  #bar {
-    color: #DA7500 !important; } }
-
-@media (min-width: 992px) {
-  #baz {
-    color: #DA7500 !important; } }
-
-@media (min-width: 1200px) {
-  #bam {
-    color: #DA7500 !important; } }
-
-body {
-  overflow-x: hidden;
-  overflow-y: scroll; }
-
 #masterContainer, #headerContainer, #footerContainer {
   padding: 0; }
+  @media (min-width: 768px) {
+    #masterContainer, #headerContainer, #footerContainer {
+      width: 750px; } }
+  @media (min-width: 992px) {
+    #masterContainer, #headerContainer, #footerContainer {
+      width: 970px; } }
 
 #masterContainer > * {
   margin-left: 0;
   margin-right: 0; }
 
+@media (min-width: 768px) {
+  #headerContainer:before {
+    height: 100px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    margin-left: 0;
+    width: 100vw;
+    z-index: -1;
+    content: " ";
+    display: block; }
+  #headerContainer:before {
+    right: 0; } }
+
+#masterContainer:before {
+  background-color: white;
+  position: absolute;
+  top: 0;
+  margin-left: 0;
+  width: 100vw;
+  height: 300px;
+  z-index: -1;
+  content: " ";
+  display: block; }
+
+#masterContainer:before {
+  right: 0; }
+
 h1, h2 {
   font-family: Alegreya, serif; }
 
-/* ****************** Removing Bootstrap's Nav Styles ************************** */
+/* ****************** Header Styles ************************** */
 .navbar-default {
   box-shadow: none;
   border: none;
   margin-bottom: 0; }
 
-#collapsing-navbar-area > * {
+.navbar-header > div {
   margin: 0; }
-
-#headerContainer {
-  margin: 0; }
-
-#headerRow, #headerMobileRow {
-  margin: 0;
-  padding: 0; }
 
 #headerLinks {
   padding-right: 0; }
-  #headerLinks > ul {
-    margin-bottom: 0; }
+  @media (max-width: 767px) {
+    #headerLinks > ul {
+      margin-bottom: 0; } }
   #headerLinks a {
     padding-left: 7.5px;
     padding-right: 7.5px; }
 
-#headerIcons > ul {
-  margin-top: 0; }
-
-#headerIcons a {
-  color: #555; }
-
-#headerSocialMedia {
-  padding-top: 10px;
-  padding-bottom: 10px; }
+#headerIcons {
+  height: 70px; }
+  #headerIcons a {
+    color: #555; }
   @media (min-width: 768px) {
-    #headerSocialMedia {
-      padding-top: 37.5px;
-      padding-bottom: 37.5px; } }
-
-#header {
-  /* z-index: 5; */ }
+    #headerIcons {
+      height: 100px; } }
 
 .headerName {
   background: #B3CB44;
@@ -133,32 +158,21 @@ h1, h2 {
 @media (max-width: 767px) {
   .navbar {
     min-height: auto; }
-  #backgroundImage {
-    top: 70px; }
   .nav {
     font-size: 18px; }
-  #headerSocialMedia {
-    padding-top: 20px; }
   #collapsing-navbar-area {
     position: absolute;
     box-sizing: content-box;
     background-color: white;
-    z-index: 100;
-    padding-right: 0; }
+    z-index: 100; }
     #collapsing-navbar-area ul {
       width: 100%; }
     #collapsing-navbar-area li {
       width: 100vw; } }
 
 #backgroundImage {
-  position: absolute;
-  height: 100vh;
-  /* vh = viewport height, 100vh = 100% of viewport */
-  width: 100%;
-  left: 0px;
   padding: 0;
   margin: 0;
-  z-index: -10;
   background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg");
   /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
   background-size: cover;
@@ -173,37 +187,61 @@ h1, h2 {
       background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); } }
   @media (min-width: 768px) {
     #backgroundImage {
-      top: 100px;
       background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); } }
 
-#aboveTheFold {
-  /* position: absolute; */
-  /* top:100px; */ }
-  @media (max-width: 767px) {
-    #aboveTheFold {
-      height: 100vh; } }
-  @media (min-width: 768px) {
-    #aboveTheFold {
-      height: calc(100vh - 100px); } }
+html {
+  overflow-x: hidden; }
+
+.parallax {
+  height: 100vh;
+  -webkit-perspective: 1px;
+          perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: scroll; }
+
+.parallaxLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; }
+
+.parallaxBack {
+  -webkit-transform: translateZ(-1px) scale(2);
+          transform: translateZ(-1px) scale(2); }
+
+.parallaxBase {
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0); }
+
+#backgroundContainer {
+  top: -20vh;
+  z-index: -100; }
+  #backgroundContainer #backgroundImage {
+    height: 120vh; }
+
+@media (max-width: 767px) {
+  #aboveTheFold {
+    height: 100vh; } }
+
+@media (min-width: 768px) {
+  #aboveTheFold {
+    height: 100vh; } }
+
+#bylineContainer {
+  height: 100%;
+  margin: 0; }
 
 #byline {
   color: #555;
-  height: 100%;
   text-align: center; }
   @media (max-width: 767px) {
     #byline {
       padding: 0; }
       #byline #bylineVerticalPosition {
-        position: relative;
-        top: 0;
         background: #eee;
         opacity: .6;
         margin: 0; }
-        #byline #bylineVerticalPosition > *:first-child {
-          /* or .verticalCenter > *:first-child ?? */
-          margin-top: 0; }
-        #byline #bylineVerticalPosition > *:last-child {
-          margin-bottom: 0; }
       #byline h1 {
         padding-top: 20px; }
       #byline h2 {
@@ -231,13 +269,6 @@ h1, h2 {
   @media (max-width: 400px) {
     #byline h1 {
       font-size: 30px; } }
-
-#belowTheFold {
-  height: 100%;
-  /* background: transparent; */
-  /* min-height: 100%; */
-  /* top: 0; */
-  /* left: 0; */ }
 
 /* fix to remove margin-top from all children of a position:relative conainer
 #siteContainer * {
@@ -407,36 +438,18 @@ h1, h2 {
 #footerLinksSocial a {
   color: white; }
 
-/* ******************************** General Transformation Classes ******************************** */
-.socialMediaButtons a i {
-  line-height: 20px; }
+@media (min-width: 480px) {
+  #foo {
+    color: #DA7500 !important; } }
 
-.socialMediaButtons span {
-  padding-left: 7px; }
+@media (min-width: 768px) {
+  #bar {
+    color: #DA7500 !important; } }
 
-.socialMediaButtons span:last-child {
-  padding-right: 7px; }
+@media (min-width: 992px) {
+  #baz {
+    color: #DA7500 !important; } }
 
-.nameplate h1 {
-  font-size: 18px;
-  margin-bottom: 5px; }
-
-.nameplate h3 {
-  font-size: 16px;
-  margin-top: 0; }
-
-.verticalCenter {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */ }
-  .verticalCenter > *:first-child {
-    /* or .verticalCenter > *:first-child ?? */
-    margin-top: 0; }
-  .verticalCenter > *:last-child {
-    margin-bottom: 0; }
-
-.flipHorizontal {
-  -webkit-transform: scaleX(-1);
-          transform: scaleX(-1); }
+@media (min-width: 1200px) {
+  #bam {
+    color: #DA7500 !important; } }
