@@ -1,7 +1,9 @@
 /* Main Style Document for Academic CV Web Site */
 /* By Andrew Reid East */
 /* Sass Variable Definitions */
-/* ******************************** General Transformation Classes ******************************** */
+/* **************************************************************************** */
+/* ************************* Generic Transformations ************************** */
+/* **************************************************************************** */
 .socialMediaButtons a i {
   line-height: 20px; }
 
@@ -36,65 +38,125 @@
           transform: scaleX(-1); }
 
 /* **************************************************************************** */
-/* *****************************  Begin Style.css ***************************** */
+/* *************************** 1st-Level Containers *************************** */
 /* **************************************************************************** */
-#masterContainer, #headerContainer, #footerContainer {
+.container {
   padding: 0; }
   @media (min-width: 768px) {
-    #masterContainer, #headerContainer, #footerContainer {
+    .container {
       width: 750px; } }
   @media (min-width: 992px) {
-    #masterContainer, #headerContainer, #footerContainer {
+    .container {
       width: 970px; } }
 
-#masterContainer > * {
+.container > * {
   margin-left: 0;
   margin-right: 0; }
 
 @media (min-width: 768px) {
-  #headerContainer:before {
-    height: 100px;
+  #containerHeader:before, #containerBody:before {
     background-color: white;
     position: absolute;
-    top: 0;
     margin-left: 0;
-    width: 100vw;
+    right: -1px;
+    width: 101vw;
     z-index: -50;
     content: " ";
     display: block; }
-  #headerContainer:before {
-    right: 0; } }
+  #containerHeader:before {
+    height: 100px; } }
 
-#masterContainer {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%); }
+@media (min-width: 768px) and (min-width: 768px) {
+  #containerBody:before {
+    height: 559.656px; } }
 
-#footerContainer {
-  position: absolute;
+@media (min-width: 768px) and (min-width: 992px) {
+  #containerBody:before {
+    height: 610.656px; } }
+
+#containerFooter {
   background: teal; }
 
-#masterContainer:before, #masterContainer:after {
-  background-color: white;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin-left: 0;
-  width: 100vw;
-  z-index: -50;
-  content: " ";
-  display: block; }
-
-#masterContainer:before {
-  right: 0; }
-
-#masterContainer:after {
-  left: 0; }
-
+/* **************************************************************************** */
+/* *****************************  Begin Style.css ***************************** */
+/* **************************************************************************** */
 h1, h2 {
   font-family: Alegreya, serif; }
 
+#backgroundImage {
+  padding: 0;
+  margin: 0;
+  background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg");
+  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left 0px;
+  /* -webkit-transform: translateZ(0); */
+  /* TODO: Make multiple iimages at different sizes for different browser viewports. 
+           Switch them out with a media query with especially narrow viewport to prevent this "midriff showing" issue */
+  background-color: red; }
+  @media (min-width: 480px) {
+    #backgroundImage {
+      background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); } }
+  @media (min-width: 768px) {
+    #backgroundImage {
+      background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); } }
+
+#footerBackgroundImage {
+  padding: 0;
+  margin: 0;
+  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
+  background-image: url("../img/pageElements/garageDoorH_XS.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  /* -webkit-transform: translateZ(0); */
+  /* TODO: are multiple sizes needed for this footerBackgroundImage? */
+  background-color: gray; }
+  @media (min-width: 480px) {
+    #footerBackgroundImage {
+      background-image: url("../img/pageElements/garageDoorH_SM.jpg"); } }
+
+html {
+  overflow-x: hidden; }
+
+.parallax {
+  height: 100vh;
+  -webkit-perspective: 1px;
+          perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: scroll; }
+
+.parallaxLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; }
+
+.parallaxBack {
+  -webkit-transform: translateZ(-1px) scale(2);
+          transform: translateZ(-1px) scale(2); }
+
+.parallaxBase {
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0); }
+
+.parallaxGroup {
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d; }
+
+#containerBackground {
+  top: -20vh;
+  z-index: -100;
+  width: 100vw; }
+  #containerBackground #backgroundImage {
+    height: 120vh; }
+
+/* **************************************************************************** */
+/* *****************************  Begin Style.css ***************************** */
+/* **************************************************************************** */
 /* ****************** Header Styles ************************** */
 .navbar-default {
   box-shadow: none;
@@ -183,94 +245,25 @@ h1, h2 {
     #collapsing-navbar-area li {
       width: 100vw; } }
 
-#backgroundImage {
-  padding: 0;
-  margin: 0;
-  background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg");
-  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left 0px;
-  /* -webkit-transform: translateZ(0); */
-  /* TODO: Make multiple iimages at different sizes for different browser viewports. 
-           Switch them out with a media query with especially narrow viewport to prevent this "midriff showing" issue */
-  background-color: red; }
-  @media (min-width: 480px) {
-    #backgroundImage {
-      background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); } }
-  @media (min-width: 768px) {
-    #backgroundImage {
-      background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); } }
-
-#footerBackgroundImage {
-  position: absolute;
-  height: 300px;
-  width: 100vw;
-  padding: 0;
-  margin: 0;
-  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
-  background-image: url("../img/pageElements/garageDoorH_XS.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  /* -webkit-transform: translateZ(0); */
-  /* TODO: are multiple sizes needed for this footerBackgroundImage? */
-  background-color: gray; }
-  @media (min-width: 480px) {
-    #footerBackgroundImage {
-      background-image: url("../img/pageElements/garageDoorH_SM.jpg"); } }
-
-html {
-  overflow-x: hidden; }
-
-.parallax {
-  height: 100vh;
-  -webkit-perspective: 1px;
-          perspective: 1px;
-  overflow-x: hidden;
-  overflow-y: scroll; }
-
-.parallaxLayer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0; }
-
-.parallaxBack {
-  -webkit-transform: translateZ(-1px) scale(2);
-          transform: translateZ(-1px) scale(2); }
-
-.parallaxBase {
-  -webkit-transform: translateZ(0);
-          transform: translateZ(0); }
-
-.parallaxGroup {
-  position: relative;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d; }
-
-#backgroundContainer {
-  top: -20vh;
-  z-index: -100;
-  width: 100vw; }
-  #backgroundContainer #backgroundImage {
-    height: 120vh; }
-
+/* **************************************************************************** */
+/* *****************************  Begin Style.css ***************************** */
+/* **************************************************************************** */
+/* ************************************************** */
 @media (max-width: 767px) {
-  #aboveTheFold {
+  #containerByline {
     height: 100vh; } }
 
 @media (min-width: 768px) {
-  #aboveTheFold {
-    height: 100vh; } }
+  #containerByline {
+    height: 100vh;
+    height: calc(100vh - 100px); } }
 
-#bylineContainer {
-  height: 100%;
-  margin: 0; }
+#containerByline .row {
+  height: 100%; }
 
 #byline {
   color: #555;
+  height: 100%;
   text-align: center; }
   @media (max-width: 767px) {
     #byline {
@@ -279,6 +272,11 @@ html {
         background: #eee;
         opacity: .6;
         margin: 0; }
+        #byline #bylineVerticalPosition > *:first-child {
+          /* or .verticalCenter > *:first-child ?? */
+          margin-top: 0; }
+        #byline #bylineVerticalPosition > *:last-child {
+          margin-bottom: 0; }
       #byline h1 {
         padding-top: 20px; }
       #byline h2 {
@@ -307,10 +305,9 @@ html {
     #byline h1 {
       font-size: 30px; } }
 
-/* fix to remove margin-top from all children of a position:relative conainer
-#siteContainer * {
-  margin-top: 0;
-} */
+/* **************************************************************************** */
+/* *****************************  Begin Style.css ***************************** */
+/* **************************************************************************** */
 @media (max-width: 767px) {
   #section1text {
     padding-top: 50px;
@@ -320,13 +317,12 @@ html {
   #section1textVerticalCenter {
     position: relative;
     top: 50%;
-    transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%); }
-    #section1textVerticalCenter *:first-child {
+            transform: translateY(-50%); }
+    #section1textVerticalCenter > *:first-child {
       /* or .verticalCenter > *:first-child ?? */
       margin-top: 0; }
-    #section1textVerticalCenter *:last-child {
+    #section1textVerticalCenter > *:last-child {
       margin-bottom: 0; }
   #section1, #section1 > div {
     height: 393px; } }
@@ -353,22 +349,26 @@ html {
   #section1text p {
     text-align: left; }
 
+/* **************************************************************************** */
+/* *****************************  Begin Style.css ***************************** */
+/* **************************************************************************** */
 #section2button {
-  padding: 0;
-  /* padding: 50px 50px; */ }
+  padding: 0; }
 
 .squareDummy {
   margin-top: 100%; }
 
-#section2square {
+.squareContent {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: #555;
-  text-align: center;
   height: 100%; }
+
+#section2square {
+  background-color: #555;
+  text-align: center; }
 
 #section2button h2 {
   /* margin: 70px 70px; */
@@ -387,19 +387,19 @@ html {
   #section2text p {
     text-align: left; }
 
-#footerContainer {
-  height: 300px;
-  color: white; }
-
+/* **************************************************************************** */
+/* *****************************  Begin Style.css ***************************** */
+/* **************************************************************************** */
 #footer {
+  color: white;
   text-align: center;
   margin: 0; }
   @media (max-width: 767px) {
     #footer {
       width: 100vw; }
-      #footer > div {
-        height: 150px; }
       #footer > div:first-child {
+        height: 100px; }
+      #footer > div {
         height: 150px; } }
   @media (min-width: 768px) {
     #footer {
@@ -455,6 +455,9 @@ html {
 #footerLinksSocial a {
   color: white; }
 
+/* **************************************************************************** */
+/* ****************************  Bootstrap "Meter" **************************** */
+/* **************************************************************************** */
 @media (min-width: 480px) {
   #foo {
     color: #DA7500 !important; } }
