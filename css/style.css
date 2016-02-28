@@ -1,6 +1,9 @@
 /* Main Style Document for Academic CV Web Site */
 /* By Andrew Reid East */
 /* Sass Variable Definitions */
+h1, h2 {
+  font-family: Alegreya, serif; }
+
 /* **************************************************************************** */
 /* ************************* Generic Transformations ************************** */
 /* **************************************************************************** */
@@ -32,6 +35,17 @@
     margin-top: 0; }
   .verticalCenter > *:last-child {
     margin-bottom: 0; }
+
+.squareDummy {
+  margin-top: 100%; }
+
+.squareContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%; }
 
 .flipHorizontal {
   -webkit-transform: scaleX(-1);
@@ -74,49 +88,21 @@
   #containerBody:before {
     height: 610.656px; } }
 
-#containerFooter {
-  background: teal; }
+@media (max-width: 767px) {
+  #containerByline {
+    height: 100vh; } }
+
+@media (min-width: 768px) {
+  #containerByline {
+    height: 100vh;
+    height: calc(100vh - 100px); } }
+
+#containerByline .row {
+  height: 100%; }
 
 /* **************************************************************************** */
-/* *****************************  Begin Style.css ***************************** */
+/* ***********************  Parallax Background Styles ************************ */
 /* **************************************************************************** */
-h1, h2 {
-  font-family: Alegreya, serif; }
-
-#backgroundImage {
-  padding: 0;
-  margin: 0;
-  background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg");
-  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left 0px;
-  /* -webkit-transform: translateZ(0); */
-  /* TODO: Make multiple iimages at different sizes for different browser viewports. 
-           Switch them out with a media query with especially narrow viewport to prevent this "midriff showing" issue */
-  background-color: red; }
-  @media (min-width: 480px) {
-    #backgroundImage {
-      background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); } }
-  @media (min-width: 768px) {
-    #backgroundImage {
-      background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); } }
-
-#footerBackgroundImage {
-  padding: 0;
-  margin: 0;
-  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
-  background-image: url("../img/pageElements/garageDoorH_XS.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  /* -webkit-transform: translateZ(0); */
-  /* TODO: are multiple sizes needed for this footerBackgroundImage? */
-  background-color: gray; }
-  @media (min-width: 480px) {
-    #footerBackgroundImage {
-      background-image: url("../img/pageElements/garageDoorH_SM.jpg"); } }
-
 html {
   overflow-x: hidden; }
 
@@ -154,10 +140,53 @@ html {
   #containerBackground #backgroundImage {
     height: 120vh; }
 
+#backgroundImage {
+  padding: 0;
+  margin: 0;
+  background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left 0px;
+  /* -webkit-transform: translateZ(0); */
+  /* TODO: Make multiple iimages at different sizes for different browser viewports. 
+           Switch them out with a media query with especially narrow viewport to prevent this "midriff showing" issue */ }
+  @media (min-width: 480px) {
+    #backgroundImage {
+      background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); } }
+  @media (min-width: 768px) {
+    #backgroundImage {
+      background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); } }
+
+#containerFooterBackground {
+  width: 100vw;
+  position: relative;
+  top: -250px;
+  margin-bottom: -250px;
+  z-index: -50; }
+  @media (min-width: 768px) {
+    #containerFooterBackground {
+      top: -300px;
+      margin-bottom: -300px; } }
+
+#footerBackgroundImage {
+  height: 250px;
+  padding: 0;
+  margin: 0;
+  background-image: url("../img/pageElements/garageDoorH_XS.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  /* -webkit-transform: translateZ(0); */ }
+  @media (min-width: 768px) {
+    #footerBackgroundImage {
+      height: 300px; } }
+  @media (min-width: 480px) {
+    #footerBackgroundImage {
+      background-image: url("../img/pageElements/garageDoorH_SM.jpg"); } }
+
 /* **************************************************************************** */
-/* *****************************  Begin Style.css ***************************** */
+/* *****************************  Navbar Styles  ****************************** */
 /* **************************************************************************** */
-/* ****************** Header Styles ************************** */
 .navbar-default {
   box-shadow: none;
   border: none;
@@ -178,7 +207,7 @@ html {
 #headerIcons {
   height: 70px; }
   #headerIcons a {
-    color: #555; }
+    color: #DA7500; }
   @media (min-width: 768px) {
     #headerIcons {
       height: 100px; } }
@@ -210,17 +239,8 @@ html {
   #headerMobileRow a.navbar-brand {
     height: 70px; }
   #headerMobileRow .navbar-toggle {
-    margin: 18px 0; }
-
-#headerNameTiny {
-  background: white; }
-
-#headerNameTinyWidthLimiter {
-  max-width: 250px;
-  background: #B3CB44; }
-
-#headerMobileRow .navbar-toggle {
-  margin-right: 25px; }
+    margin: 18px 0;
+    margin-right: 25px; }
 
 @media (max-width: 344px) {
   #headerMobileRow > div:last-child {
@@ -229,6 +249,13 @@ html {
     position: static;
     float: none;
     margin-right: 0; } }
+
+#headerNameTiny {
+  background: white; }
+
+#headerNameTinyWidthLimiter {
+  max-width: 250px;
+  background: #B3CB44; }
 
 @media (max-width: 767px) {
   .navbar {
@@ -246,21 +273,8 @@ html {
       width: 100vw; } }
 
 /* **************************************************************************** */
-/* *****************************  Begin Style.css ***************************** */
+/* ****************************  Above the Fold  ****************************** */
 /* **************************************************************************** */
-/* ************************************************** */
-@media (max-width: 767px) {
-  #containerByline {
-    height: 100vh; } }
-
-@media (min-width: 768px) {
-  #containerByline {
-    height: 100vh;
-    height: calc(100vh - 100px); } }
-
-#containerByline .row {
-  height: 100%; }
-
 #byline {
   color: #555;
   height: 100%;
@@ -306,8 +320,23 @@ html {
       font-size: 30px; } }
 
 /* **************************************************************************** */
-/* *****************************  Begin Style.css ***************************** */
+/* ********************************  Section 1  ******************************* */
 /* **************************************************************************** */
+#section1image {
+  padding: 0; }
+
+#section1image img {
+  width: 100%; }
+
+#section1text {
+  padding-left: 60px;
+  padding-right: 60px;
+  text-align: center;
+  background: #999;
+  color: #333; }
+  #section1text p {
+    text-align: left; }
+
 @media (max-width: 767px) {
   #section1text {
     padding-top: 50px;
@@ -331,47 +360,15 @@ html {
   #section1, #section1 > div {
     height: 444px; } }
 
-#section1 {
-  position: relative; }
-
-#section1image {
-  padding: 0; }
-
-#section1image img {
-  width: 100%; }
-
-#section1text {
-  padding-left: 60px;
-  padding-right: 60px;
-  text-align: center;
-  background: #999;
-  color: #333; }
-  #section1text p {
-    text-align: left; }
-
 /* **************************************************************************** */
-/* *****************************  Begin Style.css ***************************** */
+/* ******************************  Section 2  ********************************* */
 /* **************************************************************************** */
 #section2button {
-  padding: 0; }
-
-.squareDummy {
-  margin-top: 100%; }
-
-.squareContent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 100%; }
-
-#section2square {
+  padding: 0;
   background-color: #555;
   text-align: center; }
 
 #section2button h2 {
-  /* margin: 70px 70px; */
   color: #eee;
   font-weight: normal; }
 
@@ -381,14 +378,17 @@ html {
 
 #section2text {
   background: #B3CB44;
-  padding: 50px 60px;
   color: #eee;
-  text-align: center; }
+  text-align: center;
+  padding: 20px 40px; }
   #section2text p {
     text-align: left; }
+  @media (min-width: 500px) {
+    #section2text {
+      padding: 50px 60px; } }
 
 /* **************************************************************************** */
-/* *****************************  Begin Style.css ***************************** */
+/* ******************************  Footer Styles  ***************************** */
 /* **************************************************************************** */
 #footer {
   color: white;
@@ -400,7 +400,9 @@ html {
       #footer > div:first-child {
         height: 100px; }
       #footer > div {
-        height: 150px; } }
+        height: 150px; }
+      #footer #footerName {
+        padding-top: 40px; } }
   @media (min-width: 768px) {
     #footer {
       padding-top: 50px;
@@ -460,16 +462,16 @@ html {
 /* **************************************************************************** */
 @media (min-width: 480px) {
   #foo {
-    color: #DA7500 !important; } }
+    color: #023E4F !important; } }
 
 @media (min-width: 768px) {
   #bar {
-    color: #DA7500 !important; } }
+    color: #023E4F !important; } }
 
 @media (min-width: 992px) {
   #baz {
-    color: #DA7500 !important; } }
+    color: #023E4F !important; } }
 
 @media (min-width: 1200px) {
   #bam {
-    color: #DA7500 !important; } }
+    color: #023E4F !important; } }

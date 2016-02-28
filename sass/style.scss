@@ -9,7 +9,9 @@ $fontBody: Raleway, sans-serif;
 
 $mobileVerticalPadding: 50px;
 $navbarHeight: 100px; //this is set in Bootstrap's config.json; I haven't used it in this file (yet?)
-$navbarMobileHeight: 70px;
+$navbarHeightMobile: 70px;
+$footerHeight: 300px;
+$footerHeightMobile: 250px;
 
 $colorYellowGreen: #B3CB44;
 $colorDarkGreen: #1E3318;
@@ -42,6 +44,10 @@ $colorSchemeTextBoxGreen: $colorYellowGreen;
 $colorSchemeTextBoxGreenText: $colorLightGray;
 
 $colorSchemeFooterText: white;
+
+h1, h2 {
+  font-family: $fontHeader; //TODO: move to bootstrap's config
+}
 
 // **************************************************************************** //
 // *********************************  Mixins ********************************** //
@@ -128,6 +134,18 @@ $colorSchemeFooterText: white;
   // }
 }
 
+.squareDummy {
+  margin-top: 100%;
+}
+.squareContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+}
+
 .flipHorizontal {
   transform: scaleX(-1); //https://css-tricks.com/snippets/css/flip-an-image/
   //filter: FlipH; //invalid?
@@ -136,7 +154,7 @@ $colorSchemeFooterText: white;
 /* **************************************************************************** */
 /* *************************** 1st-Level Containers *************************** */
 /* **************************************************************************** */
-//TODO: make changes in the width of to container in Bootstrap customizer! @container-tablet, etc
+//TODO: make changes in the width of top containers in Bootstrap customizer! @container-tablet, etc
 .container { //this is using (and overridding) some of Bootstrap's container
 // #containerBody, #containerHeader, #containerFooter {
   padding: 0; //reset from Bootstrap's 15px div padding
@@ -178,102 +196,38 @@ $colorSchemeFooterText: white;
     }
   }
 }
-// #containerBody:after {
-//   left: 0;
-// }
-#containerBody {
-  // position:absolute;
-  // left: 50%;
-  // transform: translateX(-50%);
+#containerByline {
+// #aboveTheFold {
+  @media (max-width: 767px) {
+    height: 100vh;
+  }
+  @media (min-width: 768px) {
+    height: 100vh;
+    height: calc(100vh - 100px);
+  }
+  //height: 100%;
+  .row {
+    height: 100%;
+  }
 }
 #containerFooter {
-  // position: absolute;
-  background: teal;
+  // background-color: teal;
 }
+
 
 
 /* **************************************************************************** */
-/* *****************************  Begin Style.css ***************************** */
+/* ***********************  Parallax Background Styles ************************ */
 /* **************************************************************************** */
 
 body {
   //Removed in favor of .parallax's styles
   // overflow-x: hidden; overflow-y: scroll;
 }
-
-h1, h2 {
-  font-family: $fontHeader; //TODO: move to bootstrap's config
-}
-
-
-#backgroundImage {
-  // position: absolute;
-  // height: 100vh; /* vh = viewport height, 100vh = 100% of viewport */
-  // width: 100%;
-  // left: 0px;
-  padding: 0;
-  margin: 0;
-  // z-index: -10;
-  
-  //@media (min-width:480px) { //XS 
-  // top: $navbarMobileHeight;
-  background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg"); //TODO: OPTIMIZE IMAGES!!!
-  @media (min-width:480px) { //XS 
-    background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); 
-  }
-  @media (min-width:768px) { //SM
-    //removed for .parallax top: $navbarHeight; 
-    background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); 
-  }
-  @media (min-width:992px) { //MD
-  }
-  @media (min-width:1200px) { //LG
-  }
-  
-  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
-  background-size: cover;
-  background-repeat: no-repeat;
-  //separate background-position is not compatible with Firefox!
-  // background-position-x: left;
-  // background-position-y: 0px;
-  background-position: left 0px;
-  /* -webkit-transform: translateZ(0); */
-
-  /* TODO: Make multiple iimages at different sizes for different browser viewports. 
-           Switch them out with a media query with especially narrow viewport to prevent this "midriff showing" issue */
-  background-color: $colorSchemeError;
-}
-#footerBackgroundImage {
-  //left and right: calc((-100vw + 970px)/2);
-  // position: absolute;
-  // height: 300px;
-  // width: 100vw;
-  //top: 0; //note: by NOT specifying top:0, an absolute child of a __static__ element, the absolute element will stay aligned to the top of the static! weird?
-  // left: 0;
-  padding: 0;
-  margin: 0;
-  // z-index: -10;
-  
-  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
-  background-image: url("../img/pageElements/garageDoorH_XS.jpg");
-  @media (min-width: 480px) {
-    background-image: url("../img/pageElements/garageDoorH_SM.jpg");
-  }
-  background-size: cover;
-  background-repeat: no-repeat;
-  // background-position-x: center;
-  // background-position-y: 0px;
-  background-position: 0 0; //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
-  /* -webkit-transform: translateZ(0); */
-
-  /* TODO: are multiple sizes needed for this footerBackgroundImage? */
-  background-color: gray; //$colorSchemeError;
-}
-
 html {
   // width: 100vw;
   // height: 100vh;
-  overflow-x: hidden;
+  overflow-x: hidden; //seems to be needed to let mobile-android-chrome scroll
 }
 .parallax {
   //height must be defined somewhere!
@@ -298,10 +252,9 @@ html {
   // height: 100vh;
   transform-style: preserve-3d;
 }
+
 #containerBackground {
-  // top: 100px;
   top: -20vh;
-  //bottom: 200px;
   // height: 120vh;
   #backgroundImage {
     height: 120vh;
@@ -309,30 +262,75 @@ html {
   z-index: -100;
   width: 100vw;
 }
+#backgroundImage {
+  padding: 0;
+  margin: 0;
+  //@media (min-width:480px) { //XS 
+  // top: $navbarHeightMobile;
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg"); //TODO: OPTIMIZE IMAGES!!!
+  @media (min-width:480px) { //XS 
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); 
+  }
+  @media (min-width:768px) { //SM
+    //removed for .parallax top: $navbarHeight; 
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); 
+  }
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left 0px;
+  /* -webkit-transform: translateZ(0); */
+
+  /* TODO: Make multiple iimages at different sizes for different browser viewports. 
+           Switch them out with a media query with especially narrow viewport to prevent this "midriff showing" issue */
+}
+#containerFooterBackground {
+  width: 100vw;
+  position: relative;
+  top: -$footerHeightMobile;
+  margin-bottom: -$footerHeightMobile;
+  @media (min-width: 768px) {
+    top: -$footerHeight;
+    margin-bottom: -$footerHeight;
+  }
+  z-index: -50;
+}
+#footerBackgroundImage {
+  //left and right: calc((-100vw + 970px)/2);
+  // position: absolute;
+  height: $footerHeightMobile;
+  @media (min-width: 768px) { height: $footerHeight; }
+  // width: 100vw;
+  //top: 0; //note: by NOT specifying top:0, an absolute child of a __static__ element, the absolute element will stay aligned to the top of the static! weird?
+  // left: 0;
+  padding: 0;
+  margin: 0;
+  background-image: url("../img/pageElements/garageDoorH_XS.jpg");
+  @media (min-width: 480px) {
+    background-image: url("../img/pageElements/garageDoorH_SM.jpg");
+  }
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 0; //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
+  /* -webkit-transform: translateZ(0); */
+  // background-color: gray; //$colorSchemeError;
+}
+
 
 
 /* **************************************************************************** */
-/* *****************************  Begin Style.css ***************************** */
+/* *****************************  Navbar Styles  ****************************** */
 /* **************************************************************************** */
-
-/* ****************** Header Styles ************************** */
 .navbar-default {
   box-shadow: none;
   border: none;
   margin-bottom: 0;
 }
-// #collapsing-navbar-area > * {
-//   //padding: 0;
-//   margin: 0;
-// }
 .navbar-header > div {
   margin: 0;
-  // padding: 0;
 }
 #headerLinks {
   padding-right: 0;
   @media (max-width: 767px) {
-    //comment
     > ul {
       margin-bottom: 0;
     }
@@ -343,22 +341,14 @@ html {
   }
 }
 #headerIcons {
-  // > ul {
-  //   margin-top: 0;
-  //   margin-left: 0;
-  // }
   a {
-    color: $colorSchemeHeaderLinkText;
+    color: $colorOrange3;
   }
-  // .navbar-right {
-  //   margin-right: 0;
-  // }
-  height: $navbarMobileHeight;
+  height: $navbarHeightMobile;
   @media (min-width: 768px) {
     height: $navbarHeight;
   }
 }
-
 .headerName {
   background: $colorSchemeHeaderNameBG;
   padding: 0;
@@ -386,19 +376,12 @@ html {
   > *:last-child {
     margin-right: 0;
   }
-  // Change height of mobile nav to $navbarMobileHeight:
-  a.navbar-brand { height: $navbarMobileHeight; }
-  .navbar-toggle { margin: (($navbarMobileHeight - 34px) / 2) 0; }
-}
-#headerNameTiny {
-  background: $colorSchemeHeaderBG;
-}
-#headerNameTinyWidthLimiter {
-  max-width: 250px;
-  background: $colorSchemeHeaderNameBG;
-}
-#headerMobileRow .navbar-toggle {
-  margin-right: 25px;
+  // Change height of mobile nav to $navbarHeightMobile:
+  a.navbar-brand { height: $navbarHeightMobile; }
+  .navbar-toggle {
+    margin: (($navbarHeightMobile - 34px) / 2) 0; //magic number "34" comes from Bootstrap's height of 14px, plus 20px of padding and border
+    margin-right: 25px;
+  }
 }
 @media (max-width: 344px) { //382px) {//480px) {
   #headerMobileRow > div:last-child {
@@ -410,15 +393,19 @@ html {
     margin-right: 0;
   }
 }
+#headerNameTiny {
+  background: $colorSchemeHeaderBG;
+}
+#headerNameTinyWidthLimiter {
+  max-width: 250px;
+  background: $colorSchemeHeaderNameBG;
+}
 
 @media (max-width: 767px) {
   .navbar { min-height: auto; }
   .nav {
     font-size: 18px;
   }
-  // #headerSocialMedia {
-  //   padding-top: 20px;
-  // }
   #collapsing-navbar-area {
     position: absolute;
     //These changes are to maintain the same properties as if it were a position: relative;
@@ -434,25 +421,8 @@ html {
 
 
 /* **************************************************************************** */
-/* *****************************  Begin Style.css ***************************** */
+/* ****************************  Above the Fold  ****************************** */
 /* **************************************************************************** */
-
-/* ************************************************** */
-
-#containerByline {
-// #aboveTheFold {
-  @media (max-width: 767px) {
-    height: 100vh;
-  }
-  @media (min-width: 768px) {
-    height: 100vh;
-    height: calc(100vh - 100px);
-  }
-  //height: 100%;
-  .row {
-    height: 100%;
-  }
-}
 #byline {
   color: $colorSchemeBylineText;
   height: 100%;
@@ -515,45 +485,10 @@ html {
 
 
 /* **************************************************************************** */
-/* *****************************  Begin Style.css ***************************** */
+/* ********************************  Section 1  ******************************* */
 /* **************************************************************************** */
-
-//these media queries are to set the height of section1, equal to the height of the image
-@media (max-width:767px) { //XS
-  #section1text {
-    padding-top: $mobileVerticalPadding;
-    padding-bottom: $mobileVerticalPadding;
-  }
-}
-@media (min-width:768px) { //SM
-  #section1textVerticalCenter {
-    @include vCenter;
-    // //wanted to use @extend .verticalCenter, but Sass will only allow @extend w/in the same @media context
-    // position: relative;
-    // top: 50%;
-    // transform: translateY(-50%);
-    // -webkit-transform: translateY(-50%);
-    // -ms-transform: translateY(-50%);
-    // *:first-child { /* or .verticalCenter > *:first-child ?? */
-    //   margin-top: 0;
-    // }
-    // *:last-child {
-    //   margin-bottom: 0;
-    // }
-  }
-  #section1, #section1 > div {
-    height: 393px;
-  }
-}
-@media (min-width:992px) { //MD
-  #section1, #section1 > div {
-    height: 444px;
-  }
-}
-@media (min-width:1200px) { //LG
-}
 #section1 {
-  position: relative;
+  // position: relative;
 }
 #section1image {
   padding: 0;
@@ -572,41 +507,42 @@ html {
   }
   background: $colorSchemeTextBoxBG;
   color: $colorSchemeTextBoxText;
-
+}
+//these media queries are to set the height of section1, equal to the height of the image
+@media (max-width:767px) { //XS
+  #section1text {
+    padding-top: $mobileVerticalPadding;
+    padding-bottom: $mobileVerticalPadding;
+  }
+}
+@media (min-width:768px) { //SM
+  #section1textVerticalCenter {
+    @include vCenter;
+  }
+  #section1, #section1 > div {
+    height: 393px;
+  }
+}
+@media (min-width:992px) { //MD
+  #section1, #section1 > div {
+    height: 444px;
+  }
+}
+@media (min-width:1200px) { //LG
 }
 
 /* **************************************************************************** */
-/* *****************************  Begin Style.css ***************************** */
+/* ******************************  Section 2  ********************************* */
 /* **************************************************************************** */
-
 #section2 {
   // position: relative;
-  // left: 0px;
-  // width: 100%;
-  //height: 300px;
 }
 #section2button {
   padding: 0;
-}
-.squareDummy {
-  margin-top: 100%;
-}
-.squareContent {
-   position: absolute;
-   top: 0;
-   left: 0;
-   bottom: 0;
-   right: 0;
-   height: 100%; //necessary for .verticalCenter to be able to use height:50%; on the child
-}
-#section2square {
-   background-color: $colorGrayText;
-   text-align: center;
-   
+  background-color: $colorGrayText;
+  text-align: center;
 }
 #section2button h2 {
-  /* margin: 70px 70px; */
-  // font-size: 5em;
   color: $colorSchemeHeaderNameText;
   font-weight: normal;
 }
@@ -615,28 +551,23 @@ html {
   color: $colorSchemeHeaderNameText;
 }
 #section2text {
-  // position: absolute;
-  // left: 377px;
-  // top: 0px;
   background: $colorSchemeTextBoxGreen;
-  // height: 300px;
-  // width: 400px;
-  padding: $mobileVerticalPadding 60px; //TODO: responsive
-  
   color: $colorSchemeTextBoxGreenText;
   text-align: center;
   p {
     text-align: left;
   }
+  padding: 20px 40px; //TODO: responsive
+  @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
 }
 
 
 /* **************************************************************************** */
-/* *****************************  Begin Style.css ***************************** */
+/* ******************************  Footer Styles  ***************************** */
 /* **************************************************************************** */
 
 #footer {
-  // height: 300px;  
+  // height: $footerHeight;  
   color: $colorSchemeFooterText;
   text-align: center;
   margin: 0;
@@ -645,17 +576,18 @@ html {
     // padding-top: 10px;
     // padding-bottom: 10px;
     > div:first-child {
-      height: 100px
+      height: $footerHeightMobile - 150px;
     }
     > div {
       height: 150px;
     }
+    #footerName { padding-top: 40px; }
   }
   @media (min-width: 768px) {
     padding-top: $mobileVerticalPadding;
     padding-bottom: $mobileVerticalPadding;
     > div {
-      height: (300px - $mobileVerticalPadding * 2);
+      height: ($footerHeight - $mobileVerticalPadding * 2);
       // padding-right: 0;
     }
   }
@@ -707,21 +639,21 @@ html {
 //TODO: Remove these "Bootstrap width meter colors"
 @media (min-width:480px) { //XS
   #foo {
-    color: $colorOrange3 !important;
+    color: $colorBlue2 !important;
   }
 }
 @media (min-width:768px) { //SM
   #bar {
-    color: $colorOrange3 !important;
+    color: $colorBlue2 !important;
   }
 }
 @media (min-width:992px) { //MD
   #baz {
-    color: $colorOrange3 !important;
+    color: $colorBlue2 !important;
   }
 }
 @media (min-width:1200px) { //LG
   #bam {
-    color: $colorOrange3 !important;
+    color: $colorBlue2 !important;
   }
 }
