@@ -159,7 +159,7 @@ $colorSchemeFooterText: white;
     top: 0;
     margin-left: 0;
     width: 100vw;
-    z-index: -1;
+    z-index: -50;
     content: " ";
     display: block;
   }
@@ -170,24 +170,34 @@ $colorSchemeFooterText: white;
   //   left: 0;
   // }
 }
-#masterContainer:before { //, #masterContainer:after { //belowTheFoldBackground {
+#masterContainer {
+  position:absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#footerContainer {
+  position: absolute;
+  background: teal;
+}
+#masterContainer:before, #masterContainer:after { //belowTheFoldBackground {
   background-color: $colorSchemePageBG;
   position: absolute;
   top: 0;
+  bottom: 0;
   margin-left: 0;
   width: 100vw;
   //height: 100%;
-  height: 300px; //TODO: sense how height of #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
-  z-index: -1;
+  //height: 300px; //TODO: sense how height of #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
+  z-index: -50;
   content: " ";
   display: block;
 }
 #masterContainer:before {
   right: 0;
 }
-// #masterContainer:after {
-//   left: 0;
-// }
+#masterContainer:after {
+  left: 0;
+}
 
 
 body {
@@ -365,6 +375,31 @@ h1, h2 {
            Switch them out with a media query with especially narrow viewport to prevent this "midriff showing" issue */
   background-color: $colorSchemeError;
 }
+#footerBackgroundImage {
+  position: absolute;
+  height: 300px;
+  width: 100vw;
+  //top: 0; //note: by NOT specifying top:0, an absolute child of a __static__ element, the absolute element will stay aligned to the top of the static! weird?
+  // left: 0;
+  padding: 0;
+  margin: 0;
+  // z-index: -10;
+  
+  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
+  background-image: url("../img/pageElements/garageDoorH_XS.jpg");
+  @media (min-width: 480px) {
+    background-image: url("../img/pageElements/garageDoorH_SM.jpg");
+  }
+  background-size: cover;
+  background-repeat: no-repeat;
+  // background-position-x: center;
+  // background-position-y: 0px;
+  background-position: 0 0; //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
+  /* -webkit-transform: translateZ(0); */
+
+  /* TODO: are multiple sizes needed for this footerBackgroundImage? */
+  background-color: gray; //$colorSchemeError;
+}
 
 html {
   // width: 100vw;
@@ -389,6 +424,11 @@ html {
 .parallaxBase {
   transform: translateZ(0);
 }
+.parallaxGroup {
+  position: relative;
+  // height: 100vh;
+  transform-style: preserve-3d;
+}
 #backgroundContainer {
   // top: 100px;
   top: -20vh;
@@ -398,7 +438,9 @@ html {
     height: 120vh;
   }
   z-index: -100;
+  width: 100vw;
 }
+
 
 #aboveTheFold {
   @media (max-width: 767px) {
@@ -601,31 +643,7 @@ html {
   }
 }
 
-#footerBackgroundImage {
-  position: absolute;
-  height: 300px;
-  width: 100%;
-  //top: 0; //note: by NOT specifying top:0, an absolute child of a __static__ element, the absolute element will stay aligned to the top of the static! weird?
-  left: 0; 
-  padding: 0;
-  margin: 0;
-  z-index: -10;
-  
-  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
-  background-image: url("../img/pageElements/garageDoorH_XS.jpg");
-  @media (min-width: 480px) {
-    background-image: url("../img/pageElements/garageDoorH_SM.jpg");
-  }
-  background-size: cover;
-  background-repeat: no-repeat;
-  // background-position-x: center;
-  // background-position-y: 0px;
-  background-position: 0 0; //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
-  /* -webkit-transform: translateZ(0); */
 
-  /* TODO: are multiple sizes needed for this footerBackgroundImage? */
-  background-color: gray; //$colorSchemeError;
-}
 #footerContainer {
   height: 300px;  
   color: $colorSchemeFooterText;

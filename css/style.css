@@ -59,25 +59,38 @@
     top: 0;
     margin-left: 0;
     width: 100vw;
-    z-index: -1;
+    z-index: -50;
     content: " ";
     display: block; }
   #headerContainer:before {
     right: 0; } }
 
-#masterContainer:before {
+#masterContainer {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%); }
+
+#footerContainer {
+  position: absolute;
+  background: teal; }
+
+#masterContainer:before, #masterContainer:after {
   background-color: white;
   position: absolute;
   top: 0;
+  bottom: 0;
   margin-left: 0;
   width: 100vw;
-  height: 300px;
-  z-index: -1;
+  z-index: -50;
   content: " ";
   display: block; }
 
 #masterContainer:before {
   right: 0; }
+
+#masterContainer:after {
+  left: 0; }
 
 h1, h2 {
   font-family: Alegreya, serif; }
@@ -189,6 +202,24 @@ h1, h2 {
     #backgroundImage {
       background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); } }
 
+#footerBackgroundImage {
+  position: absolute;
+  height: 300px;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
+  background-image: url("../img/pageElements/garageDoorH_XS.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  /* -webkit-transform: translateZ(0); */
+  /* TODO: are multiple sizes needed for this footerBackgroundImage? */
+  background-color: gray; }
+  @media (min-width: 480px) {
+    #footerBackgroundImage {
+      background-image: url("../img/pageElements/garageDoorH_SM.jpg"); } }
+
 html {
   overflow-x: hidden; }
 
@@ -214,9 +245,15 @@ html {
   -webkit-transform: translateZ(0);
           transform: translateZ(0); }
 
+.parallaxGroup {
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d; }
+
 #backgroundContainer {
   top: -20vh;
-  z-index: -100; }
+  z-index: -100;
+  width: 100vw; }
   #backgroundContainer #backgroundImage {
     height: 120vh; }
 
@@ -349,26 +386,6 @@ html {
   text-align: center; }
   #section2text p {
     text-align: left; }
-
-#footerBackgroundImage {
-  position: absolute;
-  height: 300px;
-  width: 100%;
-  left: 0;
-  padding: 0;
-  margin: 0;
-  z-index: -10;
-  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
-  background-image: url("../img/pageElements/garageDoorH_XS.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  /* -webkit-transform: translateZ(0); */
-  /* TODO: are multiple sizes needed for this footerBackgroundImage? */
-  background-color: gray; }
-  @media (min-width: 480px) {
-    #footerBackgroundImage {
-      background-image: url("../img/pageElements/garageDoorH_SM.jpg"); } }
 
 #footerContainer {
   height: 300px;
