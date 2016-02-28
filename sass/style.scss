@@ -9,7 +9,9 @@ $fontBody: Raleway, sans-serif;
 
 $mobileVerticalPadding: 50px;
 $navbarHeight: 100px; //this is set in Bootstrap's config.json; I haven't used it in this file (yet?)
-$navbarMobileHeight: 70px;
+$navbarHeightMobile: 70px;
+$footerHeight: 300px;
+$footerHeightMobile: 250px;
 
 $colorYellowGreen: #B3CB44;
 $colorDarkGreen: #1E3318;
@@ -43,7 +45,13 @@ $colorSchemeTextBoxGreenText: $colorLightGray;
 
 $colorSchemeFooterText: white;
 
-// *********************************** Mixins ***********************************
+h1, h2 {
+  font-family: $fontHeader; //TODO: move to bootstrap's config
+}
+
+// **************************************************************************** //
+// *********************************  Mixins ********************************** //
+// **************************************************************************** //
 @mixin vCenter {
   position: relative;
   top: 50%;
@@ -76,142 +84,270 @@ $colorSchemeFooterText: white;
   right: 0;
 }
 
-// @import 'normalize';
-// @import 'reset';
-
 /* **************************************************************************** */
-/* *****************************  Begin Style.css ***************************** */
+/* ************************* Generic Transformations ************************** */
 /* **************************************************************************** */
-
-//********************* main media query area *********************
-//TODO: make changes in the width of to container in Bootstrap customizer! @container-tablet, etc
-@media (min-width:768px) {
-  #masterContainer, #footerContainer {
-    width:750px
+.socialMediaButtons {
+  a {
+    i {
+      //font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  span {
+    padding-left: 7px;
+  }
+  span:first-child {
+    padding-left: 0;
   }
 }
-@media (min-width:992px) {
-  #masterContainer, #footerContainer {
+
+.nameplate {
+  h1 {
+    //font-family: $fontPageHeader; //NOTE: do not like small-caps here
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  h3 {
+    font-size: 16px;
+    margin-top: 0;
+  }
+}
+
+.verticalCenter {
+  @include vCenter;
+  /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
+  // position: relative;
+  // top: 50%;
+  // transform: translateY(-50%);
+  // // -webkit-transform: translateY(-50%);
+  // // -ms-transform: translateY(-50%);
+  // 
+  // // margin: 0;
+  // // padding: 0;
+  // // background: $colorSchemeError; 
+  // *:first-child { /* or .verticalCenter > *:first-child ?? */ 
+  //   margin-top: 0;
+  // }
+  // *:last-child {
+  //   margin-bottom: 0;
+  // }
+}
+
+.squareDummy {
+  margin-top: 100%;
+}
+.squareContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+}
+
+.flipHorizontal {
+  transform: scaleX(-1); //https://css-tricks.com/snippets/css/flip-an-image/
+  //filter: FlipH; //invalid?
+}
+
+/* **************************************************************************** */
+/* *************************** 1st-Level Containers *************************** */
+/* **************************************************************************** */
+//TODO: make changes in the width of top containers in Bootstrap customizer! @container-tablet, etc
+.container { //this is using (and overridding) some of Bootstrap's container
+// #containerBody, #containerHeader, #containerFooter {
+  padding: 0; //reset from Bootstrap's 15px div padding
+  @media (min-width:768px) {
+    width:750px
+  }
+  @media (min-width:992px) {
     width:970px
   }
 }
-// @media (min-width:1200px)
-// {
-//   #masterContainer{
-//     width:970px;
-//   }
-// }
+.container > * { //evaluated load performance a few times, didn't change load +/- 50ms 
+  margin-left: 0;
+  margin-right: 0;
+}
 
-// .col-xs-34 { background-color: red; }
-// .col-sm-34 { background-color: orange; }
-// .col-md-34 { background-color: yellow; }
-// .col-lg-34 { background-color: green; }
-@media (min-width:480px) { //XS
-  #foo {
-    color: $colorOrange3 !important;
+@media (min-width: 768px) {
+  #containerHeader:before, #containerBody:before {
+    background-color: $colorSchemePageBG;
+    position: absolute;
+    // top: 0;
+    margin-left: 0;
+    right: -1px;
+    width: 101vw;
+    z-index: -50;
+    content: " ";
+    display: block;
+  }
+  #containerHeader:before {
+    height: $navbarHeight;
+  }
+  #containerBody:before {
+    // bottom: 0;
+    // height: 444px; //TODO: sense how height of #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
+    @media (min-width:768px) { //SM
+      height: 393px + 166.656px; //this is my best solution to the "unknowable height" problem == (height of image + height of col-sm-8)
+    }
+    @media (min-width:992px) { //MD
+      height: 444px + 166.656px;
+    }
   }
 }
-@media (min-width:768px) { //SM
-  #bar {
-    color: $colorOrange3 !important;
+#containerByline {
+// #aboveTheFold {
+  @media (max-width: 767px) {
+    height: 100vh;
+  }
+  @media (min-width: 768px) {
+    height: 100vh;
+    height: calc(100vh - 100px);
+  }
+  //height: 100%;
+  .row {
+    height: 100%;
   }
 }
-@media (min-width:992px) { //MD
-  #baz {
-    color: $colorOrange3 !important;
-  }
+#containerFooter {
+  // background-color: teal;
 }
-@media (min-width:1200px) { //LG
-  #bam {
-    color: $colorOrange3 !important;
-  }
-}
+
+
+
+/* **************************************************************************** */
+/* ***********************  Parallax Background Styles ************************ */
+/* **************************************************************************** */
 
 body {
-  //font-size: 10px;
-  //font-family: $fontBody;
+  //Removed in favor of .parallax's styles
+  // overflow-x: hidden; overflow-y: scroll;
+}
+html {
+  // width: 100vw;
+  // height: 100vh;
+  overflow-x: hidden; //seems to be needed to let mobile-android-chrome scroll
+}
+.parallax {
+  //height must be defined somewhere!
+  height: 100vh;
+  perspective: 1px;
   overflow-x: hidden;
   overflow-y: scroll;
-  //background: $colorSchemePageBG;
+  // transform-style: preserve-3d;
 }
-#masterContainer, #headerContainer, #footerContainer {
-  padding: 0; //reset from Bootstrap's 15px padding
+.parallaxLayer {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
-  #masterContainer > * { //evaluated load performance a few times, didn't change load +/- 50ms 
-    margin-left: 0;
-    margin-right: 0;
+.parallaxBack {
+  transform: translateZ(-1px) scale(2);
+}
+.parallaxBase {
+  transform: translateZ(0);
+}
+.parallaxGroup {
+  position: relative;
+  // height: 100vh;
+  transform-style: preserve-3d;
+}
+
+#containerBackground {
+  top: -20vh;
+  // height: 120vh;
+  #backgroundImage {
+    height: 120vh;
   }
-#masterContainer {
-//  position: relative;
+  z-index: -100;
+  width: 100vw;
 }
-h1, h2 {
-  font-family: $fontHeader;
+#backgroundImage {
+  padding: 0;
+  margin: 0;
+  //@media (min-width:480px) { //XS 
+  // top: $navbarHeightMobile;
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg"); //TODO: OPTIMIZE IMAGES!!!
+  @media (min-width:480px) { //XS 
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); 
+  }
+  @media (min-width:768px) { //SM
+    //removed for .parallax top: $navbarHeight; 
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); 
+  }
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left 0px;
+  /* -webkit-transform: translateZ(0); */
+
+  /* TODO: Make multiple iimages at different sizes for different browser viewports. 
+           Switch them out with a media query with especially narrow viewport to prevent this "midriff showing" issue */
+}
+#containerFooterBackground {
+  width: 100vw;
+  position: relative;
+  top: -$footerHeightMobile;
+  margin-bottom: -$footerHeightMobile;
+  @media (min-width: 768px) {
+    top: -$footerHeight;
+    margin-bottom: -$footerHeight;
+  }
+  z-index: -50;
+}
+#footerBackgroundImage {
+  //left and right: calc((-100vw + 970px)/2);
+  // position: absolute;
+  height: $footerHeightMobile;
+  @media (min-width: 768px) { height: $footerHeight; }
+  // width: 100vw;
+  //top: 0; //note: by NOT specifying top:0, an absolute child of a __static__ element, the absolute element will stay aligned to the top of the static! weird?
+  // left: 0;
+  padding: 0;
+  margin: 0;
+  background-image: url("../img/pageElements/garageDoorH_XS.jpg");
+  @media (min-width: 480px) {
+    background-image: url("../img/pageElements/garageDoorH_SM.jpg");
+  }
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 0; //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
+  /* -webkit-transform: translateZ(0); */
+  // background-color: gray; //$colorSchemeError;
 }
 
 
-/* ****************** Removing Bootstrap's Nav Styles ************************** */
+
+/* **************************************************************************** */
+/* *****************************  Navbar Styles  ****************************** */
+/* **************************************************************************** */
 .navbar-default {
-  //background: none;
   box-shadow: none;
   border: none;
-  //border-radius: 0;
   margin-bottom: 0;
 }
-#collapsing-navbar-area > * {
-  //padding: 0;
+.navbar-header > div {
   margin: 0;
-}
-#headerContainer {
-  //position: relative;
-  //width: 960px;
-  //height: 100px;
-  margin: 0;
-}
-#headerRow, #headerMobileRow {
-  margin: 0;
-  padding: 0;
 }
 #headerLinks {
   padding-right: 0;
-  > ul {
-    margin-bottom: 0;
+  @media (max-width: 767px) {
+    > ul {
+      margin-bottom: 0;
+    }
   }
   a {
-  padding-left: 7.5px;
-  padding-right: 7.5px;
-}
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+  }
 }
 #headerIcons {
-  > ul {
-    margin-top: 0;
-  }
   a {
-    color: $colorSchemeHeaderLinkText;
+    color: $colorOrange3;
   }
-}
-#headerSocialMedia {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  height: $navbarHeightMobile;
   @media (min-width: 768px) {
-    padding-top: 37.5px;
-    padding-bottom: 37.5px;
+    height: $navbarHeight;
   }
-  //height: 100px;
-  // li {
-    // display: inline-block;
-    // text-decoration: none;
-    // font-size: 16px;
-    // margin: 0 7px;
-  // }
-  
-
-}
-
-#header {
-  //background: $colorSchemeHeaderBG;
-  //width: 100%;
-  //height: 100px;
-  /* z-index: 5; */
 }
 .headerName {
   background: $colorSchemeHeaderNameBG;
@@ -240,19 +376,12 @@ h1, h2 {
   > *:last-child {
     margin-right: 0;
   }
-  // Change height of mobile nav to $navbarMobileHeight:
-  a.navbar-brand { height: $navbarMobileHeight; }
-  .navbar-toggle { margin: (($navbarMobileHeight - 34px) / 2) 0; }
-}
-#headerNameTiny {
-  background: $colorSchemeHeaderBG;
-}
-#headerNameTinyWidthLimiter {
-  max-width: 250px;
-  background: $colorSchemeHeaderNameBG;
-}
-#headerMobileRow .navbar-toggle {
-  margin-right: 25px;
+  // Change height of mobile nav to $navbarHeightMobile:
+  a.navbar-brand { height: $navbarHeightMobile; }
+  .navbar-toggle {
+    margin: (($navbarHeightMobile - 34px) / 2) 0; //magic number "34" comes from Bootstrap's height of 14px, plus 20px of padding and border
+    margin-right: 25px;
+  }
 }
 @media (max-width: 344px) { //382px) {//480px) {
   #headerMobileRow > div:last-child {
@@ -264,15 +393,18 @@ h1, h2 {
     margin-right: 0;
   }
 }
+#headerNameTiny {
+  background: $colorSchemeHeaderBG;
+}
+#headerNameTinyWidthLimiter {
+  max-width: 250px;
+  background: $colorSchemeHeaderNameBG;
+}
 
 @media (max-width: 767px) {
   .navbar { min-height: auto; }
-  #backgroundImage { top: $navbarMobileHeight; }
   .nav {
     font-size: 18px;
-  }
-  #headerSocialMedia {
-    padding-top: 20px;
   }
   #collapsing-navbar-area {
     position: absolute;
@@ -280,65 +412,17 @@ h1, h2 {
     box-sizing: content-box;
     background-color: $colorSchemeHeaderBG;
     z-index: 100;
-    padding-right: 0;
+    //padding-right: 0;
     // width: 100vw;
     ul { width: 100%; }
     li { width: 100vw; }
   }
 }
 
-#backgroundImage {
-  position: absolute;
-  height: 100vh; /* vh = viewport height, 100vh = 100% of viewport */
-  width: 100%;
-  left: 0px;
-  padding: 0;
-  margin: 0;
-  z-index: -10;
-  
-  //@media (min-width:480px) { //XS 
-    background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg"); //TODO: OPTIMIZE IMAGES!!!
-  //}
-  @media (min-width:480px) { //XS 
-    background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); 
-  }
-  @media (min-width:768px) { //SM
-    top: 100px; 
-    background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); 
-  }
-  @media (min-width:992px) { //MD
-  }
-  @media (min-width:1200px) { //LG
-  }
-  
-  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
-  background-size: cover;
-  background-repeat: no-repeat;
-  //separate background-position is not compatible with Firefox!
-  // background-position-x: left;
-  // background-position-y: 0px;
-  background-position: left 0px;
-  /* -webkit-transform: translateZ(0); */
 
-  /* TODO: Make multiple iimages at different sizes for different browser viewports. 
-           Switch them out with a media query with especially narrow viewport to prevent this "midriff showing" issue */
-  background-color: $colorSchemeError;
-}
-
-
-#aboveTheFold {
-//position: relative;
-  /* position: absolute; */
-  /* top:100px; */
-//width: 960px;
-  @media (max-width: 767px) {
-    height: 100vh;
-  }
-  @media (min-width: 768px) {
-    height: calc(100vh - 100px);
-  }
-//margin: 0 auto;
-}
+/* **************************************************************************** */
+/* ****************************  Above the Fold  ****************************** */
+/* **************************************************************************** */
 #byline {
   color: $colorSchemeBylineText;
   height: 100%;
@@ -346,10 +430,16 @@ h1, h2 {
   @media (max-width: 767px) {
     padding: 0;
     #bylineVerticalPosition {
-      @include vTop;
+      //@include vTop;
       background: $colorSchemeBylineBG;
       opacity: .6;
       margin: 0;
+      > *:first-child { /* or .verticalCenter > *:first-child ?? */ 
+        margin-top: 0;
+      }
+      > *:last-child {
+        margin-bottom: 0;
+      }
     }
     h1 {
       padding-top: 20px;
@@ -362,7 +452,16 @@ h1, h2 {
     background: $colorSchemeBylineBG;
     opacity: .6;
     #bylineVerticalPosition {
-      @include vCenter;
+      //@include vCenter;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      > *:first-child { /* or .verticalCenter > *:first-child ?? */ 
+        margin-top: 0;
+      }
+      > *:last-child {
+        margin-bottom: 0;
+      }
     }
   }
   h1 {
@@ -385,41 +484,30 @@ h1, h2 {
 }
 
 
-
-#belowTheFold {
-  //position: relative;
-  height: 100%;
-  //background-color: $colorSchemePageBG;
-  /* background: transparent; */
+/* **************************************************************************** */
+/* ********************************  Section 1  ******************************* */
+/* **************************************************************************** */
+#section1 {
   // position: relative;
-  // width: 960px;
-  /* min-height: 100%; */
-  // margin: 0 auto;
-  /* top: 0; */
-  /* left: 0; */
 }
-/* fix to remove margin-top from all children of a position:relative conainer
-#siteContainer * {
-  margin-top: 0;
-} */
-// #section1:before, #section1:after { //belowTheFoldBackground {
-//   background-color: $colorSchemePageBG;
-//   position: absolute;
-//   top: 0;
-//   margin-left: 0;
-//   width: 100vw;
-//   //height: 100%;
-//   height: 300px; //TODO: sense how height of #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
-//   z-index: -1;
-// }
-// #section1:before {
-//   right: 0;
-// }
-// #section1:after {
-//   left: 0;
-// }
-
-
+#section1image {
+  padding: 0;
+}
+#section1image img {
+  width: 100%;
+  //TODO: should there be separate images (through @media) for each sm/md/lg size?
+}
+#section1text {
+  // height: 100%;
+  padding-left: 60px;
+  padding-right: 60px;
+  text-align: center;
+  p {
+    text-align: left;
+  }
+  background: $colorSchemeTextBoxBG;
+  color: $colorSchemeTextBoxText;
+}
 //these media queries are to set the height of section1, equal to the height of the image
 @media (max-width:767px) { //XS
   #section1text {
@@ -429,18 +517,7 @@ h1, h2 {
 }
 @media (min-width:768px) { //SM
   #section1textVerticalCenter {
-    //wanted to use @extend .verticalCenter, but Sass will only allow @extend w/in the same @media context
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    *:first-child { /* or .verticalCenter > *:first-child ?? */
-      margin-top: 0;
-    }
-    *:last-child {
-      margin-bottom: 0;
-    }
+    @include vCenter;
   }
   #section1, #section1 > div {
     height: 393px;
@@ -453,66 +530,19 @@ h1, h2 {
 }
 @media (min-width:1200px) { //LG
 }
-#section1 {
-  position: relative;
-}
-#section1image {
-  padding: 0;
-}
-#section1image img {
-  width: 100%;
-  //TODO: should there be separate images (through @media) for each sm/md/lg size?
-}
-#section1text {
-  // height: 100%;
-  // padding: 100px 60px; //TODO: @media
-  padding-left: 60px;
-  padding-right: 60px;
-  text-align: center;
-  p {
-    text-align: left;
-  }
-  background: $colorSchemeTextBoxBG;
-  color: $colorSchemeTextBoxText;
 
-}
-
+/* **************************************************************************** */
+/* ******************************  Section 2  ********************************* */
+/* **************************************************************************** */
 #section2 {
   // position: relative;
-  // left: 0px;
-  // width: 100%;
-  //height: 300px;
 }
 #section2button {
   padding: 0;
-// width: 100%;
-  // position: absolute;
-  // top: 0;
-// background: $colorGrayText;
-  // width: 140px;
-  // height: 140px;
-  // left: 237px;
-//text-align: center;
-  /* padding: 50px 50px; */
-}
-.squareDummy {
-  margin-top: 100%;
-}
-#section2square {
-   position: absolute;
-   top: 0;
-   left: 0;
-   bottom: 0;
-   right: 0;
-   
-   background-color: $colorGrayText;
-   text-align: center;
-   
-   height: 100%; //necessary for .verticalCenter to be able to use height:50%; on the child
+  background-color: $colorGrayText;
+  text-align: center;
 }
 #section2button h2 {
-  /* margin: 70px 70px; */
-  // font-size: 5em;
   color: $colorSchemeHeaderNameText;
   font-weight: normal;
 }
@@ -521,69 +551,43 @@ h1, h2 {
   color: $colorSchemeHeaderNameText;
 }
 #section2text {
-  // position: absolute;
-  // left: 377px;
-  // top: 0px;
   background: $colorSchemeTextBoxGreen;
-  // height: 300px;
-  // width: 400px;
-  padding: $mobileVerticalPadding 60px; //TODO: responsive
-  
   color: $colorSchemeTextBoxGreenText;
   text-align: center;
   p {
     text-align: left;
   }
+  padding: 20px 40px; //TODO: responsive
+  @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
 }
 
-#footerBackgroundImage {
-  position: absolute;
-  height: 300px;
-  width: 100%;
-  //top: 0; //note: by NOT specifying top:0, an absolute child of a __static__ element, the absolute element will stay aligned to the top of the static! weird?
-  left: 0; 
-  padding: 0;
-  margin: 0;
-  z-index: -10;
-  
-  /* parallax scrolling technique: http://code.tutsplus.com/tutorials/a-simple-parallax-scrolling-technique--net-27641 */
-  background-image: url("../img/pageElements/garageDoorH_XS.jpg");
-  @media (min-width: 480px) {
-    background-image: url("../img/pageElements/garageDoorH_SM.jpg");
-  }
-  background-size: cover;
-  background-repeat: no-repeat;
-  // background-position-x: center;
-  // background-position-y: 0px;
-  background-position: 0 0; //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
-  /* -webkit-transform: translateZ(0); */
 
-  /* TODO: are multiple sizes needed for this footerBackgroundImage? */
-  background-color: gray; //$colorSchemeError;
-}
-#footerContainer {
-  height: 300px;  
-  color: $colorSchemeFooterText;
-}
+/* **************************************************************************** */
+/* ******************************  Footer Styles  ***************************** */
+/* **************************************************************************** */
+
 #footer {
+  // height: $footerHeight;  
+  color: $colorSchemeFooterText;
   text-align: center;
   margin: 0;
   @media (max-width: 767px) {
     width: 100vw;
     // padding-top: 10px;
     // padding-bottom: 10px;
+    > div:first-child {
+      height: $footerHeightMobile - 150px;
+    }
     > div {
       height: 150px;
     }
-    > div:first-child {
-      height: 150px
-    }
+    #footerName { padding-top: 40px; }
   }
   @media (min-width: 768px) {
     padding-top: $mobileVerticalPadding;
     padding-bottom: $mobileVerticalPadding;
     > div {
-      height: (300px - $mobileVerticalPadding * 2);
+      height: ($footerHeight - $mobileVerticalPadding * 2);
       // padding-right: 0;
     }
   }
@@ -626,55 +630,30 @@ h1, h2 {
   // font-size: 16px;
 }
 
-/* ******************************** General Transformation Classes ******************************** */
-.socialMediaButtons {
-  a {
-    i {
-      //font-size: 14px;
-      line-height: 20px;
-    }
-  }
-  span {
-    padding-left: 7px;
-  }
-  span:last-child {
-    padding-right: 7px;
+
+
+/* **************************************************************************** */
+/* ****************************  Bootstrap "Meter" **************************** */
+/* **************************************************************************** */
+
+//TODO: Remove these "Bootstrap width meter colors"
+@media (min-width:480px) { //XS
+  #foo {
+    color: $colorBlue2 !important;
   }
 }
-
-.nameplate {
-  h1 {
-    //font-family: $fontPageHeader; //NOTE: do not like small-caps here
-    font-size: 18px;
-    margin-bottom: 5px;
-  }
-  h3 {
-    font-size: 16px;
-    margin-top: 0;
+@media (min-width:768px) { //SM
+  #bar {
+    color: $colorBlue2 !important;
   }
 }
-
-.verticalCenter {
-  @include vCenter;
-  /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
-  // position: relative;
-  // top: 50%;
-  // transform: translateY(-50%);
-  // // -webkit-transform: translateY(-50%);
-  // // -ms-transform: translateY(-50%);
-  // 
-  // // margin: 0;
-  // // padding: 0;
-  // // background: $colorSchemeError; 
-  // *:first-child { /* or .verticalCenter > *:first-child ?? */ 
-  //   margin-top: 0;
-  // }
-  // *:last-child {
-  //   margin-bottom: 0;
-  // }
+@media (min-width:992px) { //MD
+  #baz {
+    color: $colorBlue2 !important;
+  }
 }
-
-.flipHorizontal {
-  transform: scaleX(-1); //https://css-tricks.com/snippets/css/flip-an-image/
-  //filter: FlipH; //invalid?
+@media (min-width:1200px) { //LG
+  #bam {
+    color: $colorBlue2 !important;
+  }
 }
