@@ -166,7 +166,7 @@
             </div>
           </div>
           <div id="footerLinksPhone">
-            <p>allison@bistlineeast.com</p>
+            <p><a href="mailto:allison@bistlineeast.com">allison@bistlineeast.com</a></p>
           </div>
         </div>
       </div>
@@ -174,7 +174,7 @@
   </div> <!-- #containerFooter -->
 
   <div id="containerFooterBackground" class="container">
-    <div id="footerBackgroundImage"></div>
+    <div id="footerBackgroundImage" data-speed="-2"></div>
   </div>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -182,6 +182,60 @@
   <!-- Bootstrap js: Latest compiled and minified JavaScript -->
   <script src="js/bootstrap.min.js"></script>
   <script>
+    //modifying parallax scrolling to use window.requestAnimationFrame. see: https://gist.github.com/Warry/4254579 
+    var scroll = window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                function(callback){ window.setTimeout(callback, 1000/60); }; // IE Fallback, you can even fallback to onscroll
+    var lastPosition = -1;
+    var bg = document.getElementById("footerBackgroundImage");
+    var yPos = 0;
+    var viewportTop;
+    var viewportBottom;
+    
+    function scrollLoop() {
+      viewportTop = window.pageYOffset;
+      viewportBottom = viewportTop + window.innerHeight;
+      if (lastPosition === viewportTop) {
+        scroll( scrollLoop );
+        return false;
+      }
+      else {
+        lastPosition = viewportTop; 
+      }
+      
+      //do stuff
+      // console.log("***** window.pageYOffset: " + window.pageYOffset);
+      //for (var i = 0; i < bg.length; ++i) {
+        // console.log(window.innerHeight); //innerHeight == 100vh
+        // console.log(bg[i].offsetTop);
+        // console.log(bg[i].offsetHeight);
+        // console.log(bg[i].offsetTop - bg[i].offsetHeight);
+        // at viewportTop=0, viewport is 0 to innerHeight
+        // at viewportTop=50, viewport is 50 to innerHeight+50
+        // top of element is at offsetTop
+        // bottom of element is at offsetTop + offsetHeight
+        // console.log("viewportTop to bottom: " + viewportTop + " - " + (viewportTop + window.innerHeight));
+        // console.log("element top and bottom: " + bg[i].offsetTop + " - " + (bg[i].offsetTop + bg[i].offsetHeight));
+        if ((bg.offsetTop + bg.offsetHeight) >= viewportTop && bg.offsetTop <= (viewportTop + window.innerHeight)) {
+          // console.log("bg["+i+"] is visible");
+          // var someSortOfTopOfPageOffset = ((window.innerHeight - viewportTop) > 0 ? (viewportTop) : 0);
+          // console.log(bg[i].offsetTop);
+          // console.log(viewportBottom);
+          // yPos[i] = (bg[i].offsetTop - (viewportTop + window.innerHeight)) / -bg[i].dataset.speed; // + ((viewportTop)/ bg[i].dataset.speed);
+          yPos = (bg.offsetTop - viewportBottom + bg.offsetHeight) / bg.dataset.speed;
+          console.log("yPos: " + yPos + "(at speed: " + bg.dataset.speed + ")");
+          bg.style.backgroundPosition = "0px " + yPos + "px";
+        }
+      //}
+      
+      scroll( scrollLoop ); //loop (recursive) by calling the delaying function, requestAnimantionFrame, with this function as a callback
+    }
+    scrollLoop(); //start the looping
+  
+  
     $(document).ready(function() {
       //This "locks" in 100vh for Android, when the disappearing Address Bar changes the viewport
       //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
