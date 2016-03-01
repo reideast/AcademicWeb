@@ -134,6 +134,13 @@ h1, h2 {
   // }
 }
 
+// use this style to set the height of .squareContent equal to the width of the container:
+// <container>
+//   <div class="squareDummy"></div>
+//   <div class="squareContent">
+//     ...content...
+//   </div>
+// </container>
 .squareDummy {
   margin-top: 100%;
 }
@@ -310,12 +317,9 @@ html {
   }
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 0 0; //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
+  // background-position: 0 0; //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
   /* -webkit-transform: translateZ(0); */
   // background-color: gray; //$colorSchemeError;
-  -webkit-transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: hidden;
-	-webkit-perspective: 1000;
 }
 
 

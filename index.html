@@ -20,13 +20,32 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,700,700italic,400italic|Alegreya+SC:400italic|Raleway:400,400italic,700,700italic'
-  rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400|Alegreya+SC:400italic|Raleway:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <!--<link href='https://fonts.googleapis.com/css?family=Alegreya:400,700,700italic,400italic|Alegreya+SC:400italic|Raleway:400,400italic,700,700italic' rel='stylesheet' type='text/css'>-->
   <!-- complete google fonts link: <link href='https://fonts.googleapis.com/css?family=Lora|Libre+Baskerville|Alegreya:400,400italic,700italic,700|EB+Garamond|Lato|Raleway|Spinnaker|Cabin' rel='stylesheet' type='text/css'> -->
 
   <link rel="stylesheet" href="css/style.css" type="text/css" />
-  <link rel="icon" type="image/png" href="img/pageElements/favicon.png" />
-  <link rel="shortcut icon" type="image/x-icon" href="img/pageElements/favicon.ico" />
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#b3cb44">
+  <meta name="apple-mobile-web-app-title" content="Allison Bistline-East">
+  <meta name="application-name" content="Allison Bistline-East">
+  <meta name="msapplication-TileColor" content="#b3cb44">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#b3cb44">
 
   <meta name="description" content="">
   <meta name="author" content="Allison Bistline-East">
@@ -183,84 +202,6 @@
   <!-- Bootstrap js: Latest compiled and minified JavaScript -->
   <script src="js/bootstrap.min.js"></script>
   <script>
-    //modifying parallax scrolling to use window.requestAnimationFrame. see: https://gist.github.com/Warry/4254579 
-    var scroll = window.requestAnimationFrame ||
-                window.webkitRequestAnimationFrame ||
-                window.mozRequestAnimationFrame ||
-                window.msRequestAnimationFrame ||
-                window.oRequestAnimationFrame ||
-                function(callback){ window.setTimeout(callback, 1000/60); }; // IE Fallback, you can even fallback to onscroll
-    var lastPosition = -1;
-    var container = document.getElementById("bodyParallax");
-    var bg = document.getElementById("footerBackgroundImage");
-    var wrapper = document.getElementById("containerFooterBackground");
-    var yPos = 0;
-    var viewportTop;
-    var viewportBottom;
-    var bgTop = wrapper.offsetTop;
-    var bgBottom = wrapper.offsetTop + bg.offsetHeight;
-    var bgSpeed = bg.dataset.speed;
-    var offset = bgBottom / bgSpeed;
-      // desired ypos = -bgBottom
-      // -bg.OffsetHeight = offset + viewportBottom / 2
-      // desired when bgBottom == viewportBottom
-      // -bg.OffsetHeight = offset + bgBottom / 2
-      // -bg.OffsetHeight - bgBottom / 2 = offset
-    offset = -bg.offsetHeight - bgTop/2 - bg.offsetHeight/2;
-    //var offset = bgBottom - bg.offsetHeight; // for - viewportBottom
-    console.log("container.scrollTop: " + container.scrollTop);
-    console.log("container.clientHeight: " + container.clientHeight);
-    
-    function scrollLoop() {
-      //viewportTop = window.pageYOffset;
-      // console.log(document.getElementById("bodyParallax").scrollHeight);
-      // console.log(container.scrollTop);
-      viewportTop = container.scrollTop;
-      viewportBottom = viewportTop + container.clientHeight;
-      // viewportBottom = viewportTop + window.innerHeight;
-      if (lastPosition === viewportTop) {
-        scroll( scrollLoop );
-        return false;
-      }
-      else {
-        lastPosition = viewportTop; 
-      }
-      
-      //console.log("vt: " + viewportTop + ", vb: " + viewportBottom);
-      //console.log("bg.offsetTop: " + document.getElementById("containerFooterBackground").offsetTop + ", bg.offsetHeight: " + bg.offsetHeight);
-      
-      //do stuff
-      // console.log("***** window.pageYOffset: " + window.pageYOffset);
-      //for (var i = 0; i < bg.length; ++i) {
-        // console.log(window.innerHeight); //innerHeight == 100vh
-        // console.log(bg[i].offsetTop);
-        // console.log(bg[i].offsetHeight);
-        // console.log(bg[i].offsetTop - bg[i].offsetHeight);
-        // at viewportTop=0, viewport is 0 to innerHeight
-        // at viewportTop=50, viewport is 50 to innerHeight+50
-        // top of element is at offsetTop
-        // bottom of element is at offsetTop + offsetHeight
-        // console.log("viewportTop to bottom: " + viewportTop + " - " + (viewportTop + window.innerHeight));
-        // console.log("element top and bottom: " + bg[i].offsetTop + " - " + (bg[i].offsetTop + bg[i].offsetHeight));
-      // if (bgBottom >= viewportTop && bgTop <= viewportBottom) {
-          // console.log("bg["+i+"] is visible");
-          // var someSortOfTopOfPageOffset = ((window.innerHeight - viewportTop) > 0 ? (viewportTop) : 0);
-          // console.log(bg[i].offsetTop);
-          // console.log(viewportBottom);
-          // yPos[i] = (bg[i].offsetTop - (viewportTop + window.innerHeight)) / -bg[i].dataset.speed; // + ((viewportTop)/ bg[i].dataset.speed);
-          // yPos = offset - viewportBottom / bgSpeed;
-          //console.log(viewportBottom);
-          yPos = offset + viewportBottom / 2;
-          //console.log("yPos: " + yPos + "(at speed: " + bg.dataset.speed + ")");
-          bg.style.backgroundPosition = "0px " + yPos + "px";
-      // }
-      //}
-      
-      scroll( scrollLoop ); //loop (recursive) by calling the delaying function, requestAnimantionFrame, with this function as a callback
-    }
-    scrollLoop(); //start the looping
-  
-  
     $(document).ready(function() {
       //This "locks" in 100vh for Android, when the disappearing Address Bar changes the viewport
       //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
