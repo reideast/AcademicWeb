@@ -175,7 +175,7 @@
   </div> <!-- #containerFooter -->
 
   <div id="containerFooterBackground" class="container">
-    <div id="footerBackgroundImage" data-speed="-2"></div>
+    <div id="footerBackgroundImage" data-speed="2"></div>
   </div>
 </div>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -201,6 +201,13 @@
     var bgBottom = wrapper.offsetTop + bg.offsetHeight;
     var bgSpeed = bg.dataset.speed;
     var offset = bgBottom / bgSpeed;
+      // desired ypos = -bgBottom
+      // -bg.OffsetHeight = offset + viewportBottom / 2
+      // desired when bgBottom == viewportBottom
+      // -bg.OffsetHeight = offset + bgBottom / 2
+      // -bg.OffsetHeight - bgBottom / 2 = offset
+    offset = -bg.offsetHeight - bgTop/2 - bg.offsetHeight/2;
+    //var offset = bgBottom - bg.offsetHeight; // for - viewportBottom
     console.log("container.scrollTop: " + container.scrollTop);
     console.log("container.clientHeight: " + container.clientHeight);
     
@@ -235,16 +242,18 @@
         // bottom of element is at offsetTop + offsetHeight
         // console.log("viewportTop to bottom: " + viewportTop + " - " + (viewportTop + window.innerHeight));
         // console.log("element top and bottom: " + bg[i].offsetTop + " - " + (bg[i].offsetTop + bg[i].offsetHeight));
-        if (bgBottom >= viewportTop && bgTop <= viewportBottom) {
+      // if (bgBottom >= viewportTop && bgTop <= viewportBottom) {
           // console.log("bg["+i+"] is visible");
           // var someSortOfTopOfPageOffset = ((window.innerHeight - viewportTop) > 0 ? (viewportTop) : 0);
           // console.log(bg[i].offsetTop);
           // console.log(viewportBottom);
           // yPos[i] = (bg[i].offsetTop - (viewportTop + window.innerHeight)) / -bg[i].dataset.speed; // + ((viewportTop)/ bg[i].dataset.speed);
-          yPos = offset - viewportBottom / bgSpeed;
+          // yPos = offset - viewportBottom / bgSpeed;
+          //console.log(viewportBottom);
+          yPos = offset + viewportBottom / 2;
           //console.log("yPos: " + yPos + "(at speed: " + bg.dataset.speed + ")");
           bg.style.backgroundPosition = "0px " + yPos + "px";
-        }
+      // }
       //}
       
       scroll( scrollLoop ); //loop (recursive) by calling the delaying function, requestAnimantionFrame, with this function as a callback

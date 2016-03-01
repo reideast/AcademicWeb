@@ -313,6 +313,9 @@ html {
   background-position: 0 0; //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
   /* -webkit-transform: translateZ(0); */
   // background-color: gray; //$colorSchemeError;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+	-webkit-perspective: 1000;
 }
 
 
