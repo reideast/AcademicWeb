@@ -243,10 +243,16 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
   // transform-style: preserve-3d;
+  perspective-origin: 100%;
+  -moz-perspective-origin: 100%;
+  -webkit-perspective-origin: 100%;
 }
 .parallaxLayer {
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  // top: 0; left: 0; bottom: 0; right: 0;
+  transform-origin: 100%;
+  -moz-transform-origin: 100%;
+  -webkit-transform-origin: 100%;
 }
 .parallaxBack {
   transform: translateZ(-1px) scale(2);
@@ -263,13 +269,17 @@ html {
 #containerBackground {
   top: -20vh;
   // height: 120vh;
-  #backgroundImage {
-    height: 120vh;
-  }
   z-index: -100;
-  width: 100vw;
-}
-#backgroundImage {
+  margin: 0;
+  // width: 100vw;
+  // width: 100vw; //this causes overlap of the scrollbar!
+  @media (min-width: 768px) {
+    // width: 100%;
+    // left: -8px;
+  }
+// }
+// #backgroundImage {
+  height: 120vh;
   padding: 0;
   margin: 0;
   //@media (min-width:480px) { //XS 
