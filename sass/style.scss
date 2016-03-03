@@ -116,22 +116,6 @@ h1, h2 {
 
 .verticalCenter {
   @include vCenter;
-  /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
-  // position: relative;
-  // top: 50%;
-  // transform: translateY(-50%);
-  // // -webkit-transform: translateY(-50%);
-  // // -ms-transform: translateY(-50%);
-  // 
-  // // margin: 0;
-  // // padding: 0;
-  // // background: $colorSchemeError; 
-  // *:first-child { /* or .verticalCenter > *:first-child ?? */ 
-  //   margin-top: 0;
-  // }
-  // *:last-child {
-  //   margin-bottom: 0;
-  // }
 }
 
 // use this style to set the height of .squareContent equal to the width of the container:
@@ -177,14 +161,17 @@ h1, h2 {
   margin-right: 0;
 }
 
+// Create $colorSchemePageBG colored bars to block the background image behind body
 @media (min-width: 768px) {
   #containerHeader:before, #containerBody:before {
     background-color: $colorSchemePageBG;
     position: absolute;
     // top: 0;
     margin-left: 0;
-    right: -1px;
-    width: 101vw;
+    // right: -1px;
+    // width: 101vw;
+    right: 0px;
+    width: 100vw;
     z-index: -50;
     content: " ";
     display: block;
@@ -205,13 +192,13 @@ h1, h2 {
 }
 #containerByline {
 // #aboveTheFold {
-  @media (max-width: 767px) {
-    height: 100vh;
-  }
+  height: 100vh;
+  height: calc(100vh - #{$navbarHeightMobile});
   @media (min-width: 768px) {
-    height: 100vh;
-    height: calc(100vh - 100px);
+    height: 100vh; //graceful degridation
+    height: calc(100vh - #{$navbarHeight}); 
   }
+  
   //height: 100%;
   .row {
     height: 100%;
@@ -228,94 +215,73 @@ h1, h2 {
 /* **************************************************************************** */
 
 body {
-  //Removed in favor of .parallax's styles
-  // overflow-x: hidden; overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
 }
 html {
   // width: 100vw;
   // height: 100vh;
-  overflow-x: hidden; //seems to be needed to let mobile-android-chrome scroll
+  // overflow-x: hidden; //seems to be needed to let mobile-android-chrome scroll
 }
-.parallax {
-  //height must be defined somewhere!
-  height: 100vh;
-  perspective: 1px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  // transform-style: preserve-3d;
-  perspective-origin: 100%;
-  -moz-perspective-origin: 100%;
-  -webkit-perspective-origin: 100%;
-}
-.parallaxLayer {
+#backgroundImage {
   position: absolute;
-  // top: 0; left: 0; bottom: 0; right: 0;
-  transform-origin: 100%;
-  -moz-transform-origin: 100%;
-  -webkit-transform-origin: 100%;
-}
-.parallaxBack {
-  transform: translateZ(-1px) scale(2);
-}
-.parallaxBase {
-  transform: translateZ(0);
-}
-.parallaxGroup {
-  position: relative;
-  // height: 100vh;
-  transform-style: preserve-3d;
-}
-
-#containerBackground {
-  top: -20vh;
-  // height: 120vh;
   z-index: -100;
-  margin: 0;
-  width: 100vw;
+  width: 100%;
   // width: 100vw; //this causes overlap of the scrollbar!
+  top: $navbarHeightMobile;
+  height: 100vh;
+  height: calc(100vh - #{$navbarHeightMobile});
   @media (min-width: 768px) {
-    // width: 100%;
-    // left: -8px;
+    top: $navbarHeight;
+    height: 100vh;
+    height: calc(100vh - #{$navbarHeight}); 
   }
-// }
-// #backgroundImage {
-  height: 120vh;
   padding: 0;
   margin: 0;
-  //@media (min-width:480px) { //XS 
-  // top: $navbarHeightMobile;
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  background-size: cover;
+  
+  background-image: url("../img/pageElements/CelastrinaEchoEcho_320x_.jpg");
+  @media (min-width: 321px) {
     background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg"); //TODO: OPTIMIZE IMAGES!!!
-  @media (min-width:480px) { //XS 
+  }
+  @media (min-width: 481px) { //XS 
     background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); 
   }
-  @media (min-width:768px) { //SM
-    //removed for .parallax top: $navbarHeight; 
+  @media (min-width: 768px) { //SM
     background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); 
   }
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left 0px;
+  @media (min-width: 992px) { //MD
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_MD.jpg"); 
+  }
+  @media (min-width: 1200px) { //LG
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_LG.jpg"); 
+  }
   /* -webkit-transform: translateZ(0); */
-
-  /* TODO: Make multiple iimages at different sizes for different browser viewports. 
-           Switch them out with a media query with especially narrow viewport to prevent this "midriff showing" issue */
 }
 #containerFooterBackground {
-  width: 100vw;
-  position: relative;
-  top: -$footerHeightMobile;
-  margin-bottom: -$footerHeightMobile;
-  @media (min-width: 768px) {
-    top: -$footerHeight;
-    margin-bottom: -$footerHeight;
-  }
-  z-index: -50;
+  // width: 100vw;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  // position: relative;
+  // top: -$footerHeightMobile;
+  // margin-bottom: -$footerHeightMobile;
+  // @media (min-width: 768px) {
+  //   top: -$footerHeight;
+  //   margin-bottom: -$footerHeight;
+  // }
+  z-index: -90;
 }
 #footerBackgroundImage {
   //left and right: calc((-100vw + 970px)/2);
   // position: absolute;
   height: $footerHeightMobile;
-  @media (min-width: 768px) { height: $footerHeight; }
+  @media (min-width: 768px) {
+    height: $footerHeight;
+  }
   // width: 100vw;
   //top: 0; //note: by NOT specifying top:0, an absolute child of a __static__ element, the absolute element will stay aligned to the top of the static! weird?
   // left: 0;
@@ -417,6 +383,10 @@ html {
   max-width: 250px;
   background: $colorSchemeHeaderNameBG;
 }
+#collapsing-navbar-area {
+  margin: 0;
+  padding: 0;
+}
 
 @media (max-width: 767px) {
   .navbar { min-height: auto; }
@@ -429,6 +399,7 @@ html {
     box-sizing: content-box;
     background-color: $colorSchemeHeaderBG;
     z-index: 100;
+    overflow-x: hidden;
     //padding-right: 0;
     // width: 100vw;
     ul { width: 100%; }
