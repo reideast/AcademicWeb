@@ -45,9 +45,9 @@ $colorSchemeTextBoxGreenText: $colorLightGray;
 
 $colorSchemeFooterText: white;
 
-h1, h2 {
-  font-family: $fontHeader; //TODO: move to bootstrap's config
-}
+// h1, h2 {
+//   font-family: $fontHeader; //TODO: move to bootstrap's config
+// }
 
 // **************************************************************************** //
 // *********************************  Mixins ********************************** //
@@ -149,12 +149,12 @@ h1, h2 {
 .container { //this is using (and overridding) some of Bootstrap's container
 // #containerBody, #containerHeader, #containerFooter {
   padding: 0; //reset from Bootstrap's 15px div padding
-  @media (min-width:768px) {
-    width:750px
-  }
-  @media (min-width:992px) {
-    width:970px
-  }
+  // @media (min-width:768px) {
+  //   width:750px
+  // }
+  // @media (min-width:992px) {
+  //   width:970px
+  // }
 }
 .container > * { //evaluated load performance a few times, didn't change load +/- 50ms 
   margin-left: 0;
@@ -243,9 +243,12 @@ html {
   background-position: 0px 0px;
   background-size: cover;
   
+  //TODO: need background images for  or square (768x600)
+  //TODO: Possible to set height of aboveTheFold to 75vh for super-tall rotation (iPad 768x1024, Google Nexus 10, 800x1280)
+  //TODO: add in @2x images for retina display (use Retina.js?)
   background-image: url("../img/pageElements/CelastrinaEchoEcho_320x_.jpg");
   @media (min-width: 321px) {
-    background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg"); //TODO: OPTIMIZE IMAGES!!!
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg");
   }
   @media (min-width: 481px) { //XS 
     background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); 
@@ -440,34 +443,26 @@ html {
     background: $colorSchemeBylineBG;
     opacity: .6;
     #bylineVerticalPosition {
-      //@include vCenter;
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      > *:first-child { /* or .verticalCenter > *:first-child ?? */ 
-        margin-top: 0;
-      }
-      > *:last-child {
-        margin-bottom: 0;
-      }
+      @include vCenter;
     }
   }
   h1 {
     font-family: $fontPageHeader;
-    // font-size: 36px;
-    // font-weight: normal;
+    @media (max-width: 400px) {
+      font-size: 30px;
+    }
+    // font-size: 36px; //already in bootstrap.css
+    @media (min-width: 768px) {
+      font-size: 28px;
+    }
+    @media (min-width: 992px) {
+      font-size: 32px;
+    }
   }
   h2 {
     font-size: 24px;
     font-weight: normal;
     margin-top: 10px;
-  }
-  @media (max-width: 400px) {
-    h1 {
-      font-size: 30px;
-    }
-    h2 {
-    }
   }
 }
 
@@ -480,10 +475,14 @@ html {
 }
 #section1image {
   padding: 0;
-}
-#section1image img {
-  width: 100%;
-  //TODO: should there be separate images (through @media) for each sm/md/lg size?
+  background-size: cover;
+  background-image: url("../img/pageElements/diaphorencyrtus_aligarhensis_release_wide.jpg");
+  @media (max-width: 767px) {
+    padding-top: 66.6666666666666667%; //this will set the height of the box in ratio to the width, which is dynamic
+  }
+  @media (min-width: 768px) {
+    background-image: url("../img/pageElements/diaphorencyrtus_aligarhensis_release.jpg");
+  }
 }
 #section1text {
   // height: 100%;
@@ -545,7 +544,7 @@ html {
   p {
     text-align: left;
   }
-  padding: 20px 40px; //TODO: responsive
+  padding: 20px 40px;
   @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
 }
 
