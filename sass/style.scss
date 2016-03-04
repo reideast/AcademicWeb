@@ -45,10 +45,6 @@ $colorSchemeTextBoxGreenText: $colorLightGray;
 
 $colorSchemeFooterText: white;
 
-// h1, h2 {
-//   font-family: $fontHeader; //TODO: move to bootstrap's config
-// }
-
 // **************************************************************************** //
 // *********************************  Mixins ********************************** //
 // **************************************************************************** //
@@ -109,6 +105,7 @@ $colorSchemeFooterText: white;
     margin-bottom: 5px;
   }
   h3 {
+    font-family: $fontBody;
     font-size: 16px;
     margin-top: 0;
   }
@@ -142,14 +139,41 @@ $colorSchemeFooterText: white;
   //filter: FlipH; //invalid?
 }
 
+
+/* **************************************************************************** */
+/* ****************************  Bootstrap "Meter" **************************** */
+/* **************************************************************************** */
+
+//TODO: remove "foo, bar, etc" from index.html
+// //TODO: Remove these "Bootstrap width meter colors"
+// @media (min-width:480px) { //XS
+//   #foo {
+//     color: $colorBlue2 !important;
+//   }
+// }
+// @media (min-width:768px) { //SM
+//   #bar {
+//     color: $colorBlue2 !important;
+//   }
+// }
+// @media (min-width:992px) { //MD
+//   #baz {
+//     color: $colorBlue2 !important;
+//   }
+// }
+// @media (min-width:1200px) { //LG
+//   #bam {
+//     color: $colorBlue2 !important;
+//   }
+// }
+
 /* **************************************************************************** */
 /* *************************** 1st-Level Containers *************************** */
 /* **************************************************************************** */
-//TODO: make changes in the width of top containers in Bootstrap customizer! @container-tablet, etc
 .container { //this is using (and overridding) some of Bootstrap's container
 // #containerBody, #containerHeader, #containerFooter {
   padding: 0; //reset from Bootstrap's 15px div padding
-  // @media (min-width:768px) {
+  // @media (min-width:768px) { //moved these widths to the Bootrap config
   //   width:750px
   // }
   // @media (min-width:992px) {
@@ -315,12 +339,12 @@ html {
   margin: 0;
 }
 #headerLinks {
-  padding-right: 0;
-  @media (max-width: 767px) {
+  // @media (max-width: 767px) {
     > ul {
-      margin-bottom: 0;
+      margin-bottom: 0; //margin:0; is already in bootstrap at min-width:768
     }
-  }
+  // }
+  @media (min-width: 768px) { padding-right: 0; }
   a {
     padding-left: 7.5px;
     padding-right: 7.5px;
@@ -409,6 +433,75 @@ html {
     li { width: 100vw; }
   }
 }
+
+/* **************************************************************************** */
+/* ******************************  Footer Styles  ***************************** */
+/* **************************************************************************** */
+
+#footer {
+  // height: $footerHeight;  
+  color: $colorSchemeFooterText;
+  text-align: center;
+  margin: 0;
+  @media (max-width: 767px) {
+    width: 100vw;
+    // padding-top: 10px;
+    // padding-bottom: 10px;
+    > div:first-child {
+      height: $footerHeightMobile - 150px;
+    }
+    > div {
+      height: 150px;
+    }
+    #footerName { padding-top: 40px; }
+  }
+  @media (min-width: 768px) {
+    padding-top: $mobileVerticalPadding;
+    padding-bottom: $mobileVerticalPadding;
+    > div {
+      height: ($footerHeight - $mobileVerticalPadding * 2);
+      // padding-right: 0;
+    }
+  }
+}
+#footerName h1 { font-size: 26px; }
+#footerName h3 { font-size: 18px; }
+@media (min-width: 768px) {
+  #footerName:after {
+    @include trailingBorder;
+  }
+  #footerName h1 { font-size: 28px; }
+  #footerName h3 { font-size: 20px; }
+}
+@media (min-width: 992px) {
+  #footerName h1 { font-size: 32px; }
+  #footerName h3 { font-size: 24px; }
+}
+#footerAddress:after {
+  @include trailingBorder;
+}
+// #footer > div:last-child {
+//   border-left: 1px solid $colorSchemeFooterText;
+// }
+#footerAddress, #footerLinks {
+  // line-height: 0.8em;
+  font-size: 10px;
+  p { margin: 0 0 3px; }
+  @media (min-width: 480px) {
+    font-size: 14px;
+  }
+}
+#footerLinksSocial {
+  margin-bottom: 3px;
+}
+#footerLinks a {
+  color: $colorSchemeFooterText;
+}
+#footerSocialMedia {
+  // padding-bottom: 15px;
+  // font-size: 16px;
+}
+
 
 
 /* **************************************************************************** */
@@ -548,99 +641,46 @@ html {
   @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
 }
 
+/* **************************************************************************** */
+/* ******************************  Section 3  ********************************* */
+/* **************************************************************************** */
+#section3image {
+  padding: 0;
+  background-size: cover;
+  background-image: url("../img/pageElements/Chartocerus_female_lateral_dome2.jpg");
+  padding-top: 47%; //this will set the height of the box in ratio to the width, which is dynamic
+}
 
 /* **************************************************************************** */
-/* ******************************  Footer Styles  ***************************** */
+/* ******************************  Section 4  ********************************* */
 /* **************************************************************************** */
 
-#footer {
-  // height: $footerHeight;  
-  color: $colorSchemeFooterText;
+#section4button {
+  padding: 0;
+  background-color: $colorSchemeTextBoxGreen;
   text-align: center;
-  margin: 0;
-  @media (max-width: 767px) {
-    width: 100vw;
-    // padding-top: 10px;
-    // padding-bottom: 10px;
-    > div:first-child {
-      height: $footerHeightMobile - 150px;
-    }
-    > div {
-      height: 150px;
-    }
-    #footerName { padding-top: 40px; }
+}
+#section4button h2 {
+  color: $colorSchemeTextBoxGreenText;
+  font-weight: normal;
+}
+#section4button a {
+  text-decoration: none;
+  color: $colorSchemeTextBoxGreenText;
+}
+#section4text {
+  background: $colorSchemeTextBoxBG;
+  color: $colorSchemeHeaderNameText;
+  text-align: center;
+  p {
+    text-align: left;
   }
-  @media (min-width: 768px) {
-    padding-top: $mobileVerticalPadding;
-    padding-bottom: $mobileVerticalPadding;
-    > div {
-      height: ($footerHeight - $mobileVerticalPadding * 2);
-      // padding-right: 0;
-    }
-  }
+  padding: 20px 40px;
+  @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
 }
-#footerName h1 { font-size: 26px; }
-#footerName h3 { font-size: 18px; }
-@media (min-width: 768px) {
-  #footerName:after {
-    @include trailingBorder;
-  }
-  #footerName h1 { font-size: 28px; }
-  #footerName h3 { font-size: 20px; }
-}
-@media (min-width: 992px) {
-  #footerName h1 { font-size: 32px; }
-  #footerName h3 { font-size: 24px; }
-}
-#footerAddress:after {
-  @include trailingBorder;
-}
-// #footer > div:last-child {
-//   border-left: 1px solid $colorSchemeFooterText;
-// }
-#footerAddress, #footerLinks {
-  // line-height: 0.8em;
-  font-size: 10px;
-  p { margin: 0 0 3px; }
-  @media (min-width: 480px) {
-    font-size: 14px;
-  }
-}
-#footerLinksSocial {
-  margin-bottom: 3px;
-}
-#footerLinks a {
-  color: $colorSchemeFooterText;
-}
-#footerSocialMedia {
-  // padding-bottom: 15px;
-  // font-size: 16px;
-}
-
-
-
-/* **************************************************************************** */
-/* ****************************  Bootstrap "Meter" **************************** */
-/* **************************************************************************** */
-
-//TODO: Remove these "Bootstrap width meter colors"
-@media (min-width:480px) { //XS
-  #foo {
-    color: $colorBlue2 !important;
-  }
-}
-@media (min-width:768px) { //SM
-  #bar {
-    color: $colorBlue2 !important;
-  }
-}
-@media (min-width:992px) { //MD
-  #baz {
-    color: $colorBlue2 !important;
-  }
-}
-@media (min-width:1200px) { //LG
-  #bam {
-    color: $colorBlue2 !important;
-  }
+#section4image {
+  padding: 0;
+  background-size: cover;
+  background-image: url("../img/pageElements/conetainer.jpg");
+  padding-top: 96%; //this will set the height of the box in ratio to the width, which is dynamic
 }
