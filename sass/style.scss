@@ -648,7 +648,10 @@ html {
   padding: 0;
   background-size: cover;
   background-image: url("../img/pageElements/Chartocerus_female_lateral_dome2.jpg");
-  padding-top: 47%; //this will set the height of the box in ratio to the width, which is dynamic
+  padding-top: 62%;
+  @media (min-width: 768px) {
+    padding-top: 47%; //this will set the height of the box in ratio to the width, which is dynamic
+  }
 }
 
 /* **************************************************************************** */
@@ -682,5 +685,13 @@ html {
   padding: 0;
   background-size: cover;
   background-image: url("../img/pageElements/conetainer.jpg");
-  padding-top: 96%; //this will set the height of the box in ratio to the width, which is dynamic
+  @media (max-width: 767px) {
+    padding-top: 97%;
+  }
+  @media (min-width: 768px) {
+    padding-top: 112%; //this will set the height of the box in ratio to the width, which is dynamic
+  }
+  @media (min-width: 992px) {
+    padding-top: 96%;
+  }
 }
