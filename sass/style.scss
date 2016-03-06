@@ -185,35 +185,35 @@ $colorSchemeFooterText: white;
   margin-right: 0;
 }
 
-// Create $colorSchemePageBG colored bars to block the background image behind body
-@media (min-width: 768px) {
-  #containerHeader:before, #containerBody:before {
-    background-color: $colorSchemePageBG;
-    position: absolute;
-    // top: 0;
-    margin-left: 0;
-    // right: -1px;
-    // width: 101vw;
-    right: 0px;
-    width: 100vw;
-    z-index: -50;
-    content: " ";
-    display: block;
-  }
-  #containerHeader:before {
-    height: $navbarHeight;
-  }
-  #containerBody:before {
-    // bottom: 0;
-    // height: 444px; //TODO: sense how height of #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
-    @media (min-width:768px) { //SM
-      height: 393px + 166.656px; //this is my best solution to the "unknowable height" problem == (height of image + height of col-sm-8)
-    }
-    @media (min-width:992px) { //MD
-      height: 444px + 166.656px;
-    }
-  }
-}
+// // Create $colorSchemePageBG colored bars to block the background image behind body
+// @media (min-width: 768px) {
+//   #containerHeader:before, #containerBody:before {
+//     background-color: $colorSchemePageBG;
+//     position: absolute;
+//     // top: 0;
+//     margin-left: 0;
+//     // right: -1px;
+//     // width: 101vw;
+//     right: 0px;
+//     width: 100vw;
+//     z-index: -50;
+//     content: " ";
+//     display: block;
+//   }
+//   #containerHeader:before {
+//     height: $navbarHeight;
+//   }
+//   #containerBody:before {
+//     // bottom: 0;
+//     // height: 444px; //TODO: sense how height of #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
+//     @media (min-width:768px) { //SM
+//       height: 393px + 166.656px; //this is my best solution to the "unknowable height" problem == (height of image + height of col-sm-8)
+//     }
+//     @media (min-width:992px) { //MD
+//       height: 444px + 166.656px;
+//     }
+//   }
+// }
 #containerByline {
 // #aboveTheFold {
   height: 100vh;
@@ -324,7 +324,19 @@ html {
   /* -webkit-transform: translateZ(0); */
   // background-color: gray; //$colorSchemeError;
 }
-
+#articleTitle {
+  height: 150px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-image: url("../img/pageElements/garageDoorH_SM.jpg");
+  background-size: cover;
+  h1 {
+    margin: 0;
+    color: $colorLightGray;
+    font-size: 56px;
+  }
+}
 
 
 /* **************************************************************************** */
@@ -694,4 +706,30 @@ html {
   @media (min-width: 992px) {
     padding-top: 96%;
   }
+}
+
+
+/* **************************************************************************** */
+/* ********************************  About  *********************************** */
+/* **************************************************************************** */
+#aboutImage {
+  padding: 0;
+}
+#aboutText {
+  background: $colorLightGray;
+  color: $colorSchemeTextBoxText;
+  text-align: center;
+  p {
+    text-align: left;
+  }
+  padding: 20px 40px;
+  @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
+}
+#aboutSummary {
+  background: $colorSchemeTextBoxBG;
+  color: $colorSchemeTextBoxText;
+  text-align: center;
+  margin-left: 30%;
+  padding: 20px 40px;
+  @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
 }
