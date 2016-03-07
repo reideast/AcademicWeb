@@ -31,7 +31,7 @@
     "@font-size-h6": "ceil((@font-size-base * 0.85))",
     "@line-height-base": "1.428571429",
     "@line-height-computed": "floor((@font-size-base * @line-height-base))",
-    "@headings-font-family": "inherit",
+    "@headings-font-family": "@font-family-serif",
     "@headings-font-weight": "500",
     "@headings-line-height": "1.1",
     "@headings-color": "inherit",
@@ -139,7 +139,7 @@
     "@container-desktop": "(940px + @grid-gutter-width)",
     "@container-md": "@container-desktop",
     "@container-large-desktop": "(1140px + @grid-gutter-width)",
-    "@container-lg": "@container-large-desktop",
+    "@container-lg": "@container-desktop",
     "@navbar-height": "100px",
     "@navbar-margin-bottom": "@line-height-computed",
     "@navbar-border-radius": "0",
@@ -431,5 +431,5 @@
     "scrollspy.js",
     "transition.js"
   ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=1e872fda8287e24e2d71"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=d0923f8ba48b9f80ee3d"
 }

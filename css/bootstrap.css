@@ -5,8 +5,8 @@
  */
 
 /*!
- * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=1e872fda8287e24e2d71)
- * Config saved to config.json and https://gist.github.com/1e872fda8287e24e2d71
+ * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=d0923f8ba48b9f80ee3d)
+ * Config saved to config.json and https://gist.github.com/d0923f8ba48b9f80ee3d
  */
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
@@ -1190,7 +1190,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: inherit;
+  font-family: Alegreya, serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -1606,7 +1606,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 970px;
   }
 }
 .container-fluid {

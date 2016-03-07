@@ -45,10 +45,6 @@ $colorSchemeTextBoxGreenText: $colorLightGray;
 
 $colorSchemeFooterText: white;
 
-h1, h2 {
-  font-family: $fontHeader; //TODO: move to bootstrap's config
-}
-
 // **************************************************************************** //
 // *********************************  Mixins ********************************** //
 // **************************************************************************** //
@@ -109,6 +105,7 @@ h1, h2 {
     margin-bottom: 5px;
   }
   h3 {
+    font-family: $fontBody;
     font-size: 16px;
     margin-top: 0;
   }
@@ -116,22 +113,6 @@ h1, h2 {
 
 .verticalCenter {
   @include vCenter;
-  /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
-  // position: relative;
-  // top: 50%;
-  // transform: translateY(-50%);
-  // // -webkit-transform: translateY(-50%);
-  // // -ms-transform: translateY(-50%);
-  // 
-  // // margin: 0;
-  // // padding: 0;
-  // // background: $colorSchemeError; 
-  // *:first-child { /* or .verticalCenter > *:first-child ?? */ 
-  //   margin-top: 0;
-  // }
-  // *:last-child {
-  //   margin-bottom: 0;
-  // }
 }
 
 // use this style to set the height of .squareContent equal to the width of the container:
@@ -158,60 +139,90 @@ h1, h2 {
   //filter: FlipH; //invalid?
 }
 
+
+/* **************************************************************************** */
+/* ****************************  Bootstrap "Meter" **************************** */
+/* **************************************************************************** */
+
+//TODO: remove "foo, bar, etc" from index.html
+// //TODO: Remove these "Bootstrap width meter colors"
+// @media (min-width:480px) { //XS
+//   #foo {
+//     color: $colorBlue2 !important;
+//   }
+// }
+// @media (min-width:768px) { //SM
+//   #bar {
+//     color: $colorBlue2 !important;
+//   }
+// }
+// @media (min-width:992px) { //MD
+//   #baz {
+//     color: $colorBlue2 !important;
+//   }
+// }
+// @media (min-width:1200px) { //LG
+//   #bam {
+//     color: $colorBlue2 !important;
+//   }
+// }
+
 /* **************************************************************************** */
 /* *************************** 1st-Level Containers *************************** */
 /* **************************************************************************** */
-//TODO: make changes in the width of top containers in Bootstrap customizer! @container-tablet, etc
 .container { //this is using (and overridding) some of Bootstrap's container
 // #containerBody, #containerHeader, #containerFooter {
   padding: 0; //reset from Bootstrap's 15px div padding
-  @media (min-width:768px) {
-    width:750px
-  }
-  @media (min-width:992px) {
-    width:970px
-  }
+  // @media (min-width:768px) { //moved these widths to the Bootrap config
+  //   width:750px
+  // }
+  // @media (min-width:992px) {
+  //   width:970px
+  // }
 }
 .container > * { //evaluated load performance a few times, didn't change load +/- 50ms 
   margin-left: 0;
   margin-right: 0;
 }
 
-@media (min-width: 768px) {
-  #containerHeader:before, #containerBody:before {
-    background-color: $colorSchemePageBG;
-    position: absolute;
-    // top: 0;
-    margin-left: 0;
-    right: -1px;
-    width: 101vw;
-    z-index: -50;
-    content: " ";
-    display: block;
-  }
-  #containerHeader:before {
-    height: $navbarHeight;
-  }
-  #containerBody:before {
-    // bottom: 0;
-    // height: 444px; //TODO: sense how height of #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
-    @media (min-width:768px) { //SM
-      height: 393px + 166.656px; //this is my best solution to the "unknowable height" problem == (height of image + height of col-sm-8)
-    }
-    @media (min-width:992px) { //MD
-      height: 444px + 166.656px;
-    }
-  }
-}
+// // Create $colorSchemePageBG colored bars to block the background image behind body
+// @media (min-width: 768px) {
+//   #containerHeader:before, #containerBody:before {
+//     background-color: $colorSchemePageBG;
+//     position: absolute;
+//     // top: 0;
+//     margin-left: 0;
+//     // right: -1px;
+//     // width: 101vw;
+//     right: 0px;
+//     width: 100vw;
+//     z-index: -50;
+//     content: " ";
+//     display: block;
+//   }
+//   #containerHeader:before {
+//     height: $navbarHeight;
+//   }
+//   #containerBody:before {
+//     // bottom: 0;
+//     // height: 444px; //TODO: sense how height of #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
+//     @media (min-width:768px) { //SM
+//       height: 393px + 166.656px; //this is my best solution to the "unknowable height" problem == (height of image + height of col-sm-8)
+//     }
+//     @media (min-width:992px) { //MD
+//       height: 444px + 166.656px;
+//     }
+//   }
+// }
 #containerByline {
 // #aboveTheFold {
-  @media (max-width: 767px) {
-    height: 100vh;
-  }
+  height: 100vh;
+  height: calc(100vh - #{$navbarHeightMobile});
   @media (min-width: 768px) {
-    height: 100vh;
-    height: calc(100vh - 100px);
+    height: 100vh; //graceful degridation
+    height: calc(100vh - #{$navbarHeight}); 
   }
+  
   //height: 100%;
   .row {
     height: 100%;
@@ -228,94 +239,76 @@ h1, h2 {
 /* **************************************************************************** */
 
 body {
-  //Removed in favor of .parallax's styles
-  // overflow-x: hidden; overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
 }
 html {
   // width: 100vw;
   // height: 100vh;
-  overflow-x: hidden; //seems to be needed to let mobile-android-chrome scroll
+  // overflow-x: hidden; //seems to be needed to let mobile-android-chrome scroll
 }
-.parallax {
-  //height must be defined somewhere!
-  height: 100vh;
-  perspective: 1px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  // transform-style: preserve-3d;
-  perspective-origin: 100%;
-  -moz-perspective-origin: 100%;
-  -webkit-perspective-origin: 100%;
-}
-.parallaxLayer {
+#backgroundImage {
   position: absolute;
-  // top: 0; left: 0; bottom: 0; right: 0;
-  transform-origin: 100%;
-  -moz-transform-origin: 100%;
-  -webkit-transform-origin: 100%;
-}
-.parallaxBack {
-  transform: translateZ(-1px) scale(2);
-}
-.parallaxBase {
-  transform: translateZ(0);
-}
-.parallaxGroup {
-  position: relative;
-  // height: 100vh;
-  transform-style: preserve-3d;
-}
-
-#containerBackground {
-  top: -20vh;
-  // height: 120vh;
   z-index: -100;
-  margin: 0;
-  width: 100vw;
+  width: 100%;
   // width: 100vw; //this causes overlap of the scrollbar!
+  top: $navbarHeightMobile;
+  height: 100vh;
+  height: calc(100vh - #{$navbarHeightMobile});
   @media (min-width: 768px) {
-    // width: 100%;
-    // left: -8px;
+    top: $navbarHeight;
+    height: 100vh;
+    height: calc(100vh - #{$navbarHeight}); 
   }
-// }
-// #backgroundImage {
-  height: 120vh;
   padding: 0;
   margin: 0;
-  //@media (min-width:480px) { //XS 
-  // top: $navbarHeightMobile;
-    background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg"); //TODO: OPTIMIZE IMAGES!!!
-  @media (min-width:480px) { //XS 
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  background-size: cover;
+  
+  //TODO: need background images for  or square (768x600)
+  //TODO: Possible to set height of aboveTheFold to 75vh for super-tall rotation (iPad 768x1024, Google Nexus 10, 800x1280)
+  //TODO: add in @2x images for retina display (use Retina.js?)
+  background-image: url("../img/pageElements/CelastrinaEchoEcho_320x_.jpg");
+  @media (min-width: 321px) {
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg");
+  }
+  @media (min-width: 481px) { //XS 
     background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); 
   }
-  @media (min-width:768px) { //SM
-    //removed for .parallax top: $navbarHeight; 
+  @media (min-width: 768px) { //SM
     background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); 
   }
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left 0px;
+  @media (min-width: 992px) { //MD
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_MD.jpg"); 
+  }
+  @media (min-width: 1200px) { //LG
+    background-image: url("../img/pageElements/CelastrinaEchoEcho_LG.jpg"); 
+  }
   /* -webkit-transform: translateZ(0); */
-
-  /* TODO: Make multiple iimages at different sizes for different browser viewports. 
-           Switch them out with a media query with especially narrow viewport to prevent this "midriff showing" issue */
 }
 #containerFooterBackground {
-  width: 100vw;
-  position: relative;
-  top: -$footerHeightMobile;
-  margin-bottom: -$footerHeightMobile;
-  @media (min-width: 768px) {
-    top: -$footerHeight;
-    margin-bottom: -$footerHeight;
-  }
-  z-index: -50;
+  // width: 100vw;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  // position: relative;
+  // top: -$footerHeightMobile;
+  // margin-bottom: -$footerHeightMobile;
+  // @media (min-width: 768px) {
+  //   top: -$footerHeight;
+  //   margin-bottom: -$footerHeight;
+  // }
+  z-index: -90;
 }
 #footerBackgroundImage {
   //left and right: calc((-100vw + 970px)/2);
   // position: absolute;
   height: $footerHeightMobile;
-  @media (min-width: 768px) { height: $footerHeight; }
+  @media (min-width: 768px) {
+    height: $footerHeight;
+  }
   // width: 100vw;
   //top: 0; //note: by NOT specifying top:0, an absolute child of a __static__ element, the absolute element will stay aligned to the top of the static! weird?
   // left: 0;
@@ -331,7 +324,19 @@ html {
   /* -webkit-transform: translateZ(0); */
   // background-color: gray; //$colorSchemeError;
 }
-
+#articleTitle {
+  height: 150px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-image: url("../img/pageElements/garageDoorH_SM.jpg");
+  background-size: cover;
+  h1 {
+    margin: 0;
+    color: $colorLightGray;
+    font-size: 56px;
+  }
+}
 
 
 /* **************************************************************************** */
@@ -346,12 +351,12 @@ html {
   margin: 0;
 }
 #headerLinks {
-  padding-right: 0;
-  @media (max-width: 767px) {
+  // @media (max-width: 767px) {
     > ul {
-      margin-bottom: 0;
+      margin-bottom: 0; //margin:0; is already in bootstrap at min-width:768
     }
-  }
+  // }
+  @media (min-width: 768px) { padding-right: 0; }
   a {
     padding-left: 7.5px;
     padding-right: 7.5px;
@@ -417,6 +422,10 @@ html {
   max-width: 250px;
   background: $colorSchemeHeaderNameBG;
 }
+#collapsing-navbar-area {
+  margin: 0;
+  padding: 0;
+}
 
 @media (max-width: 767px) {
   .navbar { min-height: auto; }
@@ -429,155 +438,13 @@ html {
     box-sizing: content-box;
     background-color: $colorSchemeHeaderBG;
     z-index: 100;
+    overflow-x: hidden;
     //padding-right: 0;
     // width: 100vw;
     ul { width: 100%; }
     li { width: 100vw; }
   }
 }
-
-
-/* **************************************************************************** */
-/* ****************************  Above the Fold  ****************************** */
-/* **************************************************************************** */
-#byline {
-  color: $colorSchemeBylineText;
-  height: 100%;
-  text-align: center;
-  @media (max-width: 767px) {
-    padding: 0;
-    #bylineVerticalPosition {
-      //@include vTop;
-      background: $colorSchemeBylineBG;
-      opacity: .6;
-      margin: 0;
-      > *:first-child { /* or .verticalCenter > *:first-child ?? */ 
-        margin-top: 0;
-      }
-      > *:last-child {
-        margin-bottom: 0;
-      }
-    }
-    h1 {
-      padding-top: 20px;
-    }
-    h2 {
-      padding-bottom: 20px;
-    }
-  }
-  @media (min-width: 768px) {
-    background: $colorSchemeBylineBG;
-    opacity: .6;
-    #bylineVerticalPosition {
-      //@include vCenter;
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      > *:first-child { /* or .verticalCenter > *:first-child ?? */ 
-        margin-top: 0;
-      }
-      > *:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-  h1 {
-    font-family: $fontPageHeader;
-    // font-size: 36px;
-    // font-weight: normal;
-  }
-  h2 {
-    font-size: 24px;
-    font-weight: normal;
-    margin-top: 10px;
-  }
-  @media (max-width: 400px) {
-    h1 {
-      font-size: 30px;
-    }
-    h2 {
-    }
-  }
-}
-
-
-/* **************************************************************************** */
-/* ********************************  Section 1  ******************************* */
-/* **************************************************************************** */
-#section1 {
-  // position: relative;
-}
-#section1image {
-  padding: 0;
-}
-#section1image img {
-  width: 100%;
-  //TODO: should there be separate images (through @media) for each sm/md/lg size?
-}
-#section1text {
-  // height: 100%;
-  padding-left: 60px;
-  padding-right: 60px;
-  text-align: center;
-  p {
-    text-align: left;
-  }
-  background: $colorSchemeTextBoxBG;
-  color: $colorSchemeTextBoxText;
-}
-//these media queries are to set the height of section1, equal to the height of the image
-@media (max-width:767px) { //XS
-  #section1text {
-    padding-top: $mobileVerticalPadding;
-    padding-bottom: $mobileVerticalPadding;
-  }
-}
-@media (min-width:768px) { //SM
-  #section1textVerticalCenter {
-    @include vCenter;
-  }
-  #section1, #section1 > div {
-    height: 393px;
-  }
-}
-@media (min-width:992px) { //MD
-  #section1, #section1 > div {
-    height: 444px;
-  }
-}
-@media (min-width:1200px) { //LG
-}
-
-/* **************************************************************************** */
-/* ******************************  Section 2  ********************************* */
-/* **************************************************************************** */
-#section2 {
-  // position: relative;
-}
-#section2button {
-  padding: 0;
-  background-color: $colorGrayText;
-  text-align: center;
-}
-#section2button h2 {
-  color: $colorSchemeHeaderNameText;
-  font-weight: normal;
-}
-#section2button a {
-  text-decoration: none;
-  color: $colorSchemeHeaderNameText;
-}
-#section2text {
-  background: $colorSchemeTextBoxGreen;
-  color: $colorSchemeTextBoxGreenText;
-  text-align: center;
-  p {
-    text-align: left;
-  }
-  padding: 20px 40px; //TODO: responsive
-  @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
-}
-
 
 /* **************************************************************************** */
 /* ******************************  Footer Styles  ***************************** */
@@ -650,27 +517,219 @@ html {
 
 
 /* **************************************************************************** */
-/* ****************************  Bootstrap "Meter" **************************** */
+/* ****************************  Above the Fold  ****************************** */
 /* **************************************************************************** */
+#byline {
+  color: $colorSchemeBylineText;
+  height: 100%;
+  text-align: center;
+  @media (max-width: 767px) {
+    padding: 0;
+    #bylineVerticalPosition {
+      //@include vTop;
+      background: $colorSchemeBylineBG;
+      opacity: .6;
+      margin: 0;
+      > *:first-child { /* or .verticalCenter > *:first-child ?? */ 
+        margin-top: 0;
+      }
+      > *:last-child {
+        margin-bottom: 0;
+      }
+    }
+    h1 {
+      padding-top: 20px;
+    }
+    h2 {
+      padding-bottom: 20px;
+    }
+  }
+  @media (min-width: 768px) {
+    background: $colorSchemeBylineBG;
+    opacity: .6;
+    #bylineVerticalPosition {
+      @include vCenter;
+    }
+  }
+  h1 {
+    font-family: $fontPageHeader;
+    @media (max-width: 400px) {
+      font-size: 30px;
+    }
+    // font-size: 36px; //already in bootstrap.css
+    @media (min-width: 768px) {
+      font-size: 28px;
+    }
+    @media (min-width: 992px) {
+      font-size: 32px;
+    }
+  }
+  h2 {
+    font-size: 24px;
+    font-weight: normal;
+    margin-top: 10px;
+  }
+}
 
-//TODO: Remove these "Bootstrap width meter colors"
-@media (min-width:480px) { //XS
-  #foo {
-    color: $colorBlue2 !important;
+
+/* **************************************************************************** */
+/* ********************************  Section 1  ******************************* */
+/* **************************************************************************** */
+#section1 {
+  // position: relative;
+}
+#section1image {
+  padding: 0;
+  background-size: cover;
+  background-image: url("../img/pageElements/diaphorencyrtus_aligarhensis_release_wide.jpg");
+  @media (max-width: 767px) {
+    padding-top: 66.6666666666666667%; //this will set the height of the box in ratio to the width, which is dynamic
+  }
+  @media (min-width: 768px) {
+    background-image: url("../img/pageElements/diaphorencyrtus_aligarhensis_release.jpg");
+  }
+}
+#section1text {
+  // height: 100%;
+  padding-left: 60px;
+  padding-right: 60px;
+  text-align: center;
+  p {
+    text-align: left;
+  }
+  background: $colorSchemeTextBoxBG;
+  color: $colorSchemeTextBoxText;
+}
+//these media queries are to set the height of section1, equal to the height of the image
+@media (max-width:767px) { //XS
+  #section1text {
+    padding-top: $mobileVerticalPadding;
+    padding-bottom: $mobileVerticalPadding;
   }
 }
 @media (min-width:768px) { //SM
-  #bar {
-    color: $colorBlue2 !important;
+  #section1textVerticalCenter {
+    @include vCenter;
+  }
+  #section1, #section1 > div {
+    height: 393px;
   }
 }
 @media (min-width:992px) { //MD
-  #baz {
-    color: $colorBlue2 !important;
+  #section1, #section1 > div {
+    height: 444px;
   }
 }
 @media (min-width:1200px) { //LG
-  #bam {
-    color: $colorBlue2 !important;
+}
+
+/* **************************************************************************** */
+/* ******************************  Section 2  ********************************* */
+/* **************************************************************************** */
+#section2 {
+  // position: relative;
+}
+#section2button {
+  padding: 0;
+  background-color: $colorGrayText;
+  text-align: center;
+}
+#section2button h2 {
+  color: $colorSchemeHeaderNameText;
+  font-weight: normal;
+}
+#section2button a {
+  text-decoration: none;
+  color: $colorSchemeHeaderNameText;
+}
+#section2text {
+  background: $colorSchemeTextBoxGreen;
+  color: $colorSchemeTextBoxGreenText;
+  text-align: center;
+  p {
+    text-align: left;
   }
+  padding: 20px 40px;
+  @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
+}
+
+/* **************************************************************************** */
+/* ******************************  Section 3  ********************************* */
+/* **************************************************************************** */
+#section3image {
+  padding: 0;
+  background-size: cover;
+  background-image: url("../img/pageElements/Chartocerus_female_lateral_dome2.jpg");
+  padding-top: 62%;
+  @media (min-width: 768px) {
+    padding-top: 47%; //this will set the height of the box in ratio to the width, which is dynamic
+  }
+}
+
+/* **************************************************************************** */
+/* ******************************  Section 4  ********************************* */
+/* **************************************************************************** */
+
+#section4button {
+  padding: 0;
+  background-color: $colorSchemeTextBoxGreen;
+  text-align: center;
+}
+#section4button h2 {
+  color: $colorSchemeTextBoxGreenText;
+  font-weight: normal;
+}
+#section4button a {
+  text-decoration: none;
+  color: $colorSchemeTextBoxGreenText;
+}
+#section4text {
+  background: $colorSchemeTextBoxBG;
+  color: $colorSchemeHeaderNameText;
+  text-align: center;
+  p {
+    text-align: left;
+  }
+  padding: 20px 40px;
+  @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
+}
+#section4image {
+  padding: 0;
+  background-size: cover;
+  background-image: url("../img/pageElements/conetainer.jpg");
+  @media (max-width: 767px) {
+    padding-top: 97%;
+  }
+  @media (min-width: 768px) {
+    padding-top: 112%; //this will set the height of the box in ratio to the width, which is dynamic
+  }
+  @media (min-width: 992px) {
+    padding-top: 96%;
+  }
+}
+
+
+/* **************************************************************************** */
+/* ********************************  About  *********************************** */
+/* **************************************************************************** */
+#aboutImage {
+  padding: 0;
+}
+#aboutText {
+  background: $colorLightGray;
+  color: $colorSchemeTextBoxText;
+  text-align: center;
+  p {
+    text-align: left;
+  }
+  padding: 20px 40px;
+  @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
+}
+#aboutSummary {
+  background: $colorSchemeTextBoxBG;
+  color: $colorSchemeTextBoxText;
+  text-align: center;
+  margin-left: 30%;
+  padding: 20px 40px;
+  @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
 }
