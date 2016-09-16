@@ -13,7 +13,8 @@ $navbarHeightMobile: 70px;
 $footerHeight: 300px;
 $footerHeightMobile: 250px;
 
-$colorYellowGreen: #B3CB44;
+// $colorYellowGreen: #B3CB44;
+$colorYellowGreen: #65a823;
 $colorDarkGreen: #1E3318;
 $colorBlue1: #075368;
 $colorBlue2: #023E4F;
@@ -385,6 +386,7 @@ html {
 }
 .navbar-brand {
   background-color: inherit; //needed to overwrite Bootstrap transparent(?!) background
+  text-shadow: 0 1px 0 rgba(150,150,150, 0.25); // overwrite Bootstrap's style for legibility on darker bg
 }
 .navbar-default .navbar-brand {
   color: inherit;
