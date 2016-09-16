@@ -14,15 +14,18 @@ $footerHeight: 300px;
 $footerHeightMobile: 250px;
 
 // $colorYellowGreen: #B3CB44;
-$colorYellowGreen: #65a823;
+$colorYellowGreen: #92c924;
 $colorDarkGreen: #1E3318;
 $colorBlue1: #075368;
 $colorBlue2: #023E4F;
 $colorNavy: #01141A;
+$colorRedOrange: #AF4D08;
 $colorOrange1: #A85A00;
 $colorOrange2: #975408;
-$colorOrange3: #DA7500;
-$colorRedOrange: #AF4D08;
+// $colorOrange3: #DA7500;
+$colorOrange3: #b430a0;
+$colorOrange3: #732c38;
+$colorOrange3: #ea436a;
 $colorGray: #333; //already in template
 $colorGrayBG: #999;
 $colorGrayText: #555;
@@ -272,7 +275,7 @@ html {
   //TODO: Possible to set height of aboveTheFold to 75vh for super-tall rotation (iPad 768x1024, Google Nexus 10, 800x1280)
   //TODO: add in @2x images for retina display (use Retina.js?)
 
-  background-image: url("../img/pageElements/Ali Photo Taken 160805.jpg");
+  background-image: url("../img/pageElements/Photo Taken 160805.jpg");
   // transform: scaleX(-1); //https://css-tricks.com/snippets/css/flip-an-image/
   // background-image: url("../img/pageElements/CelastrinaEchoEcho_320x_.jpg");
   // @media (min-width: 321px) {
@@ -481,18 +484,18 @@ html {
     }
   }
 }
-#footerName h1 { font-size: 26px; }
-#footerName h3 { font-size: 18px; }
+#footerName h1 { font-size: 24px; }
+#footerName h3 { font-size: 16px; }
 @media (min-width: 768px) {
   #footerName:after {
     @include trailingBorder;
   }
-  #footerName h1 { font-size: 28px; }
-  #footerName h3 { font-size: 20px; }
+  #footerName h1 { font-size: 26px; }
+  #footerName h3 { font-size: 18px; }
 }
 @media (min-width: 992px) {
-  #footerName h1 { font-size: 32px; }
-  #footerName h3 { font-size: 24px; }
+  #footerName h1 { font-size: 30px; }
+  #footerName h3 { font-size: 22px; }
 }
 #footerAddress:after {
   @include trailingBorder;
