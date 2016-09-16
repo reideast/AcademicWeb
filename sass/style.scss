@@ -26,8 +26,9 @@ $colorOrange2: #975408;
 $colorOrange3: #b430a0;
 $colorOrange3: #732c38;
 $colorOrange3: #ea436a;
+$colorBlack: #111;
 $colorGray: #333; //already in template
-$colorGrayBG: #999;
+$colorGrayBG: #ccc;
 $colorGrayText: #555;
 $colorLightGray: #eee;
 
@@ -43,7 +44,7 @@ $colorSchemeHeaderLinkText: $colorGrayText;
 $colorSchemeBylineBG: $colorLightGray;
 $colorSchemeBylineText: $colorGrayText;
 $colorSchemeTextBoxBG: $colorGrayBG;
-$colorSchemeTextBoxText: $colorGray;
+$colorSchemeTextBoxText: $colorBlack;
 $colorSchemeTextBoxGreen: $colorYellowGreen;
 $colorSchemeTextBoxGreenText: $colorLightGray;
 
@@ -88,9 +89,9 @@ $colorSchemeFooterText: white;
 /* ************************* Generic Transformations ************************** */
 /* **************************************************************************** */
 .socialMediaButtons {
+  font-size: 14px;
   a {
     i {
-      //font-size: 14px;
       line-height: 20px;
     }
   }
@@ -147,33 +148,39 @@ $colorSchemeFooterText: white;
 /* **************************************************************************** */
 /* ****************************  Bootstrap "Meter" **************************** */
 /* **************************************************************************** */
-
-//TODO: remove "foo, bar, etc" from index.html
-// //TODO: Remove these "Bootstrap width meter colors"
-// @media (min-width:480px) { //XS
-//   #foo {
-//     color: $colorBlue2 !important;
-//   }
-// }
-// @media (min-width:768px) { //SM
-//   #bar {
-//     color: $colorBlue2 !important;
-//   }
-// }
-// @media (min-width:992px) { //MD
-//   #baz {
-//     color: $colorBlue2 !important;
-//   }
-// }
-// @media (min-width:1200px) { //LG
-//   #bam {
-//     color: $colorBlue2 !important;
-//   }
-// }
+// TODO: remove "foo, bar, etc" from index.html
+//TODO: Remove these "Bootstrap width meter colors"
+#foo, #bar, #baz, #bam {
+  color: $colorBlue2 !important;
+}
+@media (min-width:480px) { //XS
+  #foo {
+    color: $colorOrange3 !important;
+  }
+}
+@media (min-width:768px) { //SM
+  #bar {
+    color: $colorOrange3 !important;
+  }
+}
+@media (min-width:992px) { //MD
+  #baz {
+    color: $colorOrange3 !important;
+  }
+}
+@media (min-width:1200px) { //LG
+  #bam {
+    color: $colorOrange3 !important;
+  }
+}
 
 /* **************************************************************************** */
 /* *************************** 1st-Level Containers *************************** */
 /* **************************************************************************** */
+body {
+  font-size: 16px;
+}
+
 .container { //this is using (and overridding) some of Bootstrap's container
 // #containerBody, #containerHeader, #containerFooter {
   padding: 0; //reset from Bootstrap's 15px div padding
@@ -232,9 +239,9 @@ $colorSchemeFooterText: white;
     height: 100%;
   }
 }
-#containerFooter {
-  // background-color: teal;
-}
+// #containerFooter {
+//   // background-color: teal;
+// }
 
 
 
@@ -247,11 +254,11 @@ body {
   overflow-y: scroll;
   position: relative;
 }
-html {
-  // width: 100vw;
-  // height: 100vh;
-  // overflow-x: hidden; //seems to be needed to let mobile-android-chrome scroll
-}
+// html {
+//   // width: 100vw;
+//   // height: 100vh;
+//   // overflow-x: hidden; //seems to be needed to let mobile-android-chrome scroll
+// }
 #backgroundImage {
   position: absolute;
   z-index: -100;
@@ -358,6 +365,7 @@ html {
   margin: 0;
 }
 #headerLinks {
+  font-size: 14px;
   // @media (max-width: 767px) {
     > ul {
       margin-bottom: 0; //margin:0; is already in bootstrap at min-width:768
@@ -506,7 +514,8 @@ html {
 #footerAddress, #footerLinks {
   // line-height: 0.8em;
   font-size: 10px;
-  p { margin: 0 0 3px; }
+  // p { margin: 0 0 3px; }
+  p { margin: 0; }
   @media (min-width: 480px) {
     font-size: 14px;
   }
@@ -517,10 +526,10 @@ html {
 #footerLinks a {
   color: $colorSchemeFooterText;
 }
-#footerSocialMedia {
-  // padding-bottom: 15px;
-  // font-size: 16px;
-}
+// #footerSocialMedia {
+//   // padding-bottom: 15px;
+//   // font-size: 16px;
+// }
 
 
 
@@ -583,9 +592,9 @@ html {
 /* **************************************************************************** */
 /* ********************************  Section 1  ******************************* */
 /* **************************************************************************** */
-#section1 {
-  // position: relative;
-}
+// #section1 {
+//   // position: relative;
+// }
 #section1image {
   padding: 0;
   background-size: cover;
@@ -634,9 +643,9 @@ html {
 /* **************************************************************************** */
 /* ******************************  Section 2  ********************************* */
 /* **************************************************************************** */
-#section2 {
-  // position: relative;
-}
+// #section2 {
+//   // position: relative;
+// }
 #section2button {
   padding: 0;
   background-color: $colorGrayText;
