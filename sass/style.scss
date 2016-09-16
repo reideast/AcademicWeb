@@ -270,22 +270,25 @@ html {
   //TODO: need background images for  or square (768x600)
   //TODO: Possible to set height of aboveTheFold to 75vh for super-tall rotation (iPad 768x1024, Google Nexus 10, 800x1280)
   //TODO: add in @2x images for retina display (use Retina.js?)
-  background-image: url("../img/pageElements/CelastrinaEchoEcho_320x_.jpg");
-  @media (min-width: 321px) {
-    background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg");
-  }
-  @media (min-width: 481px) { //XS 
-    background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); 
-  }
-  @media (min-width: 768px) { //SM
-    background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); 
-  }
-  @media (min-width: 992px) { //MD
-    background-image: url("../img/pageElements/CelastrinaEchoEcho_MD.jpg"); 
-  }
-  @media (min-width: 1200px) { //LG
-    background-image: url("../img/pageElements/CelastrinaEchoEcho_LG.jpg"); 
-  }
+
+  background-image: url("../img/pageElements/Ali Photo Taken 160805.jpg");
+  // transform: scaleX(-1); //https://css-tricks.com/snippets/css/flip-an-image/
+  // background-image: url("../img/pageElements/CelastrinaEchoEcho_320x_.jpg");
+  // @media (min-width: 321px) {
+  //   background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg");
+  // }
+  // @media (min-width: 481px) { //XS 
+  //   background-image: url("../img/pageElements/CelastrinaEchoEcho_XS.jpg"); 
+  // }
+  // @media (min-width: 768px) { //SM
+  //   background-image: url("../img/pageElements/CelastrinaEchoEcho_SM.jpg"); 
+  // }
+  // @media (min-width: 992px) { //MD
+  //   background-image: url("../img/pageElements/CelastrinaEchoEcho_MD.jpg"); 
+  // }
+  // @media (min-width: 1200px) { //LG
+  //   background-image: url("../img/pageElements/CelastrinaEchoEcho_LG.jpg"); 
+  // }
   /* -webkit-transform: translateZ(0); */
 }
 #containerFooterBackground {
