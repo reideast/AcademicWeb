@@ -23,14 +23,14 @@ $colorRedOrange: #AF4D08;
 $colorOrange1: #A85A00;
 $colorOrange2: #975408;
 // $colorOrange3: #DA7500;
-$colorOrange3: #b430a0;
-$colorOrange3: #732c38;
-$colorOrange3: #ea436a;
+$colorPurpleFlower: #b430a0;
+// $colorOrange3: #732c38;
+// $colorOrange3: #ea436a;
 $colorBlack: #111;
 $colorGray: #333; //already in bootstrap template
 $colorGrayBG: #ccc;
 // $colorGrayText: #555;
-$colorGrayText: #333;
+$colorDarkGray: #333;
 $colorLightGray: #eee;
 
 $colorSchemePageBG: white;
@@ -40,16 +40,44 @@ $colorSchemeHeaderBG: white;
 $colorSchemeHeaderNameBG: $colorYellowGreen;
 $colorSchemeHeaderNameText: $colorLightGray;
 $colorSchemeHeaderNameSubText: $colorGray;
-$colorSchemeHeaderLinkText: $colorGrayText;
+$colorSchemeHeaderLinkText: $colorDarkGray;
+$colorSchemeHeaderIcons: $colorPurpleFlower;
 
 $colorSchemeBylineBG: $colorLightGray;
-$colorSchemeBylineText: $colorGrayText;
+$colorSchemeBylineText: $colorDarkGray;
 $colorSchemeTextBoxBG: $colorGrayBG;
 $colorSchemeTextBoxText: $colorBlack;
 $colorSchemeTextBoxGreen: $colorYellowGreen;
 $colorSchemeTextBoxGreenText: $colorLightGray;
+$colorSchemeButtonGray: $colorDarkGray;
 
 $colorSchemeFooterText: white;
+
+
+// **************************************************************************** //
+// ********************************  Styles  ********************************** //
+// **************************************************************************** //
+.box-purple {
+  background-color: $colorPurpleFlower;
+  color: $colorSchemeHeaderNameText;
+  a {
+    color: $colorSchemeHeaderNameText;
+  }
+}
+.box-gray {
+  background-color: $colorGrayBG;
+  background: $colorSchemeTextBoxBG;
+  color: $colorSchemeTextBoxText;
+}
+.box-green {
+  background-color: $colorYellowGreen;
+  background: $colorSchemeTextBoxGreen;
+  color: $colorSchemeTextBoxGreenText;
+  a {
+    color: $colorSchemeTextBoxGreenText;
+  }
+}
+
 
 // **************************************************************************** //
 // *********************************  Mixins ********************************** //
@@ -156,22 +184,22 @@ $colorSchemeFooterText: white;
 }
 @media (min-width:480px) { //XS
   #foo {
-    color: $colorOrange3 !important;
+    color: $colorPurpleFlower !important;
   }
 }
 @media (min-width:768px) { //SM
   #bar {
-    color: $colorOrange3 !important;
+    color: $colorPurpleFlower !important;
   }
 }
 @media (min-width:992px) { //MD
   #baz {
-    color: $colorOrange3 !important;
+    color: $colorPurpleFlower !important;
   }
 }
 @media (min-width:1200px) { //LG
   #bam {
-    color: $colorOrange3 !important;
+    color: $colorPurpleFlower !important;
   }
 }
 
@@ -283,6 +311,7 @@ body {
   //TODO: Possible to set height of aboveTheFold to 75vh for super-tall rotation (iPad 768x1024, Google Nexus 10, 800x1280)
   //TODO: add in @2x images for retina display (use Retina.js?)
 
+  // TODO: crop and modify butterfly photo to match sizes
   background-image: url("../img/pageElements/Photo Taken 160805.jpg");
   // transform: scaleX(-1); //https://css-tricks.com/snippets/css/flip-an-image/
   // background-image: url("../img/pageElements/CelastrinaEchoEcho_320x_.jpg");
@@ -348,7 +377,7 @@ body {
   background-size: cover;
   h1 {
     margin: 0;
-    color: $colorLightGray;
+    color: $colorSchemeHeaderNameText;
     font-size: 56px;
   }
 }
@@ -380,7 +409,7 @@ body {
 }
 #headerIcons {
   a {
-    color: $colorOrange3;
+    color: $colorSchemeHeaderIcons;
   }
   height: $navbarHeightMobile;
   @media (min-width: 768px) {
@@ -604,12 +633,14 @@ body {
 #section1image {
   padding: 0;
   background-size: cover;
-  background-image: url("../img/pageElements/diaphorencyrtus_aligarhensis_release_wide.jpg");
+  // background-image: url("../img/pageElements/diaphorencyrtus_aligarhensis_release_wide.jpg");
+  background-image: url("../img/index/portrait20160828.jpg");
   @media (max-width: 767px) {
     padding-top: 66.6666666666666667%; //this will set the height of the box in ratio to the width, which is dynamic
   }
   @media (min-width: 768px) {
-    background-image: url("../img/pageElements/diaphorencyrtus_aligarhensis_release.jpg");
+    // background-image: url("../img/pageElements/diaphorencyrtus_aligarhensis_release.jpg");
+    background-image: url("../img/index/portrait20160828.jpg");
   }
 }
 #section1text {
@@ -620,8 +651,6 @@ body {
   p {
     text-align: left;
   }
-  background: $colorSchemeTextBoxBG;
-  color: $colorSchemeTextBoxText;
 }
 //these media queries are to set the height of section1, equal to the height of the image
 @media (max-width:767px) { //XS
@@ -635,12 +664,12 @@ body {
     @include vCenter;
   }
   #section1, #section1 > div {
-    height: 393px;
+    height: 393px; // TODO this should not be set to pixel size!
   }
 }
 @media (min-width:992px) { //MD
   #section1, #section1 > div {
-    height: 444px;
+    height: 444px; // TODO this should not be set to pixel size!
   }
 }
 @media (min-width:1200px) { //LG
@@ -654,20 +683,15 @@ body {
 // }
 #section2button {
   padding: 0;
-  background-color: $colorGrayText;
   text-align: center;
 }
 #section2button h2 {
-  color: $colorSchemeHeaderNameText;
   font-weight: normal;
 }
 #section2button a {
   text-decoration: none;
-  color: $colorSchemeHeaderNameText;
 }
 #section2text {
-  background: $colorSchemeTextBoxGreen;
-  color: $colorSchemeTextBoxGreenText;
   text-align: center;
   p {
     text-align: left;
@@ -694,21 +718,18 @@ body {
 /* **************************************************************************** */
 
 #section4button {
+  // TODO: bootstrap margin-left style is leaving a small white line to the right of this box
   padding: 0;
-  background-color: $colorSchemeTextBoxGreen;
   text-align: center;
 }
 #section4button h2 {
-  color: $colorSchemeTextBoxGreenText;
   font-weight: normal;
 }
 #section4button a {
   text-decoration: none;
-  color: $colorSchemeTextBoxGreenText;
 }
 #section4text {
   background: $colorSchemeTextBoxBG;
-  color: $colorSchemeHeaderNameText;
   text-align: center;
   p {
     text-align: left;
