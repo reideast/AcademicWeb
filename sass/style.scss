@@ -57,24 +57,25 @@ $colorSchemeFooterText: white;
 // **************************************************************************** //
 // ********************************  Styles  ********************************** //
 // **************************************************************************** //
-.box-purple {
-  background-color: $colorPurpleFlower;
-  color: $colorSchemeHeaderNameText;
-  a {
-    color: $colorSchemeHeaderNameText;
-  }
-}
 .box-gray {
   background-color: $colorGrayBG;
   background: $colorSchemeTextBoxBG;
   color: $colorSchemeTextBoxText;
 }
+
 .box-green {
   background-color: $colorYellowGreen;
   background: $colorSchemeTextBoxGreen;
   color: $colorSchemeTextBoxGreenText;
   a {
     color: $colorSchemeTextBoxGreenText;
+  }
+}
+.box-purple {
+  background-color: $colorPurpleFlower;
+  color: $colorSchemeHeaderNameText;
+  a {
+    color: $colorSchemeHeaderNameText;
   }
 }
 
@@ -501,25 +502,29 @@ body {
   color: $colorSchemeFooterText;
   text-align: center;
   margin: 0;
-  @media (max-width: 767px) {
+}
+@media (max-width: 767px) {
+  #footer { 
     width: 100vw;
     // padding-top: 10px;
     // padding-bottom: 10px;
-    > div:first-child {
-      height: $footerHeightMobile - 150px;
-    }
-    > div {
-      height: 150px;
-    }
-    #footerName { padding-top: 40px; }
   }
-  @media (min-width: 768px) {
+  #footer > div:first-child {
+    height: $footerHeightMobile - 150px;
+  }
+  #footer > div {
+    height: 150px;
+  }
+  #footerName { padding-top: 40px; }
+}
+@media (min-width: 768px) {
+  #footer {
     padding-top: $mobileVerticalPadding;
     padding-bottom: $mobileVerticalPadding;
-    > div {
-      height: ($footerHeight - $mobileVerticalPadding * 2);
-      // padding-right: 0;
-    }
+  }
+  #footer > div {
+    height: ($footerHeight - $mobileVerticalPadding * 2);
+    // padding-right: 0;
   }
 }
 #footerName h1 { font-size: 24px; }
@@ -706,7 +711,8 @@ body {
 #section3image {
   padding: 0;
   background-size: cover;
-  background-image: url("../img/pageElements/Chartocerus_female_lateral_dome2.jpg");
+  // background-image: url("../img/pageElements/Chartocerus_female_lateral_dome2.jpg");
+  background-image: url("../img/index/slugFlower20160610.jpg");
   padding-top: 62%;
   @media (min-width: 768px) {
     padding-top: 47%; //this will set the height of the box in ratio to the width, which is dynamic
@@ -740,7 +746,7 @@ body {
 #section4image {
   padding: 0;
   background-size: cover;
-  background-image: url("../img/pageElements/conetainer.jpg");
+  background-image: url("../img/index/slugDamage20160908.jpg");
   @media (max-width: 767px) {
     padding-top: 97%;
   }
