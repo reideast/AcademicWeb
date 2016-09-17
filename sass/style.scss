@@ -57,26 +57,48 @@ $colorSchemeFooterText: white;
 // **************************************************************************** //
 // ********************************  Styles  ********************************** //
 // **************************************************************************** //
+.box-text {
+  a {
+    text-decoration: underline;
+  }
+  
+  text-align: center;
+  p {
+    text-align: left;
+  }
+  padding: 20px 40px;
+  @media (min-width: 768px) { 
+    padding: 30px 40px;
+  }
+  @media (min-width: 992px) {
+    padding: 50px 60px; 
+  }
+}
+
+.box-gray, .box-dark, .box-green, .box-purple {
+  h2 a, h1 a {
+    color: inherit;
+  }
+}
+
 .box-gray {
-  background-color: $colorGrayBG;
-  background: $colorSchemeTextBoxBG;
+  background-color: $colorSchemeTextBoxBG;
   color: $colorSchemeTextBoxText;
 }
 
+.box-dark {
+  background-color: $colorSchemeButtonGray;
+  color: $colorLightGray;
+}
+
 .box-green {
-  background-color: $colorYellowGreen;
-  background: $colorSchemeTextBoxGreen;
+  background-color: $colorSchemeTextBoxGreen;
   color: $colorSchemeTextBoxGreenText;
-  a {
-    color: $colorSchemeTextBoxGreenText;
-  }
 }
 .box-purple {
   background-color: $colorPurpleFlower;
   color: $colorSchemeHeaderNameText;
-  a {
-    color: $colorSchemeHeaderNameText;
-  }
+  color: white;
 }
 
 
@@ -642,39 +664,30 @@ body {
   background-image: url("../img/index/portrait20160828.jpg");
   @media (max-width: 767px) {
     padding-top: 66.6666666666666667%; //this will set the height of the box in ratio to the width, which is dynamic
+    padding-top: 65%;
+    // TODO: as far as I can see, this means that the HEIGHT of this element will be 65% or the WIDTH of it's parent element (at md, that's 750px wide (container) -> 487.5 tall applied to this div)
+    // TODO: so, I need to figure out what ratios I want for these images, and how to apply them to both img and text boxes!
   }
   @media (min-width: 768px) {
     // background-image: url("../img/pageElements/diaphorencyrtus_aligarhensis_release.jpg");
     background-image: url("../img/index/portrait20160828.jpg");
+    padding-top: 65%;
   }
 }
 #section1text {
-  // height: 100%;
-  padding-left: 60px;
-  padding-right: 60px;
-  text-align: center;
-  p {
-    text-align: left;
-  }
 }
 //these media queries are to set the height of section1, equal to the height of the image
-@media (max-width:767px) { //XS
-  #section1text {
-    padding-top: $mobileVerticalPadding;
-    padding-bottom: $mobileVerticalPadding;
-  }
-}
 @media (min-width:768px) { //SM
   #section1textVerticalCenter {
-    @include vCenter;
+    // @include vCenter;
   }
   #section1, #section1 > div {
-    height: 393px; // TODO this should not be set to pixel size!
+    // height: 393px; // TODO this should not be set to pixel size!
   }
 }
 @media (min-width:992px) { //MD
   #section1, #section1 > div {
-    height: 444px; // TODO this should not be set to pixel size!
+    // height: 444px; // TODO this should not be set to pixel size!
   }
 }
 @media (min-width:1200px) { //LG
@@ -683,9 +696,11 @@ body {
 /* **************************************************************************** */
 /* ******************************  Section 2  ********************************* */
 /* **************************************************************************** */
-// #section2 {
-//   // position: relative;
-// }
+#section2 {
+  @media (max-width: 767px) {
+    background-color: $colorSchemeTextBoxBG;
+  }
+}
 #section2button {
   padding: 0;
   text-align: center;
@@ -697,12 +712,6 @@ body {
   text-decoration: none;
 }
 #section2text {
-  text-align: center;
-  p {
-    text-align: left;
-  }
-  padding: 20px 40px;
-  @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
 }
 
 /* **************************************************************************** */
@@ -735,26 +744,20 @@ body {
   text-decoration: none;
 }
 #section4text {
-  background: $colorSchemeTextBoxBG;
-  text-align: center;
-  p {
-    text-align: left;
-  }
-  padding: 20px 40px;
-  @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
 }
 #section4image {
   padding: 0;
   background-size: cover;
+  background-position: center top;
   background-image: url("../img/index/slugDamage20160908.jpg");
   @media (max-width: 767px) {
-    padding-top: 97%;
+    padding-top: 65%;
   }
   @media (min-width: 768px) {
-    padding-top: 112%; //this will set the height of the box in ratio to the width, which is dynamic
+    padding-top: 65%; //this will set the height of the box in ratio to the width, which is dynamic
   }
   @media (min-width: 992px) {
-    padding-top: 96%;
+    padding-top: 65%;
   }
 }
 
