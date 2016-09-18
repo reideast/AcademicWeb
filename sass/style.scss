@@ -204,7 +204,7 @@ $colorSchemeFooterText: white;
 }
 .sizer {
   position: relative;
-  padding-left: 0; padding-right: 0; // set to remove bootstrap's margins for col-* styles // TODO: change this padding in bootstrap config?
+  padding-left: 0; padding-right: 0; // set to remove bootstrap's margins for col-* styles
 }
 
 
@@ -675,15 +675,7 @@ body {
   background-size: cover;
   background-position: center top;
   background-image: url("../img/index/dragonfly20160613.jpg");
-  // @media (max-width: 767px) {
     padding-top: 170%;
-  // }
-  // @media (min-width: 768px) {
-  //   padding-top: 65%; //this will set the height of the box in ratio to the width, which is dynamic
-  // }
-  // @media (min-width: 992px) {
-  //   padding-top: 65%;
-  // }
 }
 .publicationsRowImage2 {
   padding: 0;
@@ -691,32 +683,15 @@ body {
 .publicationsImage2 {
   background-size: cover;
   background-position: center center;
-  // background-image: url("../img/index/slugDamage20160908_rotate.jpg");
   background-image: url("../img/index/beetle20160108.jpg");
-  // @media (max-width: 767px) {
     padding-top: 88%;
-  // }
-  // @media (min-width: 768px) {
-  //   padding-top: 65%; //this will set the height of the box in ratio to the width, which is dynamic
-  // }
-  // @media (min-width: 992px) {
-  //   padding-top: 65%;
-  // }
 }
 .publicationsImageHorizontal {
   padding: 0;
   background-size: cover;
   background-position: center top;
   background-image: url("../img/index/beetle20160108.jpg");
-  // @media (max-width: 767px) {
     padding-top: 61.5%;
-  // }
-  // @media (min-width: 768px) {
-  //   padding-top: 65%; //this will set the height of the box in ratio to the width, which is dynamic
-  // }
-  // @media (min-width: 992px) {
-  //   padding-top: 65%;
-  // }
 }
 
 
@@ -727,7 +702,6 @@ body {
 }
 #publicationsMobile .publicationsImage {
   background-position: center center;
-  // padding-top: 118%;
   padding-top: 151.5%;
 }
 
