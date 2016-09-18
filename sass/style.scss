@@ -202,10 +202,8 @@ $colorSchemeFooterText: white;
     height: 100%;
   }
 }
-  .sizer {
-    position: relative;
-  }
 .sizer {
+  position: relative;
   padding-left: 0; padding-right: 0; // set to remove bootstrap's margins for col-* styles // TODO: change this padding in bootstrap config?
 }
 
@@ -595,11 +593,11 @@ body {
 /* ********************************  Section 1  ******************************* */
 /* **************************************************************************** */
 @media (min-width: 768px) {
-  #section1 .sizer {
+  #about .sizer {
     padding-top: 50%;
   }
 }
-#section1image {
+#aboutImage {
   padding: 0;
   background-size: cover;
   background-image: url("../img/index/portrait_wide.jpg");
@@ -610,9 +608,8 @@ body {
     background-image: url("../img/index/portrait_tall.jpg");
   }
 }
-//these media queries are to set the height of section1, equal to the height of the image
 @media (min-width:768px) { //SM
-  #section1textVerticalCenter {
+  #aboutTextVerticalCenter {
     @include vCenter;
   }
 }
@@ -620,14 +617,17 @@ body {
 /* **************************************************************************** */
 /* ******************************  Section 2  ********************************* */
 /* **************************************************************************** */
-#section2text p {
+#researchText p {
   margin: 0;
 }
-#section2button h1 {
+@media (max-width: 350px) {
+  #researchText { padding: 20px; }
+}
+#researchButton h1 {
   font-weight: normal;
   font-size: 64px;
 }
-#section2button a {
+#researchButton a {
   text-decoration: none;
 }
 
@@ -651,32 +651,26 @@ body {
 /* ******************************  Section 4  ********************************* */
 /* **************************************************************************** */
 @media (min-width: 500px) {
-  #section4 { display: block; }
-  #section4mobile { display: none; }
+  #publicationsWide { display: block; }
+  #publicationsMobile { display: none; }
 }
 @media (max-width: 499px) {
-  #section4 { display: none; }
-  #section4mobile { display: block; }
+  #publicationsWide { display: none; }
+  #publicationsMobile { display: block; }
 }
 
 
-.section4rowText .sizer {
+.publicationsRowText .sizer {
   @media (min-width: 768px) {
     padding-top: 40%;
   }
 }
 @media (min-width:768px) { //SM
-  .section4textVerticalCenter {
+  .publicationsTextVerticalCenter {
     @include vCenter;
   }
 }
-.section4button h2 {
-  font-weight: normal;
-}
-.section4button a {
-  text-decoration: none;
-}
-.section4image {
+.publicationsImage {
   padding: 0;
   background-size: cover;
   background-position: center top;
@@ -691,14 +685,16 @@ body {
   //   padding-top: 65%;
   // }
 }
-.section4image2 {
+.publicationsRowImage2 {
   padding: 0;
+}
+.publicationsImage2 {
   background-size: cover;
   background-position: center center;
   // background-image: url("../img/index/slugDamage20160908_rotate.jpg");
   background-image: url("../img/index/beetle20160108.jpg");
   // @media (max-width: 767px) {
-    padding-top: 61%;
+    padding-top: 88%;
   // }
   // @media (min-width: 768px) {
   //   padding-top: 65%; //this will set the height of the box in ratio to the width, which is dynamic
@@ -707,7 +703,7 @@ body {
   //   padding-top: 65%;
   // }
 }
-.section4imageHorizontal {
+.publicationsImageHorizontal {
   padding: 0;
   background-size: cover;
   background-position: center top;
@@ -726,35 +722,36 @@ body {
 
 
 
-#section4mobile .box-button h2 {
+#publicationsMobile .box-button h2 {
   font-size: 24px;
 }
-#section4mobile .section4image {
+#publicationsMobile .publicationsImage {
   background-position: center center;
-  padding-top: 118%;
+  // padding-top: 118%;
+  padding-top: 151.5%;
 }
 
 /* **************************************************************************** */
 /* ********************************  About  *********************************** */
 /* **************************************************************************** */
-#aboutImage {
-  padding: 0;
-}
-#aboutText {
-  background: $colorLightGray;
-  color: $colorSchemeTextBoxText;
-  text-align: center;
-  p {
-    text-align: left;
-  }
-  padding: 20px 40px;
-  @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
-}
-#aboutSummary {
-  background: $colorSchemeTextBoxBG;
-  color: $colorSchemeTextBoxText;
-  text-align: center;
-  margin-left: 30%;
-  padding: 20px 40px;
-  @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
-}
+// #aboutImage {
+//   padding: 0;
+// }
+// #aboutText {
+//   background: $colorLightGray;
+//   color: $colorSchemeTextBoxText;
+//   text-align: center;
+//   p {
+//     text-align: left;
+//   }
+//   padding: 20px 40px;
+//   @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
+// }
+// #aboutSummary {
+//   background: $colorSchemeTextBoxBG;
+//   color: $colorSchemeTextBoxText;
+//   text-align: center;
+//   margin-left: 30%;
+//   padding: 20px 40px;
+//   @media (min-width: 500px) { padding: $mobileVerticalPadding 60px; }
+// }
