@@ -210,9 +210,6 @@ $colorSchemeFooterText: white;
 .sizer {
   padding-left: 0; padding-right: 0; // set to remove bootstrap's margins for col-* styles // TODO: change this padding in bootstrap config?
 }
-.sizer .box-text > * {
-  // @include vCenter;
-}
 
 
 // use this style to set the height of .squareContent equal to the width of the container:
@@ -234,40 +231,6 @@ $colorSchemeFooterText: white;
   height: 100%;
 }
 
-.flipHorizontal {
-  transform: scaleX(-1); //https://css-tricks.com/snippets/css/flip-an-image/
-  //filter: FlipH; //invalid?
-}
-
-
-/* **************************************************************************** */
-/* ****************************  Bootstrap "Meter" **************************** */
-/* **************************************************************************** */
-// TODO: remove "foo, bar, etc" from index.html
-//TODO: Remove these "Bootstrap width meter colors"
-#foo, #bar, #baz, #bam {
-  color: $colorBlue2 !important;
-}
-@media (min-width:480px) { //XS
-  #foo {
-    color: $colorPurpleFlower !important;
-  }
-}
-@media (min-width:768px) { //SM
-  #bar {
-    color: $colorPurpleFlower !important;
-  }
-}
-@media (min-width:992px) { //MD
-  #baz {
-    color: $colorPurpleFlower !important;
-  }
-}
-@media (min-width:1200px) { //LG
-  #bam {
-    color: $colorPurpleFlower !important;
-  }
-}
 
 /* **************************************************************************** */
 /* *************************** 1st-Level Containers *************************** */
