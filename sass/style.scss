@@ -660,23 +660,23 @@ body {
 }
 
 
-#section4rowText .sizer {
+.section4rowText .sizer {
   @media (min-width: 768px) {
     padding-top: 40%;
   }
 }
 @media (min-width:768px) { //SM
-  #section4textVerticalCenter {
+  .section4textVerticalCenter {
     @include vCenter;
   }
 }
-#section4button h2 {
+.section4button h2 {
   font-weight: normal;
 }
-#section4button a {
+.section4button a {
   text-decoration: none;
 }
-#section4image {
+.section4image {
   padding: 0;
   background-size: cover;
   background-position: center top;
@@ -691,7 +691,7 @@ body {
   //   padding-top: 65%;
   // }
 }
-#section4image2 {
+.section4image2 {
   padding: 0;
   background-size: cover;
   background-position: center center;
@@ -707,7 +707,7 @@ body {
   //   padding-top: 65%;
   // }
 }
-#section4imageHorizontal {
+.section4imageHorizontal {
   padding: 0;
   background-size: cover;
   background-position: center top;
@@ -721,6 +721,17 @@ body {
   // @media (min-width: 992px) {
   //   padding-top: 65%;
   // }
+}
+
+
+
+
+#section4mobile .box-button h2 {
+  font-size: 24px;
+}
+#section4mobile .section4image {
+  background-position: center center;
+  padding-top: 118%;
 }
 
 /* **************************************************************************** */
