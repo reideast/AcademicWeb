@@ -73,13 +73,11 @@ $colorSchemeFooterText: white;
   @media (min-width: 992px) {
     padding: 50px 60px; 
   }
+}
 
-  p:last-child {
-    // margin-bottom: 0;
-  }
-  p:first-child, h2:first-child {
-    // margin-top: 10px;
-  }
+.box-button {
+  padding: 0;
+  text-align: center;
 }
 
 .box-gray, .box-dark, .box-green, .box-purple {
@@ -295,11 +293,8 @@ body {
   // background-position: 0px 0px;
   background-size: cover;
   
-  //TODO: need background images for  or square (768x600)
-  //TODO: Possible to set height of aboveTheFold to 75vh for super-tall rotation (iPad 768x1024, Google Nexus 10, 800x1280)
   //TODO: add in @2x images for retina display (use Retina.js?)
 
-  // TODO: crop and modify butterfly photo to match sizes
   @media (orientation: portrait) {
     background-image: url("../img/index/bg_centered_narrow.jpg");
     background-position: center center;
@@ -327,30 +322,20 @@ body {
     background-position: top center;
   }
 }
+
 #containerFooterBackground {
-  // width: 100vw;
   width: 100%;
   position: absolute;
   bottom: 0;
-  // position: relative;
-  // top: -$footerHeightMobile;
-  // margin-bottom: -$footerHeightMobile;
-  // @media (min-width: 768px) {
-  //   top: -$footerHeight;
-  //   margin-bottom: -$footerHeight;
-  // }
   z-index: -90;
 }
 #footerBackgroundImage {
   //left and right: calc((-100vw + 970px)/2);
-  // position: absolute;
   height: $footerHeightMobile;
   @media (min-width: 768px) {
     height: $footerHeight;
   }
-  // width: 100vw;
   //top: 0; //note: by NOT specifying top:0, an absolute child of a __static__ element, the absolute element will stay aligned to the top of the static! weird?
-  // left: 0;
   padding: 0;
   margin: 0;
   background-image: url("../img/pageElements/garageDoorH_XS.jpg");
@@ -359,10 +344,8 @@ body {
   }
   background-size: cover;
   background-repeat: no-repeat;
-  // background-position: 0 0; //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
-  /* -webkit-transform: translateZ(0); */
-  // background-color: gray; //$colorSchemeError;
 }
+
 #articleTitle {
   height: 150px;
   width: 100%;
@@ -480,8 +463,6 @@ body {
     background-color: $colorSchemeHeaderBG;
     z-index: 100;
     overflow-x: hidden;
-    //padding-right: 0;
-    // width: 100vw;
     ul { width: 100%; }
     li { width: 100vw; }
   }
@@ -492,7 +473,6 @@ body {
 /* **************************************************************************** */
 
 #footer {
-  // height: $footerHeight;  
   color: $colorSchemeFooterText;
   text-align: center;
   margin: 0;
@@ -500,8 +480,6 @@ body {
 @media (max-width: 767px) {
   #footer { 
     width: 100vw;
-    // padding-top: 10px;
-    // padding-bottom: 10px;
   }
   #footer > div:first-child {
     height: $footerHeightMobile - 150px;
@@ -518,7 +496,6 @@ body {
   }
   #footer > div {
     height: ($footerHeight - $mobileVerticalPadding * 2);
-    // padding-right: 0;
   }
 }
 #footerName h1 { font-size: 24px; }
@@ -537,13 +514,8 @@ body {
 #footerAddress:after {
   @include trailingBorder;
 }
-// #footer > div:last-child {
-//   border-left: 1px solid $colorSchemeFooterText;
-// }
 #footerAddress, #footerLinks {
-  // line-height: 0.8em;
   font-size: 10px;
-  // p { margin: 0 0 3px; }
   p { margin: 0; }
   @media (min-width: 480px) {
     font-size: 14px;
@@ -555,10 +527,6 @@ body {
 #footerLinks a {
   color: $colorSchemeFooterText;
 }
-// #footerSocialMedia {
-//   // padding-bottom: 15px;
-//   // font-size: 16px;
-// }
 
 
 
@@ -634,18 +602,12 @@ body {
 #section1image {
   padding: 0;
   background-size: cover;
-  // background-image: url("../img/pageElements/diaphorencyrtus_aligarhensis_release_wide.jpg");
-  background-image: url("../img/index/portrait20160828.jpg");
+  background-image: url("../img/index/portrait_wide.jpg");
   @media (max-width: 767px) {
-    // padding-top: 66.6666666666666667%; //this will set the height of the box in ratio to the width, which is dynamic
     padding-top: 65%;
-    // TODO: as far as I can see, this means that the HEIGHT of this element will be 65% or the WIDTH of it's parent element (at md, that's 750px wide (container) -> 487.5 tall applied to this div)
-    // TODO: so, I need to figure out what ratios I want for these images, and how to apply them to both img and text boxes!
   }
   @media (min-width: 768px) {
-    // background-image: url("../img/pageElements/diaphorencyrtus_aligarhensis_release.jpg");
-    background-image: url("../img/index/portrait20160828.jpg");
-    // padding-top: 65%;
+    background-image: url("../img/index/portrait_tall.jpg");
   }
 }
 //these media queries are to set the height of section1, equal to the height of the image
@@ -653,32 +615,13 @@ body {
   #section1textVerticalCenter {
     @include vCenter;
   }
-  #section1, #section1 > div {
-    // height: 393px; // TODO this should not be set to pixel size!
-  }
-}
-@media (min-width:992px) { //MD
-  #section1, #section1 > div {
-    // height: 444px; // TODO this should not be set to pixel size!
-  }
-}
-@media (min-width:1200px) { //LG
 }
 
 /* **************************************************************************** */
 /* ******************************  Section 2  ********************************* */
 /* **************************************************************************** */
-// #section2 {
-//   @media (max-width: 767px) {
-//     background-color: $colorSchemeTextBoxBG; // color white space behind button at widths when columns are 100% of row
-//   }
-// }
 #section2text p {
   margin: 0;
-}
-#section2button {
-  padding: 0;
-  text-align: center;
 }
 #section2button h1 {
   font-weight: normal;
@@ -693,7 +636,7 @@ body {
 /* **************************************************************************** */
 #section3 .sizer {
   @media (min-width: 768px) {
-    padding-top: 47%; //this will set the height of the box in relative percentage to the width, which is set by col-* styles
+    padding-top: 52%; //this will set the height of the box in relative percentage to the width, which is set by col-* styles
   }
 }
 #section3image {
@@ -708,7 +651,7 @@ body {
 /* ******************************  Section 4  ********************************* */
 /* **************************************************************************** */
 
-#section4row1 .sizer {
+#section4rowText .sizer {
   @media (min-width: 768px) {
     padding-top: 40%;
   }
@@ -718,18 +661,11 @@ body {
     @include vCenter;
   }
 }
-#section4button {
-  // TODO: bootstrap margin-left style is leaving a small white line to the right of this box
-  padding: 0;
-  text-align: center;
-}
 #section4button h2 {
   font-weight: normal;
 }
 #section4button a {
   text-decoration: none;
-}
-#section4text {
 }
 #section4image {
   padding: 0;
@@ -750,7 +686,8 @@ body {
   padding: 0;
   background-size: cover;
   background-position: center top;
-  background-image: url("../img/index/slugDamage20160908_rotate.jpg");
+  // background-image: url("../img/index/slugDamage20160908_rotate.jpg");
+  background-image: url("../img/index/beetle20160108.jpg");
   // @media (max-width: 767px) {
     padding-top: 55.6%;
   // }
