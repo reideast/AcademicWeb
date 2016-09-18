@@ -73,6 +73,13 @@ $colorSchemeFooterText: white;
   @media (min-width: 992px) {
     padding: 50px 60px; 
   }
+
+  p:last-child {
+    // margin-bottom: 0;
+  }
+  p:first-child, h2:first-child {
+    margin-top: 10px;
+  }
 }
 
 .box-gray, .box-dark, .box-green, .box-purple {
@@ -95,12 +102,40 @@ $colorSchemeFooterText: white;
   background-color: $colorSchemeTextBoxGreen;
   color: $colorSchemeTextBoxGreenText;
 }
+
 .box-purple {
   background-color: $colorPurpleFlower;
   color: $colorSchemeHeaderNameText;
   color: white;
 }
 
+.socialMediaButtons {
+  font-size: 14px;
+  a {
+    i {
+      line-height: 20px;
+    }
+  }
+  span {
+    padding-left: 7px;
+  }
+  span:first-child {
+    padding-left: 0;
+  }
+}
+
+.nameplate {
+  h1 {
+    //font-family: $fontPageHeader; //NOTE: do not like small-caps here
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  h3 {
+    font-family: $fontBody;
+    font-size: 16px;
+    margin-top: 0;
+  }
+}
 
 // **************************************************************************** //
 // *********************************  Mixins ********************************** //
@@ -140,37 +175,45 @@ $colorSchemeFooterText: white;
 /* **************************************************************************** */
 /* ************************* Generic Transformations ************************** */
 /* **************************************************************************** */
-.socialMediaButtons {
-  font-size: 14px;
-  a {
-    i {
-      line-height: 20px;
-    }
-  }
-  span {
-    padding-left: 7px;
-  }
-  span:first-child {
-    padding-left: 0;
-  }
-}
-
-.nameplate {
-  h1 {
-    //font-family: $fontPageHeader; //NOTE: do not like small-caps here
-    font-size: 18px;
-    margin-bottom: 5px;
-  }
-  h3 {
-    font-family: $fontBody;
-    font-size: 16px;
-    margin-top: 0;
-  }
-}
 
 .verticalCenter {
   @include vCenter;
 }
+
+// use the "sizer" style to set the height of a variable-width div equal to a proportion of the width of it's parent
+// for example:
+// <div class="row" id="section1">
+//   <div class="column-4 sizer">    --> class "column-4" is of unknown width here
+//     <div class="sized">
+//       <p>content</p>
+//     </div>
+//   </div>
+//   <div class= "column-8 sizer">   --> despite "column-8 being different width than column-4, sizer will set the height of both to the same
+//     <div class="sized">
+//       ...
+// You must also include a style to set the padding-top of .sizer to the percentage of the width you desire it to be:
+//   #section1 .sizer { padding-top: 50% }
+// this will set all .sized inside of #section1 to be 50% as tall as #section1 is wide
+.sized {
+  position: relative;
+}
+@media (min-width: 768px) {
+  .sized {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    height: 100%;
+  }
+}
+  .sizer {
+    position: relative;
+  }
+.sizer {
+  padding-left: 0; padding-right: 0; // set to remove bootstrap's margins for col-* styles // TODO: change this padding in bootstrap config?
+}
+.sizer .box-text > * {
+  // @include vCenter;
+}
+
 
 // use this style to set the height of .squareContent equal to the width of the container:
 // <container>
@@ -654,16 +697,18 @@ body {
 /* **************************************************************************** */
 /* ********************************  Section 1  ******************************* */
 /* **************************************************************************** */
-// #section1 {
-//   // position: relative;
-// }
+@media (min-width: 768px) {
+  #section1 .sizer {
+    padding-top: 50%;
+  }
+}
 #section1image {
   padding: 0;
   background-size: cover;
   // background-image: url("../img/pageElements/diaphorencyrtus_aligarhensis_release_wide.jpg");
   background-image: url("../img/index/portrait20160828.jpg");
   @media (max-width: 767px) {
-    padding-top: 66.6666666666666667%; //this will set the height of the box in ratio to the width, which is dynamic
+    // padding-top: 66.6666666666666667%; //this will set the height of the box in ratio to the width, which is dynamic
     padding-top: 65%;
     // TODO: as far as I can see, this means that the HEIGHT of this element will be 65% or the WIDTH of it's parent element (at md, that's 750px wide (container) -> 487.5 tall applied to this div)
     // TODO: so, I need to figure out what ratios I want for these images, and how to apply them to both img and text boxes!
@@ -671,15 +716,13 @@ body {
   @media (min-width: 768px) {
     // background-image: url("../img/pageElements/diaphorencyrtus_aligarhensis_release.jpg");
     background-image: url("../img/index/portrait20160828.jpg");
-    padding-top: 65%;
+    // padding-top: 65%;
   }
-}
-#section1text {
 }
 //these media queries are to set the height of section1, equal to the height of the image
 @media (min-width:768px) { //SM
   #section1textVerticalCenter {
-    // @include vCenter;
+    @include vCenter;
   }
   #section1, #section1 > div {
     // height: 393px; // TODO this should not be set to pixel size!
@@ -696,11 +739,11 @@ body {
 /* **************************************************************************** */
 /* ******************************  Section 2  ********************************* */
 /* **************************************************************************** */
-#section2 {
-  @media (max-width: 767px) {
-    background-color: $colorSchemeTextBoxBG;
-  }
-}
+// #section2 {
+//   @media (max-width: 767px) {
+//     background-color: $colorSchemeTextBoxBG; // color white space behind button at widths when columns are 100% of row
+//   }
+// }
 #section2button {
   padding: 0;
   text-align: center;
@@ -711,21 +754,21 @@ body {
 #section2button a {
   text-decoration: none;
 }
-#section2text {
-}
 
 /* **************************************************************************** */
 /* ******************************  Section 3  ********************************* */
 /* **************************************************************************** */
-#section3image {
-  padding: 0;
-  background-size: cover;
-  // background-image: url("../img/pageElements/Chartocerus_female_lateral_dome2.jpg");
-  background-image: url("../img/index/slugFlower20160610.jpg");
-  padding-top: 62%;
+#section3 .sizer {
   @media (min-width: 768px) {
-    padding-top: 47%; //this will set the height of the box in ratio to the width, which is dynamic
+    padding-top: 47%; //this will set the height of the box in relative percentage to the width, which is set by col-* styles
   }
+}
+#section3image {
+  @media (max-width: 767px) {
+    padding-top: 62%;
+  }
+  background-size: cover;
+  background-image: url("../img/index/slugFlower20160610.jpg");
 }
 
 /* **************************************************************************** */
