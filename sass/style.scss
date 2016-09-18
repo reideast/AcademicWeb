@@ -240,49 +240,13 @@ body {
 }
 
 .container { //this is using (and overridding) some of Bootstrap's container
-// #containerBody, #containerHeader, #containerFooter {
   padding: 0; //reset from Bootstrap's 15px div padding
-  // @media (min-width:768px) { //moved these widths to the Bootrap config
-  //   width:750px
-  // }
-  // @media (min-width:992px) {
-  //   width:970px
-  // }
 }
 .container > * { //evaluated load performance a few times, didn't change load +/- 50ms 
   margin-left: 0;
   margin-right: 0;
 }
 
-// // Create $colorSchemePageBG colored bars to block the background image behind body
-// @media (min-width: 768px) {
-//   #containerHeader:before, #containerBody:before {
-//     background-color: $colorSchemePageBG;
-//     position: absolute;
-//     // top: 0;
-//     margin-left: 0;
-//     // right: -1px;
-//     // width: 101vw;
-//     right: 0px;
-//     width: 100vw;
-//     z-index: -50;
-//     content: " ";
-//     display: block;
-//   }
-//   #containerHeader:before {
-//     height: $navbarHeight;
-//   }
-//   #containerBody:before {
-//     // bottom: 0;
-//     // height: 444px; //TODO: sense how height of #section1 is to apply to this?? --Use the fact that we will know how wide x tall each sm/md/large are!
-//     @media (min-width:768px) { //SM
-//       height: 393px + 166.656px; //this is my best solution to the "unknowable height" problem == (height of image + height of col-sm-8)
-//     }
-//     @media (min-width:992px) { //MD
-//       height: 444px + 166.656px;
-//     }
-//   }
-// }
 #containerByline {
 // #aboveTheFold {
   height: 100vh;
@@ -297,19 +261,14 @@ body {
     height: 100%;
   }
 }
-// #containerFooter {
-//   // background-color: teal;
-// }
-
-
 
 /* **************************************************************************** */
 /* ***********************  Parallax Background Styles ************************ */
 /* **************************************************************************** */
 
 body {
-  overflow-x: hidden;
-  overflow-y: scroll;
+  // overflow-x: hidden;
+  // overflow-y: scroll;
   position: relative;
 }
 // html {
@@ -333,7 +292,7 @@ body {
   padding: 0;
   margin: 0;
   background-repeat: no-repeat;
-  background-position: 0px 0px;
+  // background-position: 0px 0px;
   background-size: cover;
   
   //TODO: need background images for  or square (768x600)
@@ -341,8 +300,9 @@ body {
   //TODO: add in @2x images for retina display (use Retina.js?)
 
   // TODO: crop and modify butterfly photo to match sizes
-  background-image: url("../img/pageElements/Photo Taken 160805.jpg");
-  // transform: scaleX(-1); //https://css-tricks.com/snippets/css/flip-an-image/
+  background-image: url("../img/index/bg_LG.jpg");
+  background-image: url("../img/index/bg_XS.jpg");
+  background-position: center center;
   // background-image: url("../img/pageElements/CelastrinaEchoEcho_320x_.jpg");
   // @media (min-width: 321px) {
   //   background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg");
@@ -356,10 +316,10 @@ body {
   // @media (min-width: 992px) { //MD
   //   background-image: url("../img/pageElements/CelastrinaEchoEcho_MD.jpg"); 
   // }
-  // @media (min-width: 1200px) { //LG
-  //   background-image: url("../img/pageElements/CelastrinaEchoEcho_LG.jpg"); 
-  // }
-  /* -webkit-transform: translateZ(0); */
+  @media (min-width: 1200px) { //LG
+    background-image: url("../img/index/bg_LG.jpg");
+    background-position: top center;
+  }
 }
 #containerFooterBackground {
   // width: 100vw;
