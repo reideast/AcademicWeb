@@ -650,6 +650,15 @@ body {
 /* **************************************************************************** */
 /* ******************************  Section 4  ********************************* */
 /* **************************************************************************** */
+@media (min-width: 500px) {
+  #section4 { display: block; }
+  #section4mobile { display: none; }
+}
+@media (max-width: 499px) {
+  #section4 { display: none; }
+  #section4mobile { display: block; }
+}
+
 
 #section4rowText .sizer {
   @media (min-width: 768px) {
