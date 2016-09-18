@@ -300,9 +300,14 @@ body {
   //TODO: add in @2x images for retina display (use Retina.js?)
 
   // TODO: crop and modify butterfly photo to match sizes
-  background-image: url("../img/index/bg_LG.jpg");
-  background-image: url("../img/index/bg_XS.jpg");
-  background-position: center center;
+  @media (orientation: portrait) {
+    background-image: url("../img/index/bg_centered_narrow.jpg");
+    background-position: center center;
+  }
+  @media (orientation: landscape) {
+    background-image: url("../img/index/bg_centered_wide.jpg");
+    background-position: center center;
+  }
   // background-image: url("../img/pageElements/CelastrinaEchoEcho_320x_.jpg");
   // @media (min-width: 321px) {
   //   background-image: url("../img/pageElements/CelastrinaEchoEcho_XXS.jpg");
@@ -316,7 +321,8 @@ body {
   // @media (min-width: 992px) { //MD
   //   background-image: url("../img/pageElements/CelastrinaEchoEcho_MD.jpg"); 
   // }
-  @media (min-width: 1200px) { //LG
+  // @media (min-width: 1200px) { //LG
+  @media (min-width: 992px) { //MD
     background-image: url("../img/index/bg_LG.jpg");
     background-position: top center;
   }
