@@ -776,6 +776,10 @@ body {
 /* ******************************  Section 4  ********************************* */
 /* **************************************************************************** */
 
+#section4row1 .sizer {
+  padding-top: 55.5%;
+}
+
 #section4button {
   // TODO: bootstrap margin-left style is leaving a small white line to the right of this box
   padding: 0;
@@ -793,18 +797,32 @@ body {
   padding: 0;
   background-size: cover;
   background-position: center top;
-  background-image: url("../img/index/slugDamage20160908.jpg");
-  @media (max-width: 767px) {
+  background-image: url("../img/index/dragonfly20160613.jpg");
+  // @media (max-width: 767px) {
     padding-top: 65%;
-  }
-  @media (min-width: 768px) {
-    padding-top: 65%; //this will set the height of the box in ratio to the width, which is dynamic
-  }
-  @media (min-width: 992px) {
-    padding-top: 65%;
-  }
+  // }
+  // @media (min-width: 768px) {
+  //   padding-top: 65%; //this will set the height of the box in ratio to the width, which is dynamic
+  // }
+  // @media (min-width: 992px) {
+  //   padding-top: 65%;
+  // }
 }
-
+#section4imageHorizontal {
+  padding: 0;
+  background-size: cover;
+  background-position: center top;
+  background-image: url("../img/index/beetle20160108.jpg");
+  // @media (max-width: 767px) {
+    padding-top: 61.5%;
+  // }
+  // @media (min-width: 768px) {
+  //   padding-top: 65%; //this will set the height of the box in ratio to the width, which is dynamic
+  // }
+  // @media (min-width: 992px) {
+  //   padding-top: 65%;
+  // }
+}
 
 /* **************************************************************************** */
 /* ********************************  About  *********************************** */
