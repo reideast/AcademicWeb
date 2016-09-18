@@ -9,4 +9,5 @@ package.json
 .dropbox
 desktop.ini
 style.css
-css/style.min.css
+style.min.css
+*.pdf
