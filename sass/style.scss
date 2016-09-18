@@ -78,10 +78,12 @@ $colorSchemeFooterText: white;
 .box-button {
   padding: 0;
   text-align: center;
+  display: block;
 }
 
-.box-gray, .box-dark, .box-green, .box-purple {
-  h2 a, h1 a {
+// .box-gray, .box-dark, .box-green, .box-purple {
+.box-button {
+  a {
     color: inherit;
   }
 }
