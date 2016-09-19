@@ -57,23 +57,6 @@ $colorSchemeFooterText: white;
 // **************************************************************************** //
 // ********************************  Styles  ********************************** //
 // **************************************************************************** //
-.box-text {
-  a {
-    text-decoration: underline;
-  }
-  
-  text-align: center;
-  p {
-    text-align: left;
-  }
-  padding: 20px 40px;
-  @media (min-width: 768px) { 
-    padding: 30px 40px;
-  }
-  @media (min-width: 992px) {
-    padding: 50px 60px; 
-  }
-}
 
 .box-button {
   padding: 0;
@@ -107,6 +90,26 @@ $colorSchemeFooterText: white;
   background-color: $colorPurpleFlower;
   color: $colorSchemeHeaderNameText;
   color: white;
+}
+
+.box-text {
+  color: #111;
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  text-align: center;
+  p {
+    text-align: left;
+  }
+  padding: 20px 40px;
+  @media (min-width: 768px) { 
+    padding: 30px 40px;
+  }
+  @media (min-width: 992px) {
+    padding: 50px 60px; 
+  }
 }
 
 .socialMediaButtons {
