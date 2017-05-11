@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- for Bootstrap -->
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- for Bootstrap -->
 
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/css/bootstrap.min.css">
   <!-- Optional theme -->
-  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" crossorigin="anonymous">
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -17,10 +17,10 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <link rel="stylesheet" href="css/academicons.min.css" />
+  <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/css/academicons.min.css" />
   <link href='https://fonts.googleapis.com/css?family=Alegreya:400|Raleway:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/css/style.css" type="text/css" />
 
   <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
@@ -125,8 +125,12 @@
       <div class="sizer col-sm-push-18 col-sm-18 col-md-push-16 col-md-20">
         <div id="aboutText" class="sized box-gray box-text">
           <div id="aboutTextVerticalCenter">
+
+            <!-- ARBIRTRARY POINT FOR BLOG POSTS TO BE -->
             <h2>Allison Bistline-East, MSc</h2>
             <p>Hello, thanks for visiting my website! I am an environmental science PhD student at the National University of Ireland, Galway. I earned my MSc in Entomology from the University of California, Riverside, after working in the Entomology Department as a research assistant for several years.</p>
+
+            <!-- END ARBITRARY BLOG POST POINT -->
           </div>
         </div>
       </div>
@@ -193,7 +197,7 @@
                     </div>
                   </a>
                 </div>
-              </div>       
+              </div>
               <div class="row">
                 <div class="box-purple box-button col-xs-36">
                   <div class="squareDummy"></div>
@@ -206,13 +210,13 @@
               </div>
             </div>
             <div class="col-xs-25 publicationsRowImage2">
-              <div class="publicationsImage2"></div> 
+              <div class="publicationsImage2"></div>
             </div>
           </div>
         </div>
       </div>
-      
-      
+
+
       <div id="publicationsMobile" class="container">
         <div class="publicationsMobileRowText row">
           <div class="sizer col-xs-36">
