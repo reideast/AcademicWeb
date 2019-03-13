@@ -1,0 +1,19 @@
+{
+  "name": "ali_web",
+  "version": "1.0.0",
+  "description": "Web Site for Ali's Web Site",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-less": "^3.0.5",
+    "gulp-sass": "^2.1.1"
+  },
+  "devDependencies": {
+    "gulp-clean-css": "^2.0.12"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
