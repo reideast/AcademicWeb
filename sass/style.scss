@@ -175,12 +175,21 @@ $colorSchemeFooterText: white;
   right: 0;
 }
 
+@mixin fullWidthColumn {
+  padding-left: 0; padding-right: 0; // set to remove bootstrap's margins for col-* styles
+}
+
 /* **************************************************************************** */
 /* ************************* Generic Transformations ************************** */
 /* **************************************************************************** */
 
 .verticalCenter {
   @include vCenter;
+}
+
+// set to remove bootstrap's margins for col-* styles
+.fullWidthColumn {
+  @include fullWidthColumn
 }
 
 // use the "sizer" style to set the height of a variable-width div equal to a proportion of the width of it's parent
@@ -209,7 +218,7 @@ $colorSchemeFooterText: white;
 }
 .sizer {
   position: relative;
-  padding-left: 0; padding-right: 0; // set to remove bootstrap's margins for col-* styles
+  @include fullWidthColumn // to remove bootstrap's margins for col-* styles
 }
 
 
