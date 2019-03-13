@@ -4,11 +4,13 @@
   "description": "Web Site for Ali's Web Site",
   "main": "gulpfile.js",
   "dependencies": {
+    "autoprefixer": "^9.4.10",
     "gulp": "^4.0.0",
     "gulp-less": "^4.0.1",
     "gulp-sass": "^4.0.2"
   },
   "devDependencies": {
+    "gulp-autoprefixer": "^6.0.0",
     "gulp-clean-css": "^4.0.0"
   },
   "scripts": {
