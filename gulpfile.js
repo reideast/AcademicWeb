@@ -3,6 +3,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var cleanCSS = require('gulp-clean-css');
+var fileinclude = require('gulp-file-include');
 sass.compiler = require('node-sass');
 
 gulp.task('sass', function() {
@@ -11,6 +12,17 @@ gulp.task('sass', function() {
         .pipe(autoprefixer())
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('css')) // './css' orginally
+});
+
+// See: https://www.npmjs.com/package/gulp-file-include
+gulp.task('fileinclude', function() {
+    return gulp.src(['template/**/*.html'])
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: 'partial/'
+            // basepath: '@file'
+        }))
+        .pipe(gulp.dest('./'));
 });
 
 gulp.task('default', function() {
