@@ -6,6 +6,8 @@ var cleanCSS = require('gulp-clean-css');
 var fileinclude = require('gulp-file-include');
 sass.compiler = require('node-sass');
 
+// Any *.scss files within the /sass/ directory will be compiled, combined, and minified into the /css dir
+// usage: `gulp sass`
 gulp.task('sass', function() {
     return gulp.src('sass/*.scss')
         .pipe(sass().on('error', sass.logError))
@@ -14,25 +16,23 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('css')) // './css' orginally
 });
 
-// See: https://www.npmjs.com/package/gulp-file-include
-gulp.task('fileinclude', function() {
+// Any *.html files within the /template/ dir will be compiled into / as static, basic HTML
+// Copy example in template/model.html.txt
+// For templating details, see: https://www.npmjs.com/package/gulp-file-include
+// usage: `gulp template-html`
+gulp.task('template-html', function() {
     return gulp.src(['template/**/*.html'])
         .pipe(fileinclude({
             prefix: '@@',
             basepath: 'partial/'
-            // basepath: '@file'
         }))
         .pipe(gulp.dest('./'));
 });
 
+// Auto compile SASS and HTML templates
+// usage: `gulp`
 gulp.task('default', function() {
-    // gulp.watch('sass/*.scss', ['sass']);
+    gulp.watch(['sass/*.scss'], gulp.task('sass'));
 
-    gulp.watch(['sass/*.scss'], function(cb) {
-        gulp.task('sass')();
-        cb();
-    });
+    gulp.watch(['template/**/*.html', 'partial/**/*.html'], gulp.task('template-html'));
 });
-
-//    gulp.src('./**/*.scss', {base: './'})
-//        .pipe(gulp.dest('./resources/css'))
