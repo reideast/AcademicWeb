@@ -10,3 +10,9 @@ desktop.ini
 web_files_160918/
 .idea
 .css/style.css
+
+# Ignore compiled template files
+# Each file must be added here as they are created, to avoid unexpected ignores from a wildcard /*.html
+# (Existing non-template versions of index.html & about.html  have been removed with `git rm --cached index.html about.html`)
+/index.html
+/about.html
