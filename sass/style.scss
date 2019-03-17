@@ -126,6 +126,19 @@ $colorSchemeFooterText: white;
     padding-left: 0;
   }
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  #headerSocialMedia.socialMediaButtons {
+    span {
+      padding-left: 1px;
+    }
+    .fa-2x, .ai-2x {
+      font-size: 1.8em;
+    }
+  }
+  #headerIcons {
+    padding-right: 5px;
+  }
+}
 
 .nameplate {
   h1 {
@@ -137,6 +150,10 @@ $colorSchemeFooterText: white;
     font-family: $fontBody;
     font-size: 14px;
     margin-top: 0;
+  }
+  @media (min-width: 768px) and (max-width: 992px) {
+    h1 { font-size: 18px; }
+    h3 { font-size: 11px; }
   }
 }
 
