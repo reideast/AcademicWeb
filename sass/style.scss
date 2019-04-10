@@ -58,6 +58,18 @@ $colorSchemeFooterText: white;
 // ********************************  Styles  ********************************** //
 // **************************************************************************** //
 
+.img-float {
+  margin: 10px;
+}
+.left {
+  float: left;
+  margin-left: 0;
+}
+.right {
+  float: right;
+  margin-right: 0;
+}
+
 .box-button {
   padding: 0;
   text-align: center;
@@ -93,15 +105,18 @@ $colorSchemeFooterText: white;
 }
 
 .box-text {
-  color: #111;
+  color: $colorBlack;
   
   a {
     text-decoration: underline;
   }
   
   text-align: center;
-  p {
+  p, ol, ul, td {
     text-align: left;
+  }
+  th {
+    text-align: center;
   }
   padding: 20px 40px;
   @media (min-width: 768px) { 
@@ -112,9 +127,18 @@ $colorSchemeFooterText: white;
   }
 }
 
+.header-spacing-after {
+  padding-bottom: 1em;
+}
+.header-spacing-before {
+    padding-top: 2em;
+}
+
+
 .socialMediaButtons {
   font-size: 14px;
   a {
+    color: $colorBlack;
     i {
       line-height: 20px;
     }
