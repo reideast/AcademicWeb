@@ -43,6 +43,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Bootstrap js: Latest compiled and minified JavaScript -->
 <script src="js/bootstrap.min.js"></script>
+<script src="js/ekko-lightbox.min.js"></script>
+
+<script>
+    // Lightbox: by ashleyd https://ashleydw.github.io/lightbox/
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
+</script>
 
 <script>
     // $(document).ready(function() {

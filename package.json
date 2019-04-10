@@ -5,6 +5,7 @@
   "main": "gulpfile.js",
   "dependencies": {
     "autoprefixer": "^9.4.10",
+    "ekko-lightbox": "^5.3.0",
     "gulp": "^4.0.0",
     "gulp-file-include": "^2.0.1",
     "gulp-less": "^4.0.1",
