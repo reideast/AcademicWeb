@@ -26,6 +26,7 @@ $colorOrange2: #975408;
 $colorPurpleFlower: #b430a0;
 // $colorOrange3: #732c38;
 // $colorOrange3: #ea436a;
+$colorWhite: #fff;
 $colorBlack: #111;
 $colorGray: #333; //already in bootstrap template
 $colorGrayBG: #ccc;
@@ -85,6 +86,11 @@ $colorSchemeFooterText: white;
   }
 }
 
+.box-white {
+  background-color: $colorWhite;
+  color: $colorSchemeTextBoxText;
+}
+
 .box-gray {
   background-color: $colorSchemeTextBoxBG;
   color: $colorSchemeTextBoxText;
@@ -127,6 +133,10 @@ $colorSchemeFooterText: white;
   @media (min-width: 992px) {
     padding: 50px 60px; 
   }
+}
+
+.background-gray {
+  background-color: $colorSchemeTextBoxBG;
 }
 
 .header-spacing-after {
