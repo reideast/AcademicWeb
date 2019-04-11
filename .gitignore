@@ -10,6 +10,7 @@ desktop.ini
 web_files_160918/
 .idea
 .css/style.css
+backup/
 
 # Ignore compiled template files
 # Each file must be added here as they are created, to avoid unexpected ignores from a wildcard /*.html
