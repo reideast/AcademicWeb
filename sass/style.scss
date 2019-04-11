@@ -26,6 +26,7 @@ $colorOrange2: #975408;
 $colorPurpleFlower: #b430a0;
 // $colorOrange3: #732c38;
 // $colorOrange3: #ea436a;
+$colorWhite: #fff;
 $colorBlack: #111;
 $colorGray: #333; //already in bootstrap template
 $colorGrayBG: #ccc;
@@ -58,6 +59,20 @@ $colorSchemeFooterText: white;
 // ********************************  Styles  ********************************** //
 // **************************************************************************** //
 
+.img-float {
+  //margin: 10px;
+}
+.left {
+  float: left;
+  margin-right: 10px;
+  margin-left: 0;
+}
+.right {
+  float: right;
+  margin-left: 10px;
+  margin-right: 0;
+}
+
 .box-button {
   padding: 0;
   text-align: center;
@@ -69,6 +84,11 @@ $colorSchemeFooterText: white;
   a {
     color: inherit;
   }
+}
+
+.box-white {
+  background-color: $colorWhite;
+  color: $colorSchemeTextBoxText;
 }
 
 .box-gray {
@@ -93,15 +113,18 @@ $colorSchemeFooterText: white;
 }
 
 .box-text {
-  color: #111;
+  color: $colorBlack;
   
   a {
     text-decoration: underline;
   }
   
   text-align: center;
-  p {
+  p, ol, ul, td {
     text-align: left;
+  }
+  th {
+    text-align: center;
   }
   padding: 20px 40px;
   @media (min-width: 768px) { 
@@ -112,9 +135,22 @@ $colorSchemeFooterText: white;
   }
 }
 
+.background-gray {
+  background-color: $colorSchemeTextBoxBG;
+}
+
+.header-spacing-after {
+  padding-bottom: 1em;
+}
+.header-spacing-before {
+    padding-top: 2em;
+}
+
+
 .socialMediaButtons {
   font-size: 14px;
   a {
+    color: $colorBlack;
     i {
       line-height: 20px;
     }
@@ -126,6 +162,19 @@ $colorSchemeFooterText: white;
     padding-left: 0;
   }
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  #headerSocialMedia.socialMediaButtons {
+    span {
+      padding-left: 1px;
+    }
+    .fa-2x, .ai-2x {
+      font-size: 1.8em;
+    }
+  }
+  #headerIcons {
+    padding-right: 5px;
+  }
+}
 
 .nameplate {
   h1 {
@@ -135,8 +184,12 @@ $colorSchemeFooterText: white;
   }
   h3 {
     font-family: $fontBody;
-    font-size: 16px;
+    font-size: 14px;
     margin-top: 0;
+  }
+  @media (min-width: 768px) and (max-width: 992px) {
+    h1 { font-size: 18px; }
+    h3 { font-size: 11px; }
   }
 }
 
@@ -175,12 +228,21 @@ $colorSchemeFooterText: white;
   right: 0;
 }
 
+@mixin fullWidthColumn {
+  padding-left: 0; padding-right: 0; // set to remove bootstrap's margins for col-* styles
+}
+
 /* **************************************************************************** */
 /* ************************* Generic Transformations ************************** */
 /* **************************************************************************** */
 
 .verticalCenter {
   @include vCenter;
+}
+
+// set to remove bootstrap's margins for col-* styles
+.fullWidthColumn {
+  @include fullWidthColumn
 }
 
 // use the "sizer" style to set the height of a variable-width div equal to a proportion of the width of it's parent
@@ -209,7 +271,7 @@ $colorSchemeFooterText: white;
 }
 .sizer {
   position: relative;
-  padding-left: 0; padding-right: 0; // set to remove bootstrap's margins for col-* styles
+  @include fullWidthColumn // to remove bootstrap's margins for col-* styles
 }
 
 
@@ -521,7 +583,7 @@ body {
   font-size: 10px;
   p { margin: 0; }
   @media (min-width: 480px) {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 #footerLinksSocial {
@@ -576,20 +638,20 @@ body {
     margin-top: 10px;
   }
   @media (max-width: 400px) {
-    h1 { font-size: 32px; }
+    h1 { font-size: 28px; }
     h2 { font-size: 24px; }
   }
   @media (min-width: 401px) {
-    h1 { font-size: 36px; } //set to 36px in bootstrap.css
+    h1 { font-size: 30px; }
     h2 { font-size: 26px; }
   }
   @media (min-width: 768px) {
-    h1 { font-size: 30px; }
+    h1 { font-size: 28px; }
     h2 { font-size: 22px; }
   }
   @media (min-width: 992px) {
-    h1 { font-size: 34px; }
-    h2 { font-size: 24px; }
+    h1 { font-size: 30px; }
+    h2 { font-size: 28px; }
   }
 }
 

@@ -1,0 +1,71 @@
+<div id="containerFooter" class="container">
+    <div id="footer" class="row">
+        <div id="footerName" class="col-xs-36 col-sm-push-10 col-sm-16">
+            <div class="nameplate verticalCenter">
+                <h1>Allison Bistline-East, MSc</h1>
+                <h3>Applied entomology, agroecology</h3>
+            </div>
+        </div>
+        <div id="footerAddress" class="col-xs-18 col-sm-10 col-sm-pull-16">
+            <address class="verticalCenter">
+                <p>Applied Ecology Unit</p>
+                <p>Centre for Environmental Science</p>
+                <p>School of Natural Sciences</p>
+                <p class="visible-xs-block visible-sm-block">National University<br>of Ireland, Galway</p>
+                <div class="visible-md-block visible-lg-block">
+                    <p>National University of Ireland</p>
+                    <p>Galway, Ireland</p>
+                </div>
+            </address>
+        </div>
+        <div id="footerLinks" class="col-xs-18 blach_col-sm-push-26 col-sm-10">
+            <div class="verticalCenter">
+                <div id="footerLinksSocial">
+                    <div id="footerSocialMedia" class="socialMediaButtons">
+                        <span><a href="https://twitter.com/ABEentomology"><i class="fa fa-twitter-square fa-2x"></i></a></span>
+                        <span><a href="https://scholar.google.com/citations?user=jXBvO7cAAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-2x"></i></a></span>
+                        <span><a href="https://www.researchgate.net/profile/Allison_Bistline-East"><i class="ai ai-researchgate-square ai-2x"></i></a></span>
+                        <span><a href="https://www.linkedin.com/in/allisonbistlineeast"><i class="fa fa-linkedin-square fa-2x"></i></a></span>
+                    </div>
+                </div>
+                <address id="footerLinksPhone">
+                    <p><a href="mailto:allison@bistlineeast.com">allison@bistlineeast.com</a></p>
+                </address>
+            </div>
+        </div>
+    </div>
+</div><!-- #containerFooter -->
+
+<div id="containerFooterBackground" class="container">
+    <div id="footerBackgroundImage" data-speed="2"></div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Bootstrap js: Latest compiled and minified JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/ekko-lightbox.min.js"></script>
+
+<script>
+    // Lightbox: by ashleyd https://ashleydw.github.io/lightbox/
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
+</script>
+
+<script>
+    // $(document).ready(function() {
+    //   //This "locks" in elements that use CSS "vh" units for Android, when the disappearing Address Bar changes the viewport
+    //   //http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
+    //   // $("#backgroundImage").css("height", window.innerHeight * 1.2);
+    //   // $("#containerByline").css("height", window.innerHeight);
+    //   // The javascript reads "px" units and sets px units, even though the CSS is "vh" units
+    //   $("#backgroundImage").css("height", $("#backgroundImage").css("height"));
+    //   $("#containerByline").css("height", $("#containerByline").css("height"));
+    //   //TODO: re-calc on change in viewport or rotation or ??
+    //   //but, the height is locked into px units now
+    // }); //document.ready
+</script>
+</body>
+
+</html>
