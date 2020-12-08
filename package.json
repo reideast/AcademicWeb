@@ -1,7 +1,7 @@
 {
-  "name": "ali_web",
+  "name": "academic_web",
   "version": "1.0.0",
-  "description": "Web Site for Ali's Web Site",
+  "description": "Web site for an academic CV",
   "main": "gulpfile.js",
   "dependencies": {
     "autoprefixer": "^10.1.0",
@@ -20,5 +20,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": "https://github.com/reideast/AcademicWeb"
 }
