@@ -10,7 +10,7 @@
     "gulp-file-include": "^2.2.2",
     "gulp-less": "^4.0.1",
     "gulp-sass": "^4.1.0",
-    "postcss": "^8.1.0"
+    "postcss": "^8.2.10"
   },
   "devDependencies": {
     "gulp-autoprefixer": "^7.0.1",
